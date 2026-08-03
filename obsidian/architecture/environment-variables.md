@@ -1,6 +1,6 @@
 ---
 tags: [architecture, config, stable]
-updated: 2026-07-17
+updated: 2026-08-03
 ---
 
 # Environment Variables
@@ -20,7 +20,10 @@ Rules for handling configuration and secrets.
 | Name | Scope | Purpose |
 |------|-------|---------|
 | `NEXT_PUBLIC_SITE_URL` | public | Site origin (no trailing slash). Drives canonical URLs, OG/Twitter tags, `robots.txt`, `sitemap.xml`, JSON-LD. Falls back to `http://localhost:3000` when unset — **set it in production**. See [[seo-metadata]]. |
+| `NEXT_PUBLIC_GA_ID` | public | Google Analytics 4 measurement ID. Only loads once a visitor accepts the "analytics" cookie category — see `components/common/analytics/analytics-scripts.tsx`. |
+| `NEXT_PUBLIC_FB_PIXEL_ID` | public | Meta (Facebook) Pixel ID. Only loads once a visitor accepts the "marketing" cookie category. |
 | `CONTACT_ENDPOINT` | server-only | Optional upstream the `/api/contact` route forwards leads to (CRM / webhook). When unset, submissions are logged server-side. See [[api-architecture]]. |
+| `ADMISSIONS_ENDPOINT` | server-only | Optional upstream the `/api/admissions` route forwards applications to (CRM / webhook). When unset, submissions are logged server-side. |
 
 Documented in `.env.example` (committed). Validated by `src/env.ts` (zod):
 `publicEnv` for `NEXT_PUBLIC_*` (safe anywhere), `getServerEnv()` for

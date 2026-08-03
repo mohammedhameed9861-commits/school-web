@@ -1,0 +1,560 @@
+{
+  "seo": {
+    "title": "Alsharq Bilingual Private School for Boys | Baghdad",
+    "description": "A stronger education. A more confident future. Alsharq Bilingual Private School for Boys prepares students academically, personally and professionally for the future."
+  },
+  "notFound": {
+    "message": "Sorry, this page could not be found.",
+    "backHome": "Back to home"
+  },
+  "common": {
+    "brandName": "Alsharq",
+    "brandNameFull": "Alsharq Bilingual Private School for Boys",
+    "registerNow": "Register Your Son Now",
+    "applyNow": "Apply for Admission",
+    "contactUs": "Contact Us",
+    "learnMore": "Learn more",
+    "callUs": "Call us",
+    "whatsapp": "WhatsApp",
+    "readMore": "Read more",
+    "viewAll": "View all",
+    "sendMessage": "Send Message",
+    "submit": "Submit",
+    "requiredField": "This field is required",
+    "submitSuccessTitle": "Submitted successfully",
+    "submitSuccessBody": "Thank you for reaching out to Alsharq. Our admissions team will contact you shortly.",
+    "submitErrorBody": "Something went wrong while submitting. Please try again or reach us on WhatsApp."
+  },
+  "nav": {
+    "home": "Home",
+    "about": "About Alsharq",
+    "academics": "Academics",
+    "studentLife": "Student Life",
+    "admissions": "Admissions",
+    "gallery": "Gallery",
+    "news": "News & Resources",
+    "contact": "Contact",
+    "toggleMenu": "Open menu",
+    "closeMenu": "Close menu",
+    "switchLanguage": "العربية"
+  },
+  "footer": {
+    "tagline": "A stronger education. A more confident future.",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Info",
+    "followUs": "Follow Us",
+    "addressLabel": "Address",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "rights": "All rights reserved",
+    "privacyPolicy": "Privacy Policy"
+  },
+  "whatsapp": {
+    "label": "Chat with us on WhatsApp",
+    "defaultMessage": "Hello, I'd like to ask about admission at Alsharq School."
+  },
+  "grades": {
+    "g7": "Grade 7",
+    "g8": "Grade 8",
+    "g9": "Grade 9",
+    "g10": "Grade 10",
+    "g11": "Grade 11",
+    "g12": "Grade 12",
+    "other": "Not sure / Other"
+  },
+  "registrationForm": {
+    "eyebrow": "Registration",
+    "title": "Register Your Son Now",
+    "subtitle": "Fill in the form below and our admissions team will contact you within 24 hours to complete registration.",
+    "studentNameLabel": "Student name",
+    "studentNamePlaceholder": "Student's full name",
+    "parentNameLabel": "Parent name",
+    "parentNamePlaceholder": "Parent's full name",
+    "phoneLabel": "Phone number",
+    "phonePlaceholder": "07xxxxxxxxx",
+    "emailLabel": "Email (optional)",
+    "emailPlaceholder": "example@email.com",
+    "gradeLevelLabel": "Grade applying for",
+    "gradeLevelPlaceholder": "Select a grade",
+    "messageLabel": "Additional notes (optional)",
+    "messagePlaceholder": "Anything else you'd like us to know"
+  },
+  "home": {
+    "hero": {
+      "eyebrow": "Alsharq Bilingual Private School for Boys — Baghdad",
+      "title": "A stronger education. A more confident future.",
+      "subtitle": "At Alsharq Bilingual Private School for Boys, we prepare students academically, personally and professionally for the future, in an outstanding environment that brings Arabic and English together.",
+      "ctaSecondary": "Discover the school",
+      "stats": [
+        { "value": "15+", "label": "years of educational excellence" },
+        { "value": "2", "label": "languages of instruction" },
+        { "value": "95%", "label": "annual pass rate" }
+      ]
+    },
+    "registerCta": {
+      "title": "Start your son's journey today",
+      "body": "Seats are limited per grade for the coming academic year. Register now to secure your son's place."
+    },
+    "advantages": {
+      "eyebrow": "Why Alsharq",
+      "title": "Advantages that make the difference",
+      "subtitle": "We combine tradition and modernity to deliver a complete education that prepares every student for what's next.",
+      "items": [
+        {
+          "title": "Complete bilingual education",
+          "description": "A curriculum that combines Arabic and English to build a strong academic and linguistic foundation from the earliest grades."
+        },
+        {
+          "title": "Qualified, dedicated teachers",
+          "description": "An elite team of academically and pedagogically experienced teachers, committed to following up with every student individually."
+        },
+        {
+          "title": "AI & entrepreneurship program",
+          "description": "Preparing students with 21st-century skills through innovative programs in technology and entrepreneurship."
+        },
+        {
+          "title": "Safe, motivating environment",
+          "description": "A modern campus equipped with the latest educational, sports, and laboratory facilities."
+        },
+        {
+          "title": "Individual academic follow-up",
+          "description": "Continuous assessment and personal follow-up to ensure every student progresses according to their own ability."
+        },
+        {
+          "title": "Enriching activities & trips",
+          "description": "A rich program of extracurricular activities and trips that build character and life skills."
+        }
+      ]
+    },
+    "programs": {
+      "eyebrow": "Our academic programs",
+      "title": "A curriculum built for the future",
+      "subtitle": "Complete academic programs that combine national curriculum requirements with the skills of today.",
+      "items": [
+        {
+          "title": "Blended national & international curriculum",
+          "description": "Combines Iraqi curriculum requirements with recognized international educational standards."
+        },
+        {
+          "title": "Intensive English",
+          "description": "Daily intensive lessons to build confident speaking, writing, and listening skills."
+        },
+        {
+          "title": "Science, Math & Technology (STEM)",
+          "description": "Modern science labs and hands-on, project-based learning."
+        },
+        {
+          "title": "AI & Entrepreneurship",
+          "description": "A foundational course introducing students to programming basics and entrepreneurial, problem-solving thinking."
+        }
+      ]
+    },
+    "facilities": {
+      "eyebrow": "Facilities & school life",
+      "title": "An inspiring campus",
+      "subtitle": "A modern campus designed to bring learning, activity, and comfort together.",
+      "items": [
+        { "title": "Modern science labs", "description": "Physics, chemistry, biology and computer labs equipped with the latest tools." },
+        { "title": "Smart classrooms", "description": "Classrooms fitted with interactive teaching aids and modern technology." },
+        { "title": "Well-stocked library", "description": "An Arabic and English library supporting reading, research, and self-directed learning." },
+        { "title": "Sports facilities & fields", "description": "Multi-purpose fields for football, basketball, and other sports." },
+        { "title": "Theatre & events hall", "description": "A dedicated space for arts, drama, and school-wide events." },
+        { "title": "Healthy cafeteria", "description": "A school cafeteria serving healthy, balanced meals throughout the school day." }
+      ]
+    },
+    "achievements": {
+      "eyebrow": "Our teachers & achievements",
+      "title": "Our teachers — the foundation of your son's success",
+      "subtitle": "An elite team of educators leading our students toward academic and intellectual excellence across Baghdad.",
+      "stats": [
+        { "value": "500+", "label": "high-achieving students" },
+        { "value": "30+", "label": "specialist teachers" },
+        { "value": "20+", "label": "academic awards & achievements" },
+        { "value": "98%", "label": "parent satisfaction" }
+      ]
+    },
+    "testimonials": {
+      "eyebrow": "What parents say",
+      "title": "The trust of families — our greatest achievement",
+      "subtitle": "We're proud of the trust families have placed in us throughout their sons' educational journey.",
+      "items": [
+        {
+          "quote": "Since my son joined Alsharq, we've seen a real change in his self-confidence and in his level in both Arabic and English.",
+          "name": "Mr. Mohammed Al-Jubouri",
+          "role": "Parent of a Grade 9 student"
+        },
+        {
+          "quote": "What sets Alsharq apart is the individual follow-up from teachers, and their genuine care for each student's progress.",
+          "name": "Mrs. Sara Al-Azzawi",
+          "role": "Parent of a Grade 7 student"
+        },
+        {
+          "quote": "The AI & entrepreneurship program gave my son skills he simply wouldn't have picked up at a traditional school.",
+          "name": "Mr. Ahmed Al-Kinani",
+          "role": "Parent of a Grade 11 student"
+        }
+      ]
+    }
+  },
+  "about": {
+    "seo": {
+      "title": "About Alsharq | Our Story, Vision & Values",
+      "description": "Learn about Alsharq Bilingual Private School's story, vision, mission, educational values, and why bilingual education matters."
+    },
+    "hero": {
+      "eyebrow": "About Alsharq",
+      "title": "The story of a school that builds generations",
+      "subtitle": "Since its founding, Alsharq has aimed to be a second home that combines Arabic authenticity with openness to the world."
+    },
+    "story": {
+      "eyebrow": "Our story",
+      "title": "A journey from passion to excellence",
+      "paragraphs": [
+        "Alsharq Bilingual Private School for Boys was founded on a firm belief: real education starts with a safe environment that respects a student's identity while opening the world to them at the same time.",
+        "Over more than fifteen years, we've built a complete educational system that combines the rigor of the Iraqi curriculum with the openness of international educational standards, graduating generations confident in their identity and ready for their future.",
+        "Today, Alsharq continues to develop its academic and technology programs to stay at the forefront of private schools in Baghdad, trusted by hundreds of families who chose us as a partner in their sons' educational journey."
+      ]
+    },
+    "visionMission": {
+      "visionTitle": "Our Vision",
+      "visionBody": "To be Baghdad's leading private school in preparing a bilingual generation — academically and digitally capable, and able to compete locally and globally.",
+      "missionTitle": "Our Mission",
+      "missionBody": "We deliver a balanced education that combines Arabic and English, builds 21st-century skills, within a safe environment that embraces every student and believes in their unique abilities."
+    },
+    "values": {
+      "eyebrow": "Our educational values",
+      "title": "What guides every decision we make",
+      "subtitle": "Firm values that shape a student's character, in the classroom and beyond.",
+      "items": [
+        { "title": "Authenticity & belonging", "description": "We instill pride in Arabic language and Arab-Islamic identity in every student." },
+        { "title": "Academic excellence", "description": "We commit to the highest quality standards in every subject taught." },
+        { "title": "Discipline & respect", "description": "An organized school environment built on mutual respect and responsibility." },
+        { "title": "Innovation & critical thinking", "description": "We encourage students to question, explore, and solve problems independently." },
+        { "title": "Partnership with families", "description": "We believe a student's success is the result of real cooperation between school and home." }
+      ]
+    },
+    "bilingual": {
+      "eyebrow": "Why bilingual education matters",
+      "title": "Two languages, double the opportunity",
+      "subtitle": "Mastering both Arabic and English is no longer a luxury — it's a necessity for our sons' future.",
+      "points": [
+        { "title": "Broader cognitive ability", "description": "Learning two languages from an early age builds mental flexibility and problem-solving skills." },
+        { "title": "University & global readiness", "description": "Mastering academic English opens the door to the best universities, locally and abroad." },
+        { "title": "A rooted, open identity", "description": "Mastering Arabic first preserves identity, while English opens windows to the world." }
+      ]
+    }
+  },
+  "academics": {
+    "seo": {
+      "title": "Academics | Curriculum & AI Program",
+      "description": "A bilingual curriculum, progressive grade levels, and a modern teaching approach — plus the AI & Entrepreneurship program at Alsharq."
+    },
+    "hero": {
+      "eyebrow": "Academics",
+      "title": "A curriculum balancing tradition and the future",
+      "subtitle": "Academic programs designed to prepare students scientifically, linguistically, and technologically at once."
+    },
+    "curriculum": {
+      "eyebrow": "The curriculum",
+      "title": "A national curriculum, global standards",
+      "subtitle": "We build on the official Iraqi curriculum, enriched with international resources and standards in science, languages, and critical thinking.",
+      "items": [
+        { "title": "Science subjects", "description": "Math, physics, chemistry and biology with enhanced content and hands-on application." },
+        { "title": "Languages", "description": "Strong classical Arabic, and intensive academic English from Grade 1." },
+        { "title": "Humanities", "description": "History, geography, and Islamic/national education that build awareness and belonging." },
+        { "title": "Digital skills", "description": "Computing, AI, and entrepreneurship built into the core study plan." }
+      ]
+    },
+    "languages": {
+      "eyebrow": "Arabic and English",
+      "title": "Two languages, one standard of mastery",
+      "arabicTitle": "Arabic",
+      "arabicBody": "We give classical Arabic special attention in reading, writing and expression, as the foundation of identity and thought.",
+      "englishTitle": "English",
+      "englishBody": "An intensive English program built on international resources, preparing students to communicate academically and professionally with confidence."
+    },
+    "gradeLevels": {
+      "eyebrow": "Grade levels",
+      "title": "A progressive academic path",
+      "subtitle": "Grade levels designed to match each student's academic and developmental stage.",
+      "stages": [
+        { "title": "Intermediate stage", "range": "Grades 7–9", "description": "Building the academic and language foundation and developing independent learning skills." },
+        { "title": "Preparatory stage", "range": "Grades 10–12", "description": "Deepening academic specialization and serious preparation for university and the job market." }
+      ]
+    },
+    "teachingApproach": {
+      "eyebrow": "Our teaching approach",
+      "title": "Learning built on understanding, not memorization",
+      "subtitle": "We use modern teaching methods that put the student at the center of the learning process.",
+      "items": [
+        { "title": "Project-based learning", "description": "Connecting subject matter to real, hands-on applications and activities." },
+        { "title": "Continuous assessment", "description": "Regular tracking of student performance instead of relying solely on final exams." },
+        { "title": "Interactive classrooms", "description": "Discussion, critical thinking, and group work in every lesson." },
+        { "title": "Individual support", "description": "Additional support plans for students who need deeper academic follow-up." }
+      ]
+    },
+    "aiProgram": {
+      "eyebrow": "A signature program",
+      "title": "AI & Entrepreneurship",
+      "subtitle": "A unique foundational program preparing Alsharq students with future-ready skills, rarely found in other private schools.",
+      "body": "Students learn programming fundamentals and computational thinking alongside AI applications, plus entrepreneurship skills from idea to pitch, through hands-on experiences and interactive workshops.",
+      "points": [
+        { "title": "Programming fundamentals", "description": "A hands-on introduction to programming and computational problem-solving." },
+        { "title": "AI applications", "description": "Understanding AI tools and using them responsibly and creatively." },
+        { "title": "Entrepreneurial thinking", "description": "From idea to prototype, through real student-led projects." },
+        { "title": "Presentation skills", "description": "Building confidence presenting ideas to a real audience." }
+      ]
+    }
+  },
+  "studentLife": {
+    "seo": {
+      "title": "Student Life | Activities, Labs & Sports",
+      "description": "Discover extracurricular activities, laboratories, sports programs, events, and student projects at Alsharq."
+    },
+    "hero": {
+      "eyebrow": "Student Life",
+      "title": "More than just a school",
+      "subtitle": "A school life rich with activities and events that shape character and build lifelong skills."
+    },
+    "activities": {
+      "eyebrow": "Activities",
+      "title": "Spaces to discover a passion",
+      "subtitle": "A variety of clubs let students explore their interests beyond the curriculum.",
+      "items": [
+        { "title": "Reading & debate club", "description": "Building dialogue, critical thinking, and expression skills." },
+        { "title": "Science club", "description": "Hands-on scientific exploration beyond the curriculum." },
+        { "title": "Robotics & coding club", "description": "Building and programming robots through competitive projects." },
+        { "title": "Arts & drama club", "description": "Drawing, music, and theatre to nurture creative talent." },
+        { "title": "Entrepreneurship club", "description": "Developing real student projects from idea to execution." },
+        { "title": "Scouting & trips", "description": "Field and leadership activities that build independence and discipline." }
+      ]
+    },
+    "labs": {
+      "eyebrow": "Laboratories",
+      "title": "Learning by doing",
+      "subtitle": "Fully equipped labs turn theoretical concepts into tangible, hands-on experience.",
+      "items": [
+        { "title": "Physics lab", "description": "Hands-on experiments in mechanics, electricity, and light." },
+        { "title": "Chemistry lab", "description": "Safe, supervised experiments to understand chemical reactions." },
+        { "title": "Biology lab", "description": "Studying living organisms with modern tools and experiments." },
+        { "title": "Computer & AI lab", "description": "Modern equipment for learning programming and technology applications." }
+      ]
+    },
+    "sports": {
+      "eyebrow": "Sports",
+      "title": "A healthy body, an active mind",
+      "subtitle": "A complete sports program that builds fitness, teamwork, and a spirit of fair competition.",
+      "items": [
+        { "title": "Football", "description": "Competitive school teams with regular weekly training." },
+        { "title": "Basketball", "description": "A dedicated court and training program for every age group." },
+        { "title": "Athletics", "description": "Comprehensive fitness exercises that build strength and endurance." },
+        { "title": "Inter-school tournaments", "description": "Regular leagues and tournaments that build school spirit." }
+      ]
+    },
+    "events": {
+      "eyebrow": "Events",
+      "title": "Occasions that make memories",
+      "subtitle": "Annual events bringing students, families, and teachers together in a meaningful, festive atmosphere.",
+      "items": [
+        { "title": "Annual sports day", "description": "A day full of sports competitions with every grade taking part." },
+        { "title": "Science project fair", "description": "Students showcase their scientific and tech projects to families." },
+        { "title": "Graduation ceremony", "description": "An annual celebration honoring the graduating class and their achievements." },
+        { "title": "Culture week", "description": "Events celebrating Arab heritage and openness to world cultures." }
+      ]
+    },
+    "projects": {
+      "eyebrow": "Student projects",
+      "title": "Our students' ideas become reality",
+      "subtitle": "Real, student-led projects from planning through to final presentation.",
+      "items": [
+        { "title": "AI projects", "description": "Simple applications designed by students within the AI program." },
+        { "title": "Entrepreneurial projects", "description": "Business project ideas developed by students and pitched to a judging panel." },
+        { "title": "Scientific research projects", "description": "Field and experimental research prepared by students under teacher supervision." }
+      ]
+    }
+  },
+  "admissions": {
+    "seo": {
+      "title": "Admissions | Alsharq School",
+      "description": "Registration requirements and steps, tuition fees, the online application form, and frequently asked questions about admission at Alsharq."
+    },
+    "hero": {
+      "eyebrow": "Admissions",
+      "title": "Your first step toward Alsharq",
+      "subtitle": "Everything you need to know about registration requirements, steps, and fees at Alsharq Bilingual Private School for Boys."
+    },
+    "requirements": {
+      "eyebrow": "Registration requirements",
+      "title": "Required documents",
+      "subtitle": "Please have the following documents ready when submitting your application.",
+      "items": [
+        { "title": "Registration application form", "description": "Complete the online or paper registration form in full." },
+        { "title": "Birth certificate copy", "description": "A clear, certified copy of the student's birth certificate." },
+        { "title": "Previous school record", "description": "Transcript or report card from the previous academic year." },
+        { "title": "Personal photos", "description": "Four recent passport-style photos of the student." },
+        { "title": "Parent ID copy", "description": "A copy of the parent's national ID or passport." }
+      ]
+    },
+    "steps": {
+      "eyebrow": "Registration steps",
+      "title": "From application to enrollment",
+      "subtitle": "A clear, straightforward registration process in four steps.",
+      "items": [
+        { "title": "Submit the online application", "description": "Fill in the registration form on the site; our admissions team will reach out within 24 hours." },
+        { "title": "Document review", "description": "The admissions team reviews the submitted documents and confirms eligibility." },
+        { "title": "Introductory meeting & assessment", "description": "A short meeting with student and parent to understand the student's academic level." },
+        { "title": "Confirm registration", "description": "Complete payment procedures and confirm the student's seat for the academic year." }
+      ]
+    },
+    "fees": {
+      "eyebrow": "Tuition fees",
+      "title": "Flexible fees to suit every family",
+      "body": "Tuition fees vary by grade level, and convenient installment plans are available. Contact us for the full fee details for your son's academic year."
+    },
+    "faq": {
+      "eyebrow": "Frequently asked questions",
+      "title": "Common questions",
+      "subtitle": "Can't find your answer? Reach us directly on WhatsApp or via the Contact page.",
+      "items": [
+        {
+          "question": "What's the right age to register my son?",
+          "answer": "Alsharq accepts students from Grade 7 through Grade 12, matched to the appropriate age for each grade."
+        },
+        {
+          "question": "Can a student transferring from another school be admitted?",
+          "answer": "Yes, we accept transfer students at every grade level, after reviewing their previous academic record."
+        },
+        {
+          "question": "Is the school uniform mandatory?",
+          "answer": "Yes, the school uniform is mandatory for all students, to maintain identity and school discipline."
+        },
+        {
+          "question": "Is school transport available?",
+          "answer": "Yes, the school offers a transport service covering most areas of Baghdad for an additional fee."
+        },
+        {
+          "question": "Are there sibling discounts?",
+          "answer": "Yes, the school offers a special discount when registering more than one son from the same family. Contact us for details."
+        }
+      ]
+    }
+  },
+  "gallery": {
+    "seo": {
+      "title": "Gallery | Alsharq School",
+      "description": "A photo tour of Alsharq's facilities, classrooms, activities, events, and video clips."
+    },
+    "hero": {
+      "eyebrow": "Gallery",
+      "title": "A glimpse into life at Alsharq",
+      "subtitle": "Photos and videos from inside the campus and its activities and events throughout the school year."
+    },
+    "categories": [
+      {
+        "title": "School facilities",
+        "subtitle": "A modern campus designed to serve the learning experience.",
+        "items": ["Main entrance", "Outdoor courtyard", "Library", "Events hall"]
+      },
+      {
+        "title": "Classrooms",
+        "subtitle": "Classrooms equipped with the latest interactive tools.",
+        "items": ["Intermediate stage classroom", "Preparatory stage classroom", "Computer lab", "Reading corner"]
+      },
+      {
+        "title": "Student activities",
+        "subtitle": "Moments from clubs and extracurricular activities.",
+        "items": ["Science club", "Robotics club", "Arts club", "Entrepreneurship club"]
+      },
+      {
+        "title": "School events",
+        "subtitle": "Occasions and celebrations throughout the school year.",
+        "items": ["Sports day", "Project fair", "Graduation ceremony", "Culture week"]
+      }
+    ],
+    "videos": {
+      "eyebrow": "Videos",
+      "title": "See Alsharq up close",
+      "subtitle": "Video clips introducing you to daily life inside the school.",
+      "items": ["A tour inside the campus", "A day in a student's life", "Parents speak"]
+    }
+  },
+  "news": {
+    "seo": {
+      "title": "News & Resources | Alsharq School",
+      "description": "The latest school announcements, study tips, exam preparation guidance, and resources for parents."
+    },
+    "hero": {
+      "eyebrow": "News & Resources",
+      "title": "What's new at Alsharq",
+      "subtitle": "School announcements and educational tips for students and parents."
+    },
+    "categories": {
+      "announcements": "School announcements",
+      "studyTips": "Study tips",
+      "examPrep": "Exam preparation",
+      "parentGuidance": "Parent guidance"
+    },
+    "articles": [
+      {
+        "category": "announcements",
+        "title": "Registration is open for the new academic year",
+        "excerpt": "Alsharq has opened registration for the coming academic year for all grades from 7 through 12."
+      },
+      {
+        "category": "studyTips",
+        "title": "Five habits for better study-time management",
+        "excerpt": "Practical tips to help your son organize his time and get the best results without burning out."
+      },
+      {
+        "category": "examPrep",
+        "title": "How should your son prepare for final exams?",
+        "excerpt": "A simple, effective revision plan that eases exam stress and builds student confidence."
+      },
+      {
+        "category": "parentGuidance",
+        "title": "How to support your son academically at home",
+        "excerpt": "Practical ideas for parents to create a home environment that supports academic achievement."
+      },
+      {
+        "category": "announcements",
+        "title": "Launching the AI & Entrepreneurship program",
+        "excerpt": "The school has announced the launch of its new AI & Entrepreneurship program for preparatory-stage students."
+      },
+      {
+        "category": "studyTips",
+        "title": "Why free reading matters for language development",
+        "excerpt": "How daily free reading helps develop a student's Arabic and English language skills."
+      }
+    ]
+  },
+  "contact": {
+    "seo": {
+      "title": "Contact Us | Alsharq School",
+      "description": "Reach Alsharq School by phone, WhatsApp, or the contact form, or visit our campus in Baghdad."
+    },
+    "hero": {
+      "eyebrow": "Contact",
+      "title": "We'd love to hear from you",
+      "subtitle": "Our team is ready to answer all your questions about admissions, registration, and academic programs."
+    },
+    "info": {
+      "addressTitle": "Address",
+      "phoneTitle": "Phone",
+      "whatsappTitle": "WhatsApp",
+      "emailTitle": "Email",
+      "socialTitle": "Follow us",
+      "mapTitle": "Find us on the map"
+    },
+    "form": {
+      "eyebrow": "Contact form",
+      "title": "Send us a message",
+      "subtitle": "We'll reply to your message as soon as possible.",
+      "nameLabel": "Full name",
+      "namePlaceholder": "Your name",
+      "emailLabel": "Email",
+      "emailPlaceholder": "example@email.com",
+      "messageLabel": "Message",
+      "messagePlaceholder": "Write your message here"
+    }
+  }
+}

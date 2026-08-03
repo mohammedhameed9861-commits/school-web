@@ -1,12 +1,121 @@
 ---
 tags: [meta, decision]
-updated: 2026-07-24
+updated: 2026-08-03
 ---
 
 # Decisions Log (ADRs)
 
 Architecture Decision Records. Each entry captures a choice, its context, and its
 consequences. Use [[templates/adr-note]] for new entries. Newest first.
+
+---
+
+## ADR-0019 — Alsharq brand tokens, admissions API, and a cookie-consent bug fix
+
+- **Status:** Accepted
+- **Date:** 2026-08-03
+
+**Context.** Building the Alsharq School site on top of the starter surfaced
+three things beyond routine page-building.
+
+**Decision.**
+1. **Brand tokens.** [[design-system]]'s three-tier convention (ADR-0015) was
+   followed exactly: `--raw-color-navy-*` / `--raw-color-gold-*` / a warm
+   cream/neutral ramp as Tier 1, semantic roles (`--action-primary`,
+   `--action-accent`, `--surface-muted`, `--surface-inverted`, …) as Tier 2,
+   and `--radius-control` / `--radius-card` / `--radius-pill` as Tier 3
+   component tokens bound straight to Tier 1 (no theming needed for radius).
+   A `--action-whatsapp` pair was added for the WhatsApp brand green — kept as
+   real tokens rather than an inline hex, even though it is used in exactly
+   one component, per the token rule ("never hardcode a hex in `className`").
+   **Dark mode was dropped** — the starter's `prefers-color-scheme` override
+   was removed rather than extended, because a marketing site with a fixed
+   brand palette and no dark-mode requirement in the brief would otherwise
+   carry untested contrast pairings (gold-on-navy, gold-on-cream) indefinitely.
+   Font swapped `Onest` → `Cairo` (`next/font/google`, `subsets: ["arabic",
+   "latin"]`) — one family serving both scripts, per the brief's "consistent
+   bilingual typography."
+2. **Admissions API.** A second endpoint, `app/api/admissions/route.ts`,
+   follows the exact `/api/contact` pattern (ADR-0011): zod schema, `handle()`
+   wrapper, optional `ADMISSIONS_ENDPOINT` env var (same `optionalUrl()`
+   treatment as `CONTACT_ENDPOINT` — see [[environment-variables]]). Shared by
+   the home-page registration CTA and the full Admissions page via one
+   `RegistrationForm` component (`components/forms/`).
+3. **Cookie-consent bug fix.** `useCookieStore.acceptAll()` set
+   `analytics: false, marketing: false` — accepting all cookies would never
+   actually enable them. Found while wiring `AnalyticsScripts`
+   (`components/common/analytics/`), which gates GA4 / Meta Pixel loading on
+   `consent.analytics` / `consent.marketing`. Fixed to `true, true`; this file
+   is in `components/common/`, not the protected animation engine, so no
+   sign-off was required (hard rule #2 only protects `components/animation/springs/`
+   and `hooks/animation/`).
+
+**Consequences.** The palette is a placeholder brand (documented as such in
+`globals.css`'s Tier 1 comment) — swap the raw hex values for the school's
+real brand guidelines when supplied; every consumer reads the semantic tier,
+so a rebrand stays a `globals.css`-only change. `NEXT_PUBLIC_GA_ID` /
+`NEXT_PUBLIC_FB_PIXEL_ID` are new public env vars (see [[environment-variables]]).
+The `acceptAll()` fix means analytics/marketing scripts now actually load
+after a visitor accepts all cookies — previously they never would have, on
+any project built from this starter that wired analytics behind consent.
+
+---
+
+## ADR-0018 — next-intl for Arabic-first i18n/RTL; content lives in message catalogs
+
+- **Status:** Accepted
+- **Date:** 2026-08-03
+
+**Context.** The starter shipped with no i18n layer (see [[tech-stack]] "Not yet
+in the stack"). This project — the Alsharq Bilingual Private School site — is
+Arabic-first with a required English switch and full RTL support, which the
+starter's single-locale `app/page.tsx` / `app/layout.tsx` structure and hard
+rule #4 ("no hardcoded content") don't address on their own.
+
+**Decision.**
+- **`next-intl`** added as the i18n layer — App Router-native, typed message
+  catalogs, a locale-aware `<Link>`/`useRouter`/`usePathname` wrapper
+  (`src/i18n/navigation.ts`) that still calls through to `next/link` under the
+  hood (ADR-0005 stands), and `next-intl/plugin` wired into `next.config.ts`.
+- **Routing.** `src/i18n/routing.ts` defines `locales: ["ar", "en"]`,
+  `defaultLocale: "ar"`, `localePrefix: "as-needed"` — Arabic serves unprefixed
+  at `/`, English at `/en/*`. All routes moved under `app/[locale]/`;
+  `robots.ts`/`sitemap.ts`/`api/**` stay locale-free at the `app/` root.
+  `generateStaticParams` in `app/[locale]/layout.tsx` prerenders both locales.
+- **Next.js 16 renamed `middleware.ts` → `proxy.ts`** (confirmed via the dev-server
+  deprecation warning) — the locale-detection middleware lives at `src/proxy.ts`,
+  not `src/middleware.ts`.
+- **RTL.** `<html lang dir>` is computed per-request in `app/[locale]/layout.tsx`
+  (`dir = locale === "ar" ? "rtl" : "ltr"`). All layout code uses Tailwind's
+  logical-property utilities (`ms-*`/`me-*`/`ps-*`/`pe-*`/`start-*`/`end-*`),
+  never `left`/`right`, so the mirror is automatic — verified the WhatsApp
+  button (`end-5`) physically flips sides between locales.
+- **Content is not mock data.** Hard rule #4 and [[component-conventions]] say
+  placeholder content goes in `src/data/mocks/<page>.ts`. For a bilingual site
+  that's the wrong home for real page copy — content instead lives in
+  `messages/ar.json` / `messages/en.json`, read via `useTranslations` /
+  `getTranslations`, with `t.raw()` for structured arrays (card lists, stats,
+  FAQ items) passed into presentational components as props. This is a
+  **documented deviation**, not an oversight — see [[folder-structure]]'s
+  placement table.
+- **SEO.** Every route's `generateMetadata` sets `alternates.languages` (hreflang)
+  via a new `getLocaleAlternates()` helper (`utils/seo/locale-alternates.ts`),
+  and `openGraph.locale` via `ogLocaleFor()`. `sitemap.ts` emits one entry per
+  route with `alternates.languages` for both locales.
+- **Typed-route params.** Next 16's generated `LayoutProps`/`PageProps` type
+  dynamic segments as `Promise<{ locale: string }>`, not a narrowed literal
+  union — declaring `params` with the app's own `Locale` union type fails
+  `yarn build`'s route-type check. Every `page.tsx`/`layout.tsx` therefore
+  types `params` as `Promise<{ locale: string }>` and narrows locally
+  (`hasLocale()` in the layout; `getTranslations`/`ogLocaleFor` accept `string`
+  directly elsewhere).
+
+**Consequences.** `yarn build` prerenders all 8 routes × 2 locales statically.
+Adding a locale later means adding it to `routing.locales` and a new
+`messages/<locale>.json` — no route or component changes. The trade-off is
+duplicate bilingual copy in two JSON files instead of one canonical language;
+accepted because the brief requires genuine Arabic/English parity, not a
+machine-translated fallback.
 
 ---
 

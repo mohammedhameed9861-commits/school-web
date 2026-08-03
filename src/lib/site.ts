@@ -7,8 +7,9 @@
 import { publicEnv } from "@/env";
 
 export const siteConfig = {
-  name: "New Project",
-  description: "New Project",
+  name: "Alsharq Bilingual Private School",
+  description:
+    "A stronger education. A more confident future. Alsharq Bilingual Private School for Boys prepares students academically, personally and professionally for the future.",
   /**
    * Public origin, no trailing slash. Drives canonical URLs, OG tags, the
    * sitemap, and JSON-LD. Set `NEXT_PUBLIC_SITE_URL` in production.
@@ -16,8 +17,19 @@ export const siteConfig = {
   url: publicEnv.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
   /** Default Open Graph / Twitter share image (path under `public/`). */
   ogImage: "/open-graph.png",
-  twitterHandle: "@newproject",
-  author: "New Project",
-  /** Browser theme-color (address bar / PWA). */
-  themeColor: "#000000",
+  twitterHandle: "@alsharqschool",
+  author: "Alsharq Bilingual Private School",
+  /** Browser theme-color (address bar / PWA) — brand navy. */
+  themeColor: "#0b1829",
+  /** Phone/WhatsApp number in E.164 (no spaces) — placeholder, replace with the real line. */
+  phone: "+9647700000000",
+  whatsapp: "9647700000000",
+  email: "info@alsharq-school.edu",
+  address: "Baghdad, Iraq",
+  /** Placeholder Google Maps embed src — replace with the real campus location. */
+  mapsEmbedUrl: "https://www.google.com/maps?q=Baghdad,Iraq&output=embed",
+  social: {
+    facebook: "https://facebook.com/alsharqschool",
+    instagram: "https://instagram.com/alsharqschool",
+  },
 } as const;

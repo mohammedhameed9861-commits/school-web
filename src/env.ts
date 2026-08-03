@@ -23,18 +23,30 @@ import { z } from "zod";
 const optionalUrl = () =>
   z.preprocess((v) => (v === "" ? undefined : v), z.url().optional());
 
+/** Same `""` → unset treatment as `optionalUrl()`, for non-URL-shaped values. */
+const optionalString = () =>
+  z.preprocess((v) => (v === "" ? undefined : v), z.string().optional());
+
 const publicSchema = z.object({
   NEXT_PUBLIC_SITE_URL: optionalUrl(),
+  /** Google Analytics 4 measurement ID (e.g. `G-XXXXXXX`). Analytics-consent gated. */
+  NEXT_PUBLIC_GA_ID: optionalString(),
+  /** Meta (Facebook) Pixel ID. Marketing-consent gated. */
+  NEXT_PUBLIC_FB_PIXEL_ID: optionalString(),
 });
 
 const serverSchema = z.object({
   /** Optional upstream the contact endpoint forwards leads to (CRM / webhook). */
   CONTACT_ENDPOINT: optionalUrl(),
+  /** Optional upstream the admissions endpoint forwards applications to. */
+  ADMISSIONS_ENDPOINT: optionalUrl(),
 });
 
 /** Public env — safe to read anywhere (server or client). */
 export const publicEnv = publicSchema.parse({
   NEXT_PUBLIC_SITE_URL: process.env.NEXT_PUBLIC_SITE_URL,
+  NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID,
+  NEXT_PUBLIC_FB_PIXEL_ID: process.env.NEXT_PUBLIC_FB_PIXEL_ID,
 });
 
 let cachedServerEnv: z.infer<typeof serverSchema> | undefined;
@@ -46,6 +58,7 @@ let cachedServerEnv: z.infer<typeof serverSchema> | undefined;
 export function getServerEnv() {
   cachedServerEnv ??= serverSchema.parse({
     CONTACT_ENDPOINT: process.env.CONTACT_ENDPOINT,
+    ADMISSIONS_ENDPOINT: process.env.ADMISSIONS_ENDPOINT,
   });
   return cachedServerEnv;
 }

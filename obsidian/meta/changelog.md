@@ -1,12 +1,47 @@
 ---
 tags: [meta, changelog]
-updated: 2026-07-25
+updated: 2026-08-03
 ---
 
 # Changelog
 
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
+
+## 2026-08-03
+
+- **Built the Alsharq Bilingual Private School site on top of this starter** —
+  first real project built from the template. Summary of what changed (full
+  detail in [[decisions-log]] ADR-0018 and ADR-0019):
+  - **i18n/RTL**: `next-intl` added — Arabic-first (`/`, unprefixed) / English
+    (`/en`) via `app/[locale]/`, `src/i18n/{routing,navigation,request}.ts`,
+    message catalogs at `messages/{ar,en}.json`. `<html dir>` flips per
+    locale; all layout uses Tailwind logical properties so RTL mirroring is
+    automatic (verified: the floating WhatsApp button physically swaps sides).
+    Next 16's `middleware.ts` → `proxy.ts` rename applies (`src/proxy.ts`).
+  - **Brand**: three-tier navy/gold/cream design tokens (ADR-0015 convention),
+    `Cairo` font (Arabic + Latin, replacing `Onest`), dark-mode override
+    removed (not in the brief; avoids untested contrast on brand colours).
+  - **Pages**: Home, About, Academics, Student Life, Admissions, Gallery,
+    News & Resources, Contact — all 8 routes × 2 locales, statically
+    prerendered (`yarn build` verified: 23 static routes).
+  - **Forms/API**: `/api/admissions` added (mirrors `/api/contact`'s
+    zod + `handle()` pattern); `RegistrationForm` (home + admissions) and
+    `ContactForm` (contact) in the new `components/forms/`.
+  - **SEO**: per-route `generateMetadata` with hreflang `alternates.languages`
+    (`utils/seo/locale-alternates.ts`) and locale-correct `openGraph.locale`;
+    `sitemap.ts` emits every route × locale with alternates.
+  - **Analytics**: `components/common/analytics/analytics-scripts.tsx` loads
+    GA4 / Meta Pixel gated on cookie consent (`NEXT_PUBLIC_GA_ID` /
+    `NEXT_PUBLIC_FB_PIXEL_ID`). Fixed a pre-existing bug in
+    `useCookieStore.acceptAll()` that left `analytics`/`marketing` `false`
+    even after "Accept all" — analytics could never have loaded on any
+    project built from this starter until now.
+  - **New shared UI**: `components/ui/` gained `SectionHeading`, `PageHero`,
+    `MediaPlaceholder` (decorative stand-in for real photography — the school
+    has not supplied real assets yet), `NumberedCardGrid`, `MediaCardGrid`,
+    `CaptionedMediaGrid`, `ArticleCard`.
+  - **`yarn lint` and `yarn build` both verified clean** throughout.
 
 ## 2026-07-25
 

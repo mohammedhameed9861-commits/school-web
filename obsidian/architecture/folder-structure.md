@@ -1,6 +1,6 @@
 ---
 tags: [architecture, stable]
-updated: 2026-05-21
+updated: 2026-08-03
 ---
 
 # Folder Structure
@@ -13,6 +13,7 @@ the **app** (`src/`) and this **vault** (`obsidian/`).
 ```
 next16-claude-starter/
 ├── src/                     ← application code (see below)
+├── messages/                ← next-intl message catalogs — ar.json, en.json
 ├── public/                  ← static assets (see "public/" section below)
 ├── obsidian/                ← this Obsidian vault — ALL project documentation
 ├── .claude/settings.json    ← Claude Code hooks — automate the vault workflow
@@ -33,28 +34,42 @@ documentation workflow automatically — also see [[ai-agent-guide]].
 ```
 src/
 ├── env.ts                  # zod-validated env (public + server-only split)
+├── middleware.ts → proxy.ts # Next 16 renamed this file; next-intl locale routing lives here
 │
-├── app/                    # Next.js routes — keep lean, routing only
-│   ├── layout.tsx          # Root layout — provider tree lives here
-│   ├── page.tsx            # Route → delegates to a view
+├── i18n/                   # next-intl config — routing.ts, navigation.ts, request.ts
+│
+├── app/
+│   ├── [locale]/           # Locale-scoped routes — app/[locale]/<route>/page.tsx
+│   │   ├── layout.tsx      # Root layout (html/body, provider tree) — locale-aware
+│   │   ├── page.tsx        # Home route → delegates to a view
+│   │   ├── <route>/page.tsx # One folder per page (about, academics, admissions, …)
+│   │   ├── loading.tsx / error.tsx / not-found.tsx
+│   │
 │   ├── api/<resource>/route.ts  # API endpoints — see [[api-architecture]]
-│   ├── loading.tsx         # Suspense fallback (enables streaming)
-│   ├── error.tsx           # Route-segment error boundary
-│   ├── not-found.tsx       # 404 page
 │   ├── robots.ts           # → /robots.txt
-│   ├── sitemap.ts          # → /sitemap.xml
+│   ├── sitemap.ts          # → /sitemap.xml — every route × every locale
 │   ├── globals.css         # Tailwind v4 config + design tokens
 │   └── favicon.ico
 │
 ├── views/                  # Page-level components — one per route
-│   └── home.tsx            # HomeView (Server Component, empty — start here)
+│   ├── home.tsx            # HomeView, composes views/home/*.tsx sections
+│   ├── home/, about/, academics/, student-life/, admissions/, gallery/, contact/
+│   │                       # per-page section components, one file per section
+│   └── about.tsx, academics.tsx, …  # the view assembling each page's sections
 │
 ├── layouts/                # Reusable layout wrappers
 │   └── scroll-layout.tsx   # Lenis smooth-scroll wrapper
 │
 ├── components/
-│   ├── ui/                 # Design-system primitives (Button, Input…) — empty, add as needed
-│   ├── common/             # Shared infrastructure (Cookie, grid, ReducedMotion, Skeletons)
+│   ├── ui/                 # Design-system primitives: SectionHeading, PageHero,
+│   │                       # MediaPlaceholder, NumberedCardGrid, MediaCardGrid,
+│   │                       # CaptionedMediaGrid, ArticleCard
+│   ├── forms/               # Lead-gen forms shared across pages: RegistrationForm
+│   │                       # (home + admissions), ContactForm (contact)
+│   ├── layout/              # Site chrome: SiteHeader, SiteFooter, WhatsAppButton,
+│   │                       # LanguageSwitch
+│   ├── common/             # Shared infrastructure (Cookie, grid, ReducedMotion,
+│   │                       # Skeletons, analytics/AnalyticsScripts)
 │   └── animation/springs/  # ⚠️ Animation engine — #do-not-modify
 │
 ├── hooks/                  # Custom hooks, grouped by domain
@@ -71,7 +86,7 @@ src/
 │
 ├── utils/                  # Pure utility functions (no side effects)
 │   ├── animation/coords.ts
-│   ├── seo/generate-page-metadata.ts · seo/structured-data.ts
+│   ├── seo/generate-page-metadata.ts · seo/structured-data.ts · seo/locale-alternates.ts
 │   ├── is-bot.ts · lvh.ts · math.ts · scroll-to.ts
 │
 ├── types/                  # Shared TypeScript types
@@ -106,12 +121,14 @@ public/
 | An API endpoint | `app/api/<resource>/route.ts` — see [[api-architecture]] |
 | A page's UI | `views/<page-name>.tsx` — see [[new-page]] |
 | A reusable design primitive | `components/ui/` |
+| A lead-gen / data-collecting form | `components/forms/` — reused across pages (e.g. `RegistrationForm` on Home + Admissions) |
+| Site chrome (header/footer/nav) | `components/layout/` |
 | Shared infra (provider-dependent) | `components/common/` |
 | A feature-specific component | next to the feature, **not** in `components/` |
 | A custom hook | `hooks/<domain>/` |
 | A pure helper | `utils/<domain>/` |
 | A shared type | `types/` |
-| Mock/placeholder data | `src/data/mocks/<page-name>.ts` (create folder as needed) |
+| Page copy / content | `messages/{locale}.json`, read via `useTranslations`/`getTranslations` — **not** `src/data/mocks/` on this project, since real content is bilingual by definition. `t.raw()` reads structured arrays (cards, stats, FAQ items). |
 | A third-party client init | `lib/` |
 | A site content asset (image, video) | `public/assets/<section>/` — one folder per section |
 | A favicon / icon / OG / manifest asset | `public/` root |

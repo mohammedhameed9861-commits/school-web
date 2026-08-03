@@ -1,12 +1,34 @@
-# next16-claude-starter
+# Alsharq Bilingual Private School for Boys — website
 
-A **Next.js 16 starter** for animation-heavy marketing & landing sites — built
-by [Textura](https://textura.agency) so that AI agents (Claude Code, Cursor)
-generate **clean, production-ready code on the first pass**.
+The marketing & admissions website for Alsharq Bilingual Private School for
+Boys (Baghdad) — Arabic-first with a full English switch and RTL support, 8
+pages (Home, About, Academics, Student Life, Admissions, Gallery, News &
+Resources, Contact), an online registration/admissions form, a contact form,
+and analytics gated behind cookie consent.
 
+Built on [`next16-claude-starter`](https://github.com/textura-agency/next16-claude-starter)
+— an animation-heavy Next.js 16 starter by [Textura](https://textura.agency).
 Every motion is spring-based (`@react-spring/web`), text animation runs through
-`spring-text-engine`, scrolling is smoothed with Lenis, styling is Tailwind
-v4, and a rem-based adaptive grid scales the design across every viewport.
+`spring-text-engine`, scrolling is smoothed with Lenis, styling is Tailwind v4,
+i18n/RTL is `next-intl`, and a rem-based adaptive grid scales the design across
+every viewport. Project-specific decisions (i18n adoption, brand tokens, the
+admissions API) are logged in
+[`obsidian/meta/decisions-log.md`](./obsidian/meta/decisions-log.md) ADR-0018
+and ADR-0019.
+
+> [!important] Real photography still needed
+> The gallery, facility, and teacher photos across the site are placeholder
+> gradient tiles (`components/ui/MediaPlaceholder`) — the school has not
+> supplied real photos/video yet. Drop real assets into `public/assets/<section>/`
+> and swap them in per [[folder-structure]]'s asset convention. The Google Maps
+> embed on the Contact page also points at a generic "Baghdad, Iraq" search —
+> replace `siteConfig.mapsEmbedUrl` in `src/lib/site.ts` with the real campus
+> location, and update the placeholder phone/WhatsApp/email/social links there
+> too.
+
+The rest of this README documents the **starter template** this project is
+built on — how the vault + AI-agent workflow works — which still applies for
+any further AI-assisted development on this codebase.
 
 ---
 

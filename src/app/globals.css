@@ -6,73 +6,132 @@
    Never referenced in markup, never bound into @theme. Rename freely.
    Grammar: --raw-<category>-<name>[-<shade>]
    See obsidian/frontend/design-system.md → "Token naming convention".
+
+   Alsharq brand: deep navy (trust, academic gravitas) + warm gold accent
+   (achievement, prestige) on a warm-white ground. Values are a placeholder
+   brand palette — swap for the school's real brand guidelines when supplied.
    --------------------------------------------------------------------------- */
 :root {
   --raw-color-white: #ffffff;
-  --raw-color-neutral-100: #ededed;
-  --raw-color-neutral-900: #171717;
-  --raw-color-neutral-950: #0a0a0a;
+  --raw-color-cream-50: #f8f6f1;
+  --raw-color-neutral-200: #e2ded4;
+  --raw-color-neutral-400: #a39c8a;
+  --raw-color-neutral-600: #6b6355;
+  --raw-color-neutral-800: #33302a;
+  --raw-color-neutral-900: #1c1a16;
+
+  --raw-color-navy-600: #1e3a5f;
+  --raw-color-navy-800: #11233b;
+  --raw-color-navy-900: #0b1829;
+
+  --raw-color-gold-300: #e6c98a;
+  --raw-color-gold-500: #c19a3f;
+  --raw-color-gold-600: #a17f31;
+
+  --raw-color-success-500: #2f8f5b;
+  --raw-color-error-500: #c0392b;
+
+  /* WhatsApp brand green — used only for the WhatsApp CTA (recognisability
+     matters more than palette purity here). */
+  --raw-color-whatsapp: #25d366;
+  --raw-color-whatsapp-dark: #1ebe57;
 
   --raw-duration-fast: 150ms;
   --raw-duration-normal: 250ms;
+  --raw-duration-slow: 400ms;
+
+  --raw-radius-sm: 8px;
+  --raw-radius-md: 12px;
+  --raw-radius-lg: 20px;
+  --raw-radius-full: 9999px;
 }
 
 /* ---------------------------------------------------------------------------
    TIER 2 — SEMANTIC  (role names, no namespace prefix)
    Purpose, not appearance. Always `var(--raw-*)` — never a literal.
-   This is the themeable layer: dark mode overrides happen HERE, which is why
-   these are separate from the @theme bindings below (see the note there).
-   Grammar: --<role>[-<variant>][-<state>]
+   This is the themeable layer. Grammar: --<role>[-<variant>][-<state>]
    --------------------------------------------------------------------------- */
 :root {
   --background: var(--raw-color-white);
   --foreground: var(--raw-color-neutral-900);
 
+  --surface: var(--raw-color-white);
+  --surface-muted: var(--raw-color-cream-50);
+  --surface-inverted: var(--raw-color-navy-900);
+  --foreground-inverted: var(--raw-color-white);
+  --foreground-muted: var(--raw-color-neutral-600);
+  --border: var(--raw-color-neutral-200);
+
+  --action-primary: var(--raw-color-navy-800);
+  --action-primary-hover: var(--raw-color-navy-900);
+  --action-primary-foreground: var(--raw-color-white);
+
+  --action-accent: var(--raw-color-gold-500);
+  --action-accent-hover: var(--raw-color-gold-600);
+  --action-accent-foreground: var(--raw-color-navy-900);
+
+  --status-success: var(--raw-color-success-500);
+  --status-error: var(--raw-color-error-500);
+
+  --action-whatsapp: var(--raw-color-whatsapp);
+  --action-whatsapp-hover: var(--raw-color-whatsapp-dark);
+
   --duration-fast: var(--raw-duration-fast);
   --duration-normal: var(--raw-duration-normal);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: var(--raw-color-neutral-950);
-    --foreground: var(--raw-color-neutral-100);
-  }
+  --duration-slow: var(--raw-duration-slow);
 }
 
 /* ---------------------------------------------------------------------------
    THEME BINDINGS — map semantic tokens into Tailwind namespaces.
    Every entry is exactly `--<tw-namespace>-<role>: var(--<role>)`.
-   `inline` is required: it inlines the var() into each utility, so the
-   dark-mode overrides on the Tier 2 tokens above cascade. Binding a literal
-   here instead would freeze the value and break theming.
+   Component-tier radius tokens bind straight to Tier 1 (ADR-0015 §Component) —
+   radius is not themed, so an intermediate Tier 2 role would add nothing.
 
    Only these namespaces generate utilities (verified against tailwindcss
    v4.3.3): --color-* --spacing-* --radius-* --leading-* --tracking-* --text-*
    --font-* --ease-* --breakpoint-* --container-* --shadow-* --blur-* --animate-*
-   NOTE: there is NO --duration-* namespace in v4 — `duration-fast` compiles to
-   nothing. Durations stay Tier 2 only and are used as duration-[var(--duration-fast)].
+   NOTE: there is NO --duration-* namespace in v4 — durations stay Tier 2 only
+   and are used as duration-[var(--duration-fast)].
    --------------------------------------------------------------------------- */
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-onest);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-surface-inverted: var(--surface-inverted);
+  --color-foreground-inverted: var(--foreground-inverted);
+  --color-foreground-muted: var(--foreground-muted);
+  --color-border: var(--border);
+
+  --color-action-primary: var(--action-primary);
+  --color-action-primary-hover: var(--action-primary-hover);
+  --color-action-primary-foreground: var(--action-primary-foreground);
+  --color-action-accent: var(--action-accent);
+  --color-action-accent-hover: var(--action-accent-hover);
+  --color-action-accent-foreground: var(--action-accent-foreground);
+
+  --color-status-success: var(--status-success);
+  --color-status-error: var(--status-error);
+  --color-action-whatsapp: var(--action-whatsapp);
+  --color-action-whatsapp-hover: var(--action-whatsapp-hover);
+
+  --font-sans: var(--font-cairo);
 
   /* Leading floor for clipped TextEngine reveals — see
      obsidian/frontend/text-engine.md → "Alignment & line-height". */
   --leading-display: 1.1;
 
   --ease-entrance: cubic-bezier(0.2, 0, 0, 1);
+
+  --radius-control: var(--raw-radius-md);
+  --radius-card: var(--raw-radius-lg);
+  --radius-pill: var(--raw-radius-full);
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100vh;
-  width: 100vw;
+  min-height: 100lvh;
 }
 
 @layer base {
@@ -108,6 +167,11 @@ body {
     html {
       font-size: 4.444444vw; /* 16 * 100 / 360 */
     }
+  }
+
+  ::selection {
+    background: var(--action-accent);
+    color: var(--action-accent-foreground);
   }
 }
 

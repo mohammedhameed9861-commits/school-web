@@ -24,6 +24,10 @@ interface MetadataProps {
   twitterHandle?: string;
   author?: string;
   siteName?: string;
+  /** `{ locale: path }` hreflang alternates — see `utils/seo/locale-alternates.ts`. */
+  languages?: Record<string, string>;
+  /** OpenGraph locale for this page, e.g. `ar_IQ` / `en_US`. */
+  ogLocale?: string;
 }
 
 export function generateMetadata({
@@ -34,6 +38,8 @@ export function generateMetadata({
   twitterHandle = siteConfig.twitterHandle,
   author = siteConfig.author,
   siteName = siteConfig.name,
+  languages,
+  ogLocale = "ar_IQ",
 }: MetadataProps = {}): Metadata {
   return {
     // Resolves every relative URL below to an absolute one.
@@ -45,6 +51,7 @@ export function generateMetadata({
     publisher: author,
     alternates: {
       canonical: url,
+      ...(languages && { languages }),
     },
     openGraph: {
       title,
@@ -53,7 +60,7 @@ export function generateMetadata({
       siteName,
       // Dimensions must match the real asset; 1200×630 is the ideal size.
       images: [{ url: ogImage, width: 900, height: 600 }],
-      locale: "en_US",
+      locale: ogLocale,
       type: "website",
     },
     twitter: {

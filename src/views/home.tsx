@@ -1,10 +1,24 @@
-/**
- * Home view — a Server Component, intentionally empty.
- *
- * This is the starting point for new work: if the project is empty and no other
- * instructions are provided, begin developing here (route `/`). Build sections
- * as client leaves so this view stays a Server Component (hard rule #6).
- */
+import { Hero } from "@/views/home/hero";
+import { RegisterCta } from "@/views/home/register-cta";
+import { Advantages } from "@/views/home/advantages";
+import { Programs } from "@/views/home/programs";
+import { Facilities } from "@/views/home/facilities";
+import { Achievements } from "@/views/home/achievements";
+import { Testimonials } from "@/views/home/testimonials";
+import { RegistrationSection } from "@/views/home/registration-section";
+
+/** Home view — Server Component; every section is composed below. */
 export const HomeView = () => {
-  return <main className="min-h-lvh" />;
+  return (
+    <main>
+      <Hero />
+      <Advantages />
+      <Programs />
+      <Facilities />
+      <RegisterCta />
+      <Achievements />
+      <Testimonials />
+      <RegistrationSection />
+    </main>
+  );
 };

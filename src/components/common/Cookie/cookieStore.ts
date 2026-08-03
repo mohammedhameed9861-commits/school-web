@@ -58,7 +58,7 @@ export const useCookieStore = create<CookieStore>((set) => ({
   modalOpen: false,
   hydrate: () => set({ consent: loadConsent(), hydrated: true }),
   acceptAll: () => {
-    const next: CookieConsent = { necessary: true, analytics: false, marketing: false };
+    const next: CookieConsent = { necessary: true, analytics: true, marketing: true };
     saveConsent(next);
     set({ consent: next, modalOpen: false });
   },

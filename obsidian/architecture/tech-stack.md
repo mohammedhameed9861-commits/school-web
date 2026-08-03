@@ -1,6 +1,6 @@
 ---
 tags: [architecture, stable]
-updated: 2026-05-21
+updated: 2026-08-03
 ---
 
 # Tech Stack
@@ -46,11 +46,23 @@ No `framer-motion`, no CSS transitions/keyframes. See [[animation-system]] and
 | Package | Version | Role |
 |---------|---------|------|
 | `lenis` | `^1.3.19` | Smooth scrolling |
-| `zustand` | `^5.0.12` | Lightweight global state (scroll store) |
+| `zustand` | `^5.0.12` | Lightweight global state (scroll store, cookie consent) |
 | `resize-observer-polyfill` | `^1.5.1` | ResizeObserver fallback for animation hooks |
 | `zod` | `^4.4.3` | Schema validation — env (`src/env.ts`) + API payloads. See [[api-architecture]] |
 
 See [[smooth-scroll]] and [[data-flow]].
+
+## Internationalization
+
+| Package | Version | Role |
+|---------|---------|------|
+| `next-intl` | `^4.13.4` | Arabic-first (default, unprefixed) / English (`/en`) routing, RTL, message catalogs |
+
+Added for this project (Alsharq School site) — the starter shipped with no i18n.
+`app/[locale]/` routing, `src/i18n/{routing,navigation,request}.ts`,
+`src/proxy.ts` (Next 16's `middleware.ts` → `proxy.ts` rename), and
+`messages/{ar,en}.json` message catalogs. `<html dir>` is derived from the
+locale in `app/[locale]/layout.tsx`. See [[decisions-log]] ADR-0018.
 
 ## Misc
 
@@ -78,7 +90,7 @@ Package manager: **Yarn** (`yarn.lock` is committed).
 
 ## Not yet in the stack
 
-Auth, database/ORM, payments, i18n, data-fetching libraries. The original starter
+Auth, database/ORM, payments, data-fetching libraries. The original starter
 spec listed these as "add as needed" placeholders. Document them here when adopted,
 and add an ADR to [[decisions-log]].
 

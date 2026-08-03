@@ -10,6 +10,83 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0020 — Vivid/motion design pass: bolder gold, parallax, sticky-reveal heroes
+
+- **Status:** Accepted
+- **Date:** 2026-08-03
+
+**Context.** The initial Alsharq build (ADR-0018/0019) leaned conservative —
+mostly single fade-up `<Inview>` reveals and a muted palette — under-using the
+starter's actual differentiator, the spring animation system. Client feedback:
+too flat, wants "vivid, interactive, motion."
+
+**Decision.**
+- **Palette.** Navy primitives deepened/enriched (`navy-800` `#11233b`→`#0d1f4d`,
+  new `navy-400`/`navy-500` for gradient stops); gold primitives pushed from a
+  muted `#c19a3f` to a saturated amber `#f5a416`, with `gold-400` added. New
+  Tier 2 tokens `--action-primary-light(-2)` and `--action-accent-light/-mid`
+  exist *only* to be gradient stops — never a flat fill — per the token rule.
+  Two new Tier 3 `--shadow-glow-gold` / `--shadow-glow-navy` composite tokens
+  (`color-mix()` against the semantic accent, so they still re-theme).
+- **New motion primitives** (`components/ui/`): `AnimatedCounter` (count-up
+  stats, `useSpring` + `onChange` → `useState`, not a raw DOM-bypass
+  interpolation — see the RSC note below), `InteractiveCard` (`<Inview>`
+  entrance + nested `<Hover>` lift/scale — now the base of every card grid:
+  `NumberedCardGrid`, `MediaCardGrid`, `CaptionedMediaGrid`, `ArticleCard`,
+  testimonials), `CtaButton` (ref + `<Hover trigger>` bounce on primary CTAs),
+  `ParallaxOrbs` (three `<SpringTrigger mode="scrub">` blurred colour orbs at
+  different rates — the "maximum motion" background layer on every hero/CTA
+  banner).
+- **Text.** `SectionHeading` moved from line-reveal to word-reveal
+  (`wordIn`/`wordOut` + scale); the home `Hero` H1 moved to **letter-by-letter**
+  cascade (`letterIn`/`letterOut` + scale) — reserved for the single most
+  prominent headline, not applied everywhere, to keep it readable.
+- **Sticky-reveal hero.** `Hero` and `PageHero` are `sticky top-0 z-0`; each
+  page's *first* content section is `relative z-10 rounded-t-[2rem]
+  sm:rounded-t-[3rem]` so it visually slides up and over the pinned hero as
+  the user scrolls — applied to all 8 pages (Home/Advantages,
+  About/Story, Academics/Curriculum, StudentLife/Activities,
+  Admissions/Requirements, Gallery/first category, News/articles,
+  Contact/Info).
+
+**A real bug this surfaced — do not import `@react-spring/web` into a Server
+Component file.** `Hero.tsx`, `SectionHeading.tsx`, and `PageHero.tsx` (all
+Server Components, no `"use client"`) originally imported `config`/`easings`
+directly from `@react-spring/web` to build spring configs. This broke
+`yarn build` two different ways in sequence:
+1. `Error: y.createContext is not a function` during page-data collection —
+   the package touches `React.createContext` at module-evaluation time, which
+   the server bundle's stripped `react` doesn't have.
+2. After removing the import but still passing `{ easing: someImportedFn }` as
+   a prop into the (Client Component) `<TextEngine>`: `Functions cannot be
+   passed directly to Client Components unless … marked with "use server"` —
+   Next's RSC boundary only allows serializable values Server→Client; a
+   function reference isn't one, imported or not.
+
+   **Fix:** Server Component files pass only plain-object spring configs
+   (`{ tension, friction }`) — never `duration + easing`, since `easing` is
+   always a function. `AnimatedCounter` sidesteps a related, milder version of
+   the same class of issue: rendering a raw `SpringValue.to()` interpolation
+   as JSX children typed against `Interpolation<number, string>` isn't
+   assignable to `ReactNode` in this project's installed types, so it drives a
+   `useState` via the spring's `onChange` instead — one extra re-render per
+   frame, negligible for the handful of counters on a page, and fully typed.
+   **Rule for future work:** a Server Component may pass a *value* into a
+   Client Component's spring config; it must never import from
+   `@react-spring/web` itself, and never construct a function to hand across
+   the boundary.
+
+**Consequences.** Every card grid, both heroes, and every page's opening
+section now carry consistent hover/parallax/reveal motion from a handful of
+shared primitives — changing the feel again means editing `InteractiveCard`,
+`ParallaxOrbs`, `CtaButton`, or the token file, not 30 view files. Dark mode
+remains dropped (ADR-0019). Real photography is still a placeholder
+(`MediaPlaceholder`) — the vivid gradient treatment was deliberately chosen to
+look *intentional* as a placeholder rather than like a broken image, but real
+photos will read even better once supplied.
+
+---
+
 ## ADR-0019 — Alsharq brand tokens, admissions API, and a cookie-consent bug fix
 
 - **Status:** Accepted

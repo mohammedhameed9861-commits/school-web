@@ -8,6 +8,21 @@ updated: 2026-08-03
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-03 (design pass)
+
+- **Vivid/motion redesign** — client feedback that the first pass read too
+  flat. Palette pushed to a more saturated navy/gold (new `--action-*-light`
+  gradient-only tokens, `--shadow-glow-gold/-navy`), and motion goes well
+  beyond single fade-ups now: `AnimatedCounter` (count-up stats),
+  `InteractiveCard` (hover lift/scale, now under every card grid),
+  `CtaButton` (hover-bounce primary CTAs), `ParallaxOrbs` (multi-speed
+  scroll-parallax background layer on every hero/CTA banner), word-by-word
+  `SectionHeading` titles, letter-by-letter home-hero H1, and a sticky-hero
+  "reveal over" effect (hero pins, first section slides up over it with
+  rounded top corners) on all 8 pages. Full detail and a build-breaking
+  gotcha (never import `@react-spring/web` into a Server Component file) in
+  [[decisions-log]] ADR-0020. `yarn lint` / `yarn build` verified clean.
+
 ## 2026-08-03
 
 - **Built the Alsharq Bilingual Private School site on top of this starter** —

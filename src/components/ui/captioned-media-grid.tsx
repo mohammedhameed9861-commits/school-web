@@ -1,4 +1,4 @@
-import { Inview } from "@/components/animation/springs/in-view";
+import { InteractiveCard } from "@/components/ui/interactive-card";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 
 export interface CaptionedMediaGridProps {
@@ -22,13 +22,10 @@ export const CaptionedMediaGrid = ({ items, columns = 4, video = false, invert =
   return (
     <ul className={`grid gap-6 ${colClass}`}>
       {items.map((caption, index) => (
-        <Inview
+        <InteractiveCard
           key={caption}
-          tag="li"
-          mode="once"
           delayIn={index * 70}
-          from={{ opacity: 0, y: 18 }}
-          to={{ opacity: 1, y: 0 }}
+          className="overflow-hidden rounded-card border border-transparent transition-colors duration-[var(--duration-fast)] ease-entrance hover:border-action-accent"
         >
           <figure>
             <MediaPlaceholder
@@ -37,7 +34,7 @@ export const CaptionedMediaGrid = ({ items, columns = 4, video = false, invert =
             />
             <figcaption className={`mt-3 text-sm font-medium ${captionClass}`}>{caption}</figcaption>
           </figure>
-        </Inview>
+        </InteractiveCard>
       ))}
     </ul>
   );

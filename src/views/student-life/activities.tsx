@@ -8,7 +8,10 @@ export const Activities = async () => {
   const items = t.raw("items") as NumberedItem[];
 
   return (
-    <section aria-labelledby="activities-title" className="bg-background py-20">
+    <section
+      aria-labelledby="activities-title"
+      className="relative z-10 rounded-t-[2rem] bg-background py-20 sm:rounded-t-[3rem] sm:py-24"
+    >
       <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
         <SectionHeading id="activities-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
         <div className="mt-12">

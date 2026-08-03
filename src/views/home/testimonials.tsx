@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
-import { Inview } from "@/components/animation/springs/in-view";
+import { InteractiveCard } from "@/components/ui/interactive-card";
 
 interface Testimonial {
   quote: string;
@@ -25,25 +25,24 @@ export const Testimonials = async () => {
 
         <ul className="mt-12 grid gap-6 lg:grid-cols-3">
           {items.map((item, index) => (
-            <Inview
+            <InteractiveCard
               key={item.name}
-              tag="li"
-              mode="once"
               delayIn={index * 100}
-              from={{ opacity: 0, y: 20 }}
-              to={{ opacity: 1, y: 0 }}
-              className="rounded-card bg-surface p-6"
+              className="rounded-card border-2 border-transparent bg-surface p-6 shadow-glow-gold transition-colors duration-[var(--duration-fast)] ease-entrance hover:border-action-accent"
             >
               <figure>
+                <span aria-hidden className="text-4xl font-black leading-none text-action-accent">
+                  &ldquo;
+                </span>
                 <blockquote className="text-sm leading-relaxed text-foreground">
-                  <p>&ldquo;{item.quote}&rdquo;</p>
+                  <p>{item.quote}</p>
                 </blockquote>
                 <figcaption className="mt-4 border-t border-border pt-4">
                   <cite className="block text-sm font-semibold not-italic">{item.name}</cite>
                   <span className="text-xs text-foreground-muted">{item.role}</span>
                 </figcaption>
               </figure>
-            </Inview>
+            </InteractiveCard>
           ))}
         </ul>
       </div>

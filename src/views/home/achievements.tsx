@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
+import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { Inview } from "@/components/animation/springs/in-view";
 
 interface Stat {
@@ -13,7 +14,10 @@ export const Achievements = async () => {
   const stats = t.raw("stats") as Stat[];
 
   return (
-    <section aria-labelledby="achievements-title" className="bg-surface-inverted py-20 text-foreground-inverted">
+    <section
+      aria-labelledby="achievements-title"
+      className="relative z-10 overflow-hidden bg-gradient-to-br from-surface-inverted via-action-primary to-action-primary-hover py-20 text-foreground-inverted"
+    >
       <div className="mx-auto max-w-[70rem] px-4 sm:px-6">
         <SectionHeading
           id="achievements-title"
@@ -31,10 +35,12 @@ export const Achievements = async () => {
           className="mt-12"
         >
           <dl className="grid grid-cols-2 gap-8 border-t border-white/10 pt-10 sm:grid-cols-4">
-            {stats.map((stat) => (
+            {stats.map((stat, index) => (
               <div key={stat.label} className="flex flex-col-reverse items-center gap-1 text-center">
                 <dt className="text-xs text-foreground-inverted/70 sm:text-sm">{stat.label}</dt>
-                <dd className="text-3xl font-bold text-action-accent sm:text-4xl">{stat.value}</dd>
+                <dd className="text-3xl font-bold text-action-accent sm:text-4xl">
+                  <AnimatedCounter value={stat.value} delay={index * 100} />
+                </dd>
               </div>
             ))}
           </dl>

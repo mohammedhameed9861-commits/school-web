@@ -8,7 +8,10 @@ export const Curriculum = async () => {
   const items = t.raw("items") as MediaItem[];
 
   return (
-    <section aria-labelledby="curriculum-title" className="bg-background py-20">
+    <section
+      aria-labelledby="curriculum-title"
+      className="relative z-10 rounded-t-[2rem] bg-background py-20 sm:rounded-t-[3rem] sm:py-24"
+    >
       <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
         <SectionHeading id="curriculum-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
         <div className="mt-12">

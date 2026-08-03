@@ -63,7 +63,11 @@ src/
 ├── components/
 │   ├── ui/                 # Design-system primitives: SectionHeading, PageHero,
 │   │                       # MediaPlaceholder, NumberedCardGrid, MediaCardGrid,
-│   │                       # CaptionedMediaGrid, ArticleCard
+│   │                       # CaptionedMediaGrid, ArticleCard, InteractiveCard
+│   │                       # (hover lift/scale — base of every card grid),
+│   │                       # CtaButton (hover-bounce), AnimatedCounter
+│   │                       # (count-up stats), ParallaxOrbs (scroll-parallax
+│   │                       # decorative layer)
 │   ├── forms/               # Lead-gen forms shared across pages: RegistrationForm
 │   │                       # (home + admissions), ContactForm (contact)
 │   ├── layout/              # Site chrome: SiteHeader, SiteFooter, WhatsAppButton,

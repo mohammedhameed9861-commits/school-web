@@ -1,4 +1,4 @@
-import { Inview } from "@/components/animation/springs/in-view";
+import { InteractiveCard } from "@/components/ui/interactive-card";
 
 export interface NumberedItem {
   title: string;
@@ -16,24 +16,20 @@ export const NumberedCardGrid = ({ items, columns = 3 }: NumberedCardGridProps) 
   return (
     <ul className={`grid gap-6 ${colClass}`}>
       {items.map((item, index) => (
-        <Inview
+        <InteractiveCard
           key={item.title}
-          tag="li"
-          mode="once"
           delayIn={index * 80}
-          from={{ opacity: 0, y: 20 }}
-          to={{ opacity: 1, y: 0 }}
-          className="rounded-card border border-border bg-surface-muted p-6"
+          className="rounded-card border border-border bg-surface-muted p-6 shadow-glow-gold transition-colors duration-[var(--duration-fast)] ease-entrance hover:border-action-accent"
         >
           <span
             aria-hidden
-            className="flex h-10 w-10 items-center justify-center rounded-control bg-action-primary text-sm font-bold text-action-primary-foreground"
+            className="flex h-11 w-11 items-center justify-center rounded-control bg-gradient-to-br from-action-accent-light via-action-accent to-action-accent-hover text-sm font-bold text-action-accent-foreground shadow-glow-gold"
           >
             {String(index + 1).padStart(2, "0")}
           </span>
           <h3 className="mt-4 text-lg font-semibold">{item.title}</h3>
           <p className="mt-2 text-sm text-foreground-muted">{item.description}</p>
-        </Inview>
+        </InteractiveCard>
       ))}
     </ul>
   );

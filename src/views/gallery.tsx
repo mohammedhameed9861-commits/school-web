@@ -31,6 +31,7 @@ export const GalleryView = async () => {
           subtitle={category.subtitle}
           items={category.items}
           tone={index % 2 === 0 ? "default" : "muted"}
+          first={index === 0}
         />
       ))}
 

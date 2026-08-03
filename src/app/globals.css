@@ -20,13 +20,16 @@
   --raw-color-neutral-800: #33302a;
   --raw-color-neutral-900: #1c1a16;
 
-  --raw-color-navy-600: #1e3a5f;
-  --raw-color-navy-800: #11233b;
-  --raw-color-navy-900: #0b1829;
+  --raw-color-navy-400: #3462c7;
+  --raw-color-navy-500: #24479f;
+  --raw-color-navy-600: #17307d;
+  --raw-color-navy-800: #0d1f4d;
+  --raw-color-navy-900: #071331;
 
-  --raw-color-gold-300: #e6c98a;
-  --raw-color-gold-500: #c19a3f;
-  --raw-color-gold-600: #a17f31;
+  --raw-color-gold-300: #ffe08a;
+  --raw-color-gold-400: #ffc247;
+  --raw-color-gold-500: #f5a416;
+  --raw-color-gold-600: #d1790a;
 
   --raw-color-success-500: #2f8f5b;
   --raw-color-error-500: #c0392b;
@@ -65,10 +68,15 @@
   --action-primary: var(--raw-color-navy-800);
   --action-primary-hover: var(--raw-color-navy-900);
   --action-primary-foreground: var(--raw-color-white);
+  /* Brighter blue — gradient stops / glow accents, never a flat fill. */
+  --action-primary-light: var(--raw-color-navy-500);
+  --action-primary-light-2: var(--raw-color-navy-400);
 
   --action-accent: var(--raw-color-gold-500);
   --action-accent-hover: var(--raw-color-gold-600);
   --action-accent-foreground: var(--raw-color-navy-900);
+  --action-accent-light: var(--raw-color-gold-300);
+  --action-accent-mid: var(--raw-color-gold-400);
 
   --status-success: var(--raw-color-success-500);
   --status-error: var(--raw-color-error-500);
@@ -106,9 +114,13 @@
   --color-action-primary: var(--action-primary);
   --color-action-primary-hover: var(--action-primary-hover);
   --color-action-primary-foreground: var(--action-primary-foreground);
+  --color-action-primary-light: var(--action-primary-light);
+  --color-action-primary-light-2: var(--action-primary-light-2);
   --color-action-accent: var(--action-accent);
   --color-action-accent-hover: var(--action-accent-hover);
   --color-action-accent-foreground: var(--action-accent-foreground);
+  --color-action-accent-light: var(--action-accent-light);
+  --color-action-accent-mid: var(--action-accent-mid);
 
   --color-status-success: var(--status-success);
   --color-status-error: var(--status-error);
@@ -126,6 +138,12 @@
   --radius-control: var(--raw-radius-md);
   --radius-card: var(--raw-radius-lg);
   --radius-pill: var(--raw-radius-full);
+
+  /* Composite shadow "recipes" — component tier (ADR-0015 §Component). Colour
+     channel follows the semantic accent token so a re-theme still works;
+     offsets are literal by nature of a shadow recipe. */
+  --shadow-glow-gold: 0 12px 40px -8px color-mix(in srgb, var(--action-accent) 55%, transparent);
+  --shadow-glow-navy: 0 20px 60px -12px color-mix(in srgb, var(--action-primary) 45%, transparent);
 }
 
 body {

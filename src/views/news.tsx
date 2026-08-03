@@ -20,7 +20,10 @@ export const NewsView = async () => {
     <main>
       <PageHero eyebrow={heroT("eyebrow")} title={heroT("title")} subtitle={heroT("subtitle")} />
 
-      <section aria-label={heroT("title")} className="bg-background py-20">
+      <section
+        aria-label={heroT("title")}
+        className="relative z-10 rounded-t-[2rem] bg-background py-20 sm:rounded-t-[3rem] sm:py-24"
+      >
         <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((article, index) => (

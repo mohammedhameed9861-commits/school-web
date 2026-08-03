@@ -7,6 +7,7 @@ import { Link, usePathname } from "@/i18n/navigation";
 import { useScroll } from "@/hooks/smooth-scroll/use-scroll";
 import { Spring } from "@/components/animation/springs/spring";
 import { LanguageSwitch } from "@/components/layout/language-switch";
+import { CtaButton } from "@/components/ui/cta-button";
 
 const NAV_ITEMS = [
   { href: "/", key: "home" },
@@ -51,7 +52,7 @@ export const SiteHeader = () => {
         >
           <span
             aria-hidden
-            className="flex h-10 w-10 items-center justify-center rounded-control bg-action-primary text-lg text-action-primary-foreground"
+            className="flex h-10 w-10 items-center justify-center rounded-control bg-gradient-to-br from-action-accent-light via-action-accent to-action-accent-hover text-lg text-action-accent-foreground shadow-glow-gold"
           >
             ش
           </span>
@@ -80,12 +81,12 @@ export const SiteHeader = () => {
 
         <div className="hidden items-center gap-4 lg:flex">
           <LanguageSwitch className={`${linkClass} text-sm font-semibold text-foreground`} />
-          <Link
+          <CtaButton
             href="/admissions"
-            className="rounded-control bg-action-accent px-4 py-2 text-sm font-semibold text-action-accent-foreground transition-colors duration-[var(--duration-fast)] ease-entrance hover:bg-action-accent-hover"
+            className="bg-action-accent text-action-accent-foreground shadow-glow-gold hover:bg-action-accent-hover"
           >
             {tc("registerNow")}
-          </Link>
+          </CtaButton>
         </div>
 
         <button

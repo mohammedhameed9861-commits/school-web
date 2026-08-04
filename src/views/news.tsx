@@ -22,7 +22,7 @@ export const NewsView = async () => {
 
       <section
         aria-label={heroT("title")}
-        className="relative z-10 rounded-t-[2rem] bg-background py-20 sm:rounded-t-[3rem] sm:py-24"
+        className="bg-background py-20"
       >
         <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">

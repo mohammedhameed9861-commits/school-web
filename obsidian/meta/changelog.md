@@ -8,6 +8,22 @@ updated: 2026-08-03
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
 
+## 2026-08-03 (bug fixes from live testing)
+
+- **Fixed disconnected Arabic letters on the home hero title** — it used
+  `TextEngine`'s letter-by-letter reveal, which splits text into one `<span>`
+  per glyph and breaks Arabic's cursive letter-joining. Moved to word-level
+  reveal (matches every other heading on the site).
+- **Removed the sticky-pinned hero effect** — reported as "persisting" while
+  scrolling on a real device; the scripted `window.scrollTo()` verification
+  used to sign off ADR-0020 never exercised the real Lenis wheel-scroll path,
+  so it didn't catch this. All 8 pages' heroes are back to normal document
+  flow. Added `CursorGlow` (mouse-follow glow, `useSpring`) to both heroes and
+  a touch more `Hover` physicality (`rotateZ`) on cards to keep the motion
+  level up without `position: sticky`. Full writeup, including new
+  verification rules (real wheel-scroll testing; never letter-split Arabic):
+  [[decisions-log]] ADR-0021.
+
 ## 2026-08-03 (design pass)
 
 - **Vivid/motion redesign** — client feedback that the first pass read too

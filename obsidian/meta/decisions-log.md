@@ -10,6 +10,77 @@ consequences. Use [[templates/adr-note]] for new entries. Newest first.
 
 ---
 
+## ADR-0021 — Revert sticky-reveal heroes; never split Arabic text by letter
+
+- **Status:** Accepted (amends ADR-0020)
+- **Date:** 2026-08-03
+
+**Context.** Live user testing of ADR-0020's design pass surfaced two real bugs
+that the earlier `Playwright` + `page.evaluate(() => window.scrollTo(...))`
+verification did not catch:
+
+1. **The home hero's Arabic title rendered with disconnected letters.**
+   Arabic is cursive — glyphs take different (initial/medial/final/isolated)
+   forms depending on their neighbours, and adjacent letters visually join.
+   `TextEngine`'s `letterIn`/`letterOut` splits text into one `<span>` per
+   letter; each letter becomes its own text run, so the browser's shaping
+   engine can no longer join them — every letter renders in isolated form.
+   This was used only on the home hero H1 (`views/home/hero.tsx`); every
+   other heading already used word-level (`wordIn`/`wordOut`) or line-level
+   splitting, neither of which breaks shaping (a word is one contiguous text
+   run).
+2. **The sticky-pinned hero appeared to "persist" while scrolling** on a real
+   device — content stuck or misbehaved in a way the scripted verification
+   never exercised. Root cause not conclusively isolated (candidates: two
+   simultaneous `position: sticky; top: 0` elements — the header at `z-50`
+   and the hero at `z-0` — competing for the same anchor; interaction with
+   Lenis's rAF-driven native-scroll smoothing; or something else browser/
+   device-specific), and not worth chasing further given a simpler, strictly
+   safer alternative exists.
+
+**Why the earlier verification missed both.** Programmatic
+`window.scrollTo()` does not dispatch the `wheel` events Lenis listens for,
+so it never exercised the real scroll path the sticky positioning depends on
+— and a static screenshot can't show a *disconnected-letters* problem if the
+reviewer doesn't already know to zoom in on Arabic glyph shaping specifically.
+Both are now standing verification rules (see below).
+
+**Decision.**
+1. **`letterIn`/`letterOut` is banned on any text that may render in Arabic.**
+   Since this project is Arabic-first (default locale), that means banned
+   outright — use `wordIn`/`wordOut` (or line-level) everywhere. The home
+   hero H1 moved to word-level reveal, matching `SectionHeading`/`PageHero`.
+2. **`position: sticky` hero-pinning is dropped entirely.** `Hero` and
+   `PageHero` are back to normal document flow (`relative overflow-hidden`,
+   no `top-0`/`z-0`); the "first section after hero" `rounded-t-[...] z-10`
+   reveal treatment is removed from all 8 pages (Home/Advantages,
+   About/Story, Academics/Curriculum, StudentLife/Activities,
+   Admissions/Requirements, Gallery/first category, News/articles,
+   Contact/Info) and `gallery/category-section.tsx`'s now-dead `first` prop
+   removed.
+3. **Compensating motion, added via mechanisms proven safe by this same
+   incident** (real-scroll-tested, no `position: sticky`): a new
+   `CursorGlow` component (`components/ui/cursor-glow.tsx`) — a soft
+   viewport-relative radial-gradient glow that follows the mouse via
+   `useSpring`, mounted on both `Hero` and `PageHero`. `InteractiveCard`'s
+   hover lift gained a slight `rotateZ` for more physicality.
+   `Achievements` gained `<ParallaxOrbs>` (already proven safe — it only
+   uses `SpringTrigger` scroll-position tracking, not CSS positioning
+   tricks).
+
+**Consequences.** `ParallaxOrbs` and `Hover`-based card interactions stand
+verified as the safe, reusable motion vocabulary for this project —
+`position: sticky` on any large content-bearing section is now off the
+table without a documented reason and explicit real-scroll verification.
+**New verification rule:** any scroll-dependent behavior must be tested with
+`page.mouse.wheel()` (or real device testing), never `window.scrollTo()`
+alone — the latter bypasses Lenis entirely. **New rule:** any TextEngine
+usage with `letterIn`/`letterOut` must be checked against actual Arabic
+output before shipping, since this is an Arabic-first project — word-level
+is the safe default.
+
+---
+
 ## ADR-0020 — Vivid/motion design pass: bolder gold, parallax, sticky-reveal heroes
 
 - **Status:** Accepted

@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
+import { ParallaxOrbs } from "@/components/ui/parallax-orbs";
 import { Inview } from "@/components/animation/springs/in-view";
 
 interface Stat {
@@ -16,9 +17,10 @@ export const Achievements = async () => {
   return (
     <section
       aria-labelledby="achievements-title"
-      className="relative z-10 overflow-hidden bg-gradient-to-br from-surface-inverted via-action-primary to-action-primary-hover py-20 text-foreground-inverted"
+      className="relative overflow-hidden bg-gradient-to-br from-surface-inverted via-action-primary to-action-primary-hover py-20 text-foreground-inverted"
     >
-      <div className="mx-auto max-w-[70rem] px-4 sm:px-6">
+      <ParallaxOrbs />
+      <div className="relative mx-auto max-w-[70rem] px-4 sm:px-6">
         <SectionHeading
           id="achievements-title"
           eyebrow={t("eyebrow")}

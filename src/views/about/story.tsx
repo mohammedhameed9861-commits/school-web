@@ -11,7 +11,7 @@ export const Story = async () => {
   return (
     <section
       aria-labelledby="story-title"
-      className="relative z-10 rounded-t-[2rem] bg-background py-20 sm:rounded-t-[3rem] sm:py-24"
+      className="bg-background py-20"
     >
       <div className="mx-auto grid max-w-[70rem] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <MediaPlaceholder className="aspect-[4/3] w-full" />

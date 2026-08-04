@@ -9,7 +9,7 @@ export const Info = async () => {
   return (
     <section
       aria-label={t("addressTitle")}
-      className="relative z-10 rounded-t-[2rem] bg-background py-20 sm:rounded-t-[3rem] sm:py-24"
+      className="bg-background py-20"
     >
       <div className="mx-auto grid max-w-[80rem] gap-8 px-4 sm:px-6 lg:grid-cols-2">
         <Inview

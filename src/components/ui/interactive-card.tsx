@@ -25,9 +25,9 @@ export const InteractiveCard = ({ tag = "li", delayIn = 0, className, children }
     >
       <Hover
         tag="div"
-        from={{ y: 0, scale: 1 }}
-        to={{ y: -10, scale: 1.03 }}
-        config={{ tension: 320, friction: 22 }}
+        from={{ y: 0, scale: 1, rotateZ: 0 }}
+        to={{ y: -12, scale: 1.04, rotateZ: -0.6 }}
+        config={{ tension: 300, friction: 18 }}
         className={className}
       >
         {children}

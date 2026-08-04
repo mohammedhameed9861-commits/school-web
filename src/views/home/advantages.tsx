@@ -10,7 +10,7 @@ export const Advantages = async () => {
   return (
     <section
       aria-labelledby="advantages-title"
-      className="relative z-10 rounded-t-[2rem] bg-background py-20 sm:rounded-t-[3rem] sm:py-24"
+      className="bg-background py-20"
     >
       <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
         <SectionHeading

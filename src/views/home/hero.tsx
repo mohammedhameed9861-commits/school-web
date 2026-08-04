@@ -4,6 +4,7 @@ import TextEngine from "spring-text-engine";
 import { Link } from "@/i18n/navigation";
 import { Inview } from "@/components/animation/springs/in-view";
 import { ParallaxOrbs } from "@/components/ui/parallax-orbs";
+import { CursorGlow } from "@/components/ui/cursor-glow";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { CtaButton } from "@/components/ui/cta-button";
 
@@ -15,9 +16,10 @@ export const Hero = async () => {
   return (
     <section
       aria-labelledby="hero-title"
-      className="sticky top-0 z-0 overflow-hidden bg-gradient-to-br from-action-primary via-surface-inverted to-action-primary-hover text-foreground-inverted"
+      className="relative overflow-hidden bg-gradient-to-br from-action-primary via-surface-inverted to-action-primary-hover text-foreground-inverted"
     >
       <ParallaxOrbs />
+      <CursorGlow />
       <div className="relative mx-auto flex min-h-[92vh] max-w-[70rem] flex-col items-center justify-center gap-8 px-4 py-24 text-center sm:px-6 sm:py-32">
         <Inview
           tag="p"
@@ -34,10 +36,11 @@ export const Hero = async () => {
           id="hero-title"
           mode="once"
           className="leading-display max-w-3xl text-center justify-center text-4xl font-bold sm:text-6xl"
-          letterIn={{ y: 0, opacity: 1, scale: 1 }}
-          letterOut={{ y: 24, opacity: 0, scale: 0.8 }}
-          letterStagger={16}
-          letterConfig={{ tension: 120, friction: 14 }}
+          wordIn={{ y: "0%", opacity: 1, scale: 1 }}
+          wordOut={{ y: "60%", opacity: 0, scale: 0.85 }}
+          wordStagger={80}
+          wordConfig={{ tension: 170, friction: 22 }}
+          overflow
         >
           {t("title")}
         </TextEngine>

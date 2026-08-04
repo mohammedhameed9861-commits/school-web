@@ -21,15 +21,15 @@ export const siteConfig = {
   author: "Alsharq Bilingual Private School",
   /** Browser theme-color (address bar / PWA) — brand navy. */
   themeColor: "#0b1829",
-  /** Phone/WhatsApp number in E.164 (no spaces) — placeholder, replace with the real line. */
-  phone: "+9647700000000",
-  whatsapp: "9647700000000",
+  /** Phone/WhatsApp number in E.164 (no spaces). Same number used for both — confirm if there's a separate office line. */
+  phone: "+9647819003378",
+  whatsapp: "9647819003378",
   email: "info@alsharq-school.edu",
   address: "Baghdad, Iraq",
   /** Placeholder Google Maps embed src — replace with the real campus location. */
   mapsEmbedUrl: "https://www.google.com/maps?q=Baghdad,Iraq&output=embed",
   social: {
-    facebook: "https://facebook.com/alsharqschool",
-    instagram: "https://instagram.com/alsharqschool",
+    facebook: "https://www.facebook.com/alsharqprivateschools/",
+    instagram: "https://www.instagram.com/alsharq.private.schools/",
   },
 } as const;

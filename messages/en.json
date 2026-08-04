@@ -10,6 +10,7 @@
   "common": {
     "brandName": "Alsharq",
     "brandNameFull": "Alsharq Bilingual Private School for Boys",
+    "address": "Al-Mansour, near the Al-Sa'a Restaurant branch by the railway, Baghdad, Iraq",
     "registerNow": "Register Your Son Now",
     "applyNow": "Apply for Admission",
     "contactUs": "Contact Us",
@@ -156,7 +157,6 @@
       "items": [
         { "title": "Modern science labs", "description": "Physics, chemistry, biology and computer labs equipped with the latest tools." },
         { "title": "Smart classrooms", "description": "Classrooms fitted with interactive teaching aids and modern technology." },
-        { "title": "Well-stocked library", "description": "An Arabic and English library supporting reading, research, and self-directed learning." },
         { "title": "Sports facilities & fields", "description": "Multi-purpose fields for football, basketball, and other sports." },
         { "title": "Theatre & events hall", "description": "A dedicated space for arts, drama, and school-wide events." },
         { "title": "Healthy cafeteria", "description": "A school cafeteria serving healthy, balanced meals throughout the school day." }

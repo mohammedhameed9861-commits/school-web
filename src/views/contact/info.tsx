@@ -5,6 +5,7 @@ import { Inview } from "@/components/animation/springs/in-view";
 
 export const Info = async () => {
   const t = await getTranslations("contact.info");
+  const tc = await getTranslations("common");
 
   return (
     <section
@@ -42,7 +43,7 @@ export const Info = async () => {
                 <dt className="text-xs font-semibold uppercase tracking-wide text-foreground-muted">
                   {t("addressTitle")}
                 </dt>
-                <dd className="mt-1 text-base">{siteConfig.address}</dd>
+                <dd className="mt-1 text-base">{tc("address")}</dd>
               </div>
               <div>
                 <dt className="text-xs font-semibold uppercase tracking-wide text-foreground-muted">

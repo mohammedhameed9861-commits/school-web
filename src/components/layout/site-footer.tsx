@@ -73,7 +73,7 @@ export const SiteFooter = async () => {
             {t("contactInfo")}
           </h2>
           <address className="mt-4 flex flex-col gap-2 text-sm not-italic text-foreground-inverted/80">
-            <span>{siteConfig.address}</span>
+            <span>{tc("address")}</span>
             <a href={`tel:${siteConfig.phone}`} className={linkClass}>
               {siteConfig.phone}
             </a>

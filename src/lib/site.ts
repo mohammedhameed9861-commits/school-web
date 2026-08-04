@@ -25,9 +25,12 @@ export const siteConfig = {
   phone: "+9647819003378",
   whatsapp: "9647819003378",
   email: "info@alsharq-school.edu",
-  address: "Baghdad, Iraq",
-  /** Placeholder Google Maps embed src — replace with the real campus location. */
-  mapsEmbedUrl: "https://www.google.com/maps?q=Baghdad,Iraq&output=embed",
+  /**
+   * Google Maps embed centred on the real campus location (Al-Mansour,
+   * Baghdad — near the Al-Sa'a Restaurant branch by the railway).
+   * Localized address text lives in messages/{locale}.json → common.address.
+   */
+  mapsEmbedUrl: "https://www.google.com/maps?q=33.318848,44.331623&output=embed",
   social: {
     facebook: "https://www.facebook.com/alsharqprivateschools/",
     instagram: "https://www.instagram.com/alsharq.private.schools/",

@@ -15,7 +15,10 @@ export const Curriculum = async () => {
       <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
         <SectionHeading id="curriculum-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
         <div className="mt-12">
-          <MediaCardGrid items={items} />
+          <MediaCardGrid
+            items={items}
+            images={["/assets/photos/physics-lab.jpg", "/assets/photos/language-class.jpg", "/assets/photos/humanities-class.jpg", undefined]}
+          />
         </div>
       </div>
     </section>

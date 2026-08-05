@@ -10,6 +10,16 @@ interface Article {
   excerpt: string;
 }
 
+// Real photo per article, indexed to match `messages/*.json` → news.articles order.
+const ARTICLE_IMAGES: (string | undefined)[] = [
+  undefined,
+  "/assets/photos/study-tips-poster.jpg",
+  undefined,
+  undefined,
+  undefined,
+  undefined,
+];
+
 export const NewsView = async () => {
   const heroT = await getTranslations("news.hero");
   const newsT = await getTranslations("news");
@@ -33,6 +43,7 @@ export const NewsView = async () => {
                   title={article.title}
                   excerpt={article.excerpt}
                   delayIn={index * 80}
+                  image={ARTICLE_IMAGES[index]}
                 />
               </li>
             ))}

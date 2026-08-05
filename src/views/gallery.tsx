@@ -12,6 +12,15 @@ interface Category {
   items: string[];
 }
 
+// Real photos per gallery category, indexed to match `messages/*.json` →
+// gallery.categories[i].items order: Facilities, Classrooms, Activities, Events.
+const CATEGORY_IMAGES: (string | undefined)[][] = [
+  [undefined, "/assets/photos/campus-courtyard.jpg", undefined],
+  ["/assets/photos/classroom-intermediate.jpg", "/assets/photos/classroom-preparatory.jpg", undefined, undefined],
+  ["/assets/photos/science-club-telescope.jpg", undefined, "/assets/photos/arts-club.jpg", undefined],
+  [undefined, undefined, "/assets/photos/graduation-2026.jpg", undefined],
+];
+
 export const GalleryView = async () => {
   const t = await getTranslations("gallery");
   const heroT = await getTranslations("gallery.hero");
@@ -30,6 +39,7 @@ export const GalleryView = async () => {
           title={category.title}
           subtitle={category.subtitle}
           items={category.items}
+          images={CATEGORY_IMAGES[index]}
           tone={index % 2 === 0 ? "default" : "muted"}
         />
       ))}

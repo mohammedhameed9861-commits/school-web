@@ -12,7 +12,10 @@ export const Sports = async () => {
       <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
         <SectionHeading id="sports-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
         <div className="mt-12">
-          <MediaCardGrid items={items} />
+          <MediaCardGrid
+            items={items}
+            images={[undefined, undefined, undefined, "/assets/photos/table-tennis.jpg"]}
+          />
         </div>
       </div>
     </section>

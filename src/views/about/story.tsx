@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 import { SectionHeading } from "@/components/ui/section-heading";
-import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Inview } from "@/components/animation/springs/in-view";
 
 export const Story = async () => {
@@ -14,7 +14,9 @@ export const Story = async () => {
       className="bg-background py-20"
     >
       <div className="mx-auto grid max-w-[70rem] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
-        <MediaPlaceholder className="aspect-[4/3] w-full" />
+        <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
+          <Image src="/assets/photos/campus-courtyard.jpg" alt={t("title")} fill className="object-cover" />
+        </div>
         <div>
           <SectionHeading
             id="story-title"

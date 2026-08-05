@@ -1,4 +1,5 @@
 import { getTranslations } from "next-intl/server";
+import Image from "next/image";
 
 import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/lib/site";
@@ -25,7 +26,16 @@ export const SiteFooter = async () => {
     <footer className="bg-surface-inverted text-foreground-inverted">
       <div className="mx-auto grid max-w-[90rem] gap-10 px-4 py-14 sm:px-6 lg:grid-cols-4 lg:px-10">
         <div className="lg:col-span-1">
-          <p className="text-xl font-bold">{tc("brandNameFull")}</p>
+          <div className="flex items-center gap-2">
+            <Image
+              src="/assets/brand/logo-128.png"
+              alt={tc("brandNameFull")}
+              width={36}
+              height={36}
+              className="h-9 w-9 shrink-0"
+            />
+            <p className="text-xl font-bold">{tc("brandNameFull")}</p>
+          </div>
           <p className="mt-3 text-sm text-foreground-inverted/80">{t("tagline")}</p>
           <div className="mt-5 flex gap-3">
             <a

@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
+import Image from "next/image";
 
 import { Link, usePathname } from "@/i18n/navigation";
 import { useScroll } from "@/hooks/smooth-scroll/use-scroll";
@@ -50,12 +51,14 @@ export const SiteHeader = () => {
           href="/"
           className="flex items-center gap-2 text-xl font-bold text-action-primary"
         >
-          <span
-            aria-hidden
-            className="flex h-10 w-10 items-center justify-center rounded-control bg-gradient-to-br from-action-accent-light via-action-accent to-action-accent-hover text-lg text-action-accent-foreground shadow-glow-gold"
-          >
-            ش
-          </span>
+          <Image
+            src="/assets/brand/logo-128.png"
+            alt={tc("brandNameFull")}
+            width={40}
+            height={40}
+            className="h-10 w-10 shrink-0"
+            priority
+          />
           <span>{tc("brandName")}</span>
         </Link>
 

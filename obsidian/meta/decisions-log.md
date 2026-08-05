@@ -1,12 +1,87 @@
 ---
 tags: [meta, decision]
-updated: 2026-08-03
+updated: 2026-08-05
 ---
 
 # Decisions Log (ADRs)
 
 Architecture Decision Records. Each entry captures a choice, its context, and its
 consequences. Use [[templates/adr-note]] for new entries. Newest first.
+
+---
+
+## ADR-0022 — Single-page site: every former route is now a `#chapter` anchor
+
+- **Status:** Accepted
+- **Date:** 2026-08-05
+
+**Context.** The site shipped as 8 separate routes (Home, About, Academics,
+Student Life, Admissions, Gallery, News, Contact) per the original brief.
+Client feedback: clicking a nav item to load an entirely new page hid content
+that should just be "one scroll away" — e.g. Gallery was invisible unless you
+clicked into it. Requested fix: the whole site should be reachable by
+scrolling, nav links should jump to a section on the same page.
+
+**Decision.**
+1. **Every former page is now a chapter on the homepage**, mounted in
+   `views/home.tsx` inside a `<div id="about">` / `#academics` / etc.
+   wrapper. Each former view (`views/about.tsx`, `views/academics.tsx`, …)
+   dropped its `<main>` wrapper, `<PageHero>` banner, and any standalone
+   `<RegisterCta>` — replaced by a compact `SectionHeading` "chapter intro"
+   using the same `*.hero` i18n copy, so scrolling still gives a clear
+   section break without stacking 7 full-bleed hero banners in one scroll.
+   Only **one** real registration form remains on the page (in the
+   Admissions chapter) — Home's standalone `RegistrationSection` at the end
+   was dropped to avoid two competing forms.
+2. **The old routes (`/about`, `/gallery`, …) now `permanentRedirect()` to
+   `/#chapter`** (`i18n/navigation.ts` now also exports `permanentRedirect`)
+   instead of rendering — so old bookmarks/external links still land on the
+   right content instead of 404ing. `sitemap.ts` now lists only the
+   homepage, since the redirects aren't canonical content.
+3. **New `ScrollLink` component** (`components/ui/scroll-link.tsx`) — a
+   real `<a href="#id">` (works without JS, right-click/middle-click still
+   correct) whose `onClick` intercepts and calls the existing `scrollTo`
+   utility instead of a native jump, so in-page nav respects Lenis.
+   `CtaButton` gained the same hash-branch. Every hardcoded
+   `Link href="/about"`-style cross-reference (header, footer, hero
+   secondary CTA, programs "learn more", fees "contact us", register CTAs)
+   was converted.
+4. **Header scroll-spy** highlights the nav item for whichever chapter is
+   in view. First attempt used `IntersectionObserver` with a thin
+   `rootMargin` band — this **does not work reliably here**: `scrollTo`
+   briefly sets `isEnableScroll: false` around a programmatic scroll (pausing
+   Lenis and setting `overflow: hidden` on `<html>`), and that pause/resume
+   window was swallowing the observer's threshold-crossing callbacks (only
+   the *exiting* section's callback fired, never the *entering* one).
+   Replaced with a plain `scroll`-event listener (rAF-throttled) that
+   compares each chapter's `getBoundingClientRect().top` against a fixed
+   marker line — driven directly off the real scroll position rather than
+   racing the pause/resume dance.
+5. **Fixed a latent, previously-dead hash-scroll feature.**
+   `ScrollLayout`'s `ScrollController` was watching `next/navigation`'s
+   `usePathname()` for a `#hash` to auto-scroll to on load — but
+   `usePathname()` never includes the hash fragment (by design), so this
+   effect could never fire. Since the new `permanentRedirect` → `/#chapter`
+   flow depends on exactly this ("land on the homepage, already scrolled to
+   the right chapter"), replaced it with a `window.location.hash` read on
+   mount plus a `hashchange` listener.
+
+**Consequences.**
+- Redirecting to a URL containing a `#hash` can't use a plain HTTP
+  `Location` header (fragments never reach the server) — Next.js falls back
+  to a `<meta http-equiv="refresh">` + client-side redirect for these,
+  visible as a `NEXT_REDIRECT` dev-mode console message. This is expected,
+  not a bug; the instant (`content="0;..."`) refresh is still followed by
+  crawlers as an effective permanent redirect.
+- Per-page SEO (distinct `<title>`/description per route) is gone — the
+  whole site now shares the homepage's metadata. Traded off deliberately for
+  the requested UX; content is still fully indexable on one URL.
+- **Standing verification rule:** rapid scripted nav-clicking through
+  sections (no dwell time) is not a valid way to check `Inview` entrance
+  animations — some content will appear "blank" in a screenshot purely from
+  the test's timing, not a real bug (same class of false-negative as
+  `window.scrollTo()` vs `page.mouse.wheel()` in ADR-0021). Always confirm
+  with a continuous real-scroll pass before concluding content is missing.
 
 ---
 

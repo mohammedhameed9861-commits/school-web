@@ -1,33 +1,15 @@
-import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { permanentRedirect } from "@/i18n/navigation";
 
-import { generateMetadata as buildMetadata } from "@/utils/seo/generate-page-metadata";
-import { getLocaleAlternates, ogLocaleFor } from "@/utils/seo/locale-alternates";
-import { ContactView } from "@/views/contact";
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "contact.seo" });
-  const languages = getLocaleAlternates("/contact");
-  return buildMetadata({
-    title: t("title"),
-    description: t("description"),
-    url: languages[locale],
-    languages,
-    ogLocale: ogLocaleFor(locale),
-  });
-}
-
+/**
+ * `/contact` no longer renders its own page — the whole site is one scroll
+ * (ADR-0022). This permanently redirects old links/bookmarks to the
+ * `#contact` chapter on the homepage instead of 404ing.
+ */
 export default async function ContactPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
-  return <ContactView />;
+  permanentRedirect({ href: "/#contact", locale });
 }

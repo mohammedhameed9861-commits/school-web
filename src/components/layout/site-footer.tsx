@@ -1,16 +1,19 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 
-import { Link } from "@/i18n/navigation";
 import { siteConfig } from "@/lib/site";
+import { ScrollLink } from "@/components/ui/scroll-link";
 
+// Single-page site (ADR-0022) — every former route is now a `#chapter`
+// anchored on the homepage; footer links smooth-scroll instead of navigating.
 const NAV_ITEMS = [
-  { href: "/about", key: "about" },
-  { href: "/academics", key: "academics" },
-  { href: "/admissions", key: "admissions" },
-  { href: "/gallery", key: "gallery" },
-  { href: "/news", key: "news" },
-  { href: "/contact", key: "contact" },
+  { id: "about", key: "about" },
+  { id: "academics", key: "academics" },
+  { id: "student-life", key: "studentLife" },
+  { id: "admissions", key: "admissions" },
+  { id: "gallery", key: "gallery" },
+  { id: "news", key: "news" },
+  { id: "contact", key: "contact" },
 ] as const;
 
 const linkClass =
@@ -69,10 +72,10 @@ export const SiteFooter = async () => {
           </h2>
           <ul className="mt-4 flex flex-col gap-2 text-sm">
             {NAV_ITEMS.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className={linkClass}>
+              <li key={item.id}>
+                <ScrollLink id={item.id} className={linkClass}>
                   {tn(item.key)}
-                </Link>
+                </ScrollLink>
               </li>
             ))}
           </ul>
@@ -98,12 +101,12 @@ export const SiteFooter = async () => {
             {tc("registerNow")}
           </h2>
           <p className="mt-4 text-sm text-foreground-inverted/80">{t("tagline")}</p>
-          <Link
-            href="/admissions"
+          <ScrollLink
+            id="admissions"
             className="mt-4 inline-block rounded-control bg-action-accent px-4 py-2 text-sm font-semibold text-action-accent-foreground transition-colors duration-[var(--duration-fast)] ease-entrance hover:bg-action-accent-hover"
           >
             {tc("applyNow")}
-          </Link>
+          </ScrollLink>
         </div>
       </div>
 
@@ -112,9 +115,9 @@ export const SiteFooter = async () => {
           <p>
             &copy; {year} {tc("brandNameFull")} — {t("rights")}
           </p>
-          <Link href="/contact" className={linkClass}>
+          <ScrollLink id="contact" className={linkClass}>
             {t("privacyPolicy")}
-          </Link>
+          </ScrollLink>
         </div>
       </div>
     </footer>

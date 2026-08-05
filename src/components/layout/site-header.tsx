@@ -4,21 +4,23 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
 
-import { Link, usePathname } from "@/i18n/navigation";
 import { useScroll } from "@/hooks/smooth-scroll/use-scroll";
 import { Spring } from "@/components/animation/springs/spring";
 import { LanguageSwitch } from "@/components/layout/language-switch";
 import { CtaButton } from "@/components/ui/cta-button";
+import { ScrollLink } from "@/components/ui/scroll-link";
 
+// Single-page site (ADR-0022) — every former route is now a `#chapter`
+// anchored on the homepage; the nav smooth-scrolls instead of navigating.
 const NAV_ITEMS = [
-  { href: "/", key: "home" },
-  { href: "/about", key: "about" },
-  { href: "/academics", key: "academics" },
-  { href: "/student-life", key: "studentLife" },
-  { href: "/admissions", key: "admissions" },
-  { href: "/gallery", key: "gallery" },
-  { href: "/news", key: "news" },
-  { href: "/contact", key: "contact" },
+  { id: "home", key: "home" },
+  { id: "about", key: "about" },
+  { id: "academics", key: "academics" },
+  { id: "student-life", key: "studentLife" },
+  { id: "admissions", key: "admissions" },
+  { id: "gallery", key: "gallery" },
+  { id: "news", key: "news" },
+  { id: "contact", key: "contact" },
 ] as const;
 
 const linkClass =
@@ -27,8 +29,8 @@ const linkClass =
 export const SiteHeader = () => {
   const t = useTranslations("nav");
   const tc = useTranslations("common");
-  const pathname = usePathname();
   const [open, setOpen] = useState(false);
+  const [activeId, setActiveId] = useState<string>("home");
   const [start, stop] = [useScroll((s) => s.start), useScroll((s) => s.stop)];
 
   useEffect(() => {
@@ -40,15 +42,46 @@ export const SiteHeader = () => {
     return () => start();
   }, [open, start, stop]);
 
+  // Scroll-spy: highlight whichever chapter is currently near the top of
+  // the viewport as the user scrolls through the single long page. Driven
+  // directly off the native `scroll` event (which Lenis still dispatches as
+  // it moves `window.scrollY`) rather than IntersectionObserver — the
+  // in-page nav clicks briefly pause/resume Lenis around a programmatic
+  // scroll (see `scrollTo`), and that pause/resume window was swallowing
+  // IntersectionObserver's threshold callbacks.
   useEffect(() => {
-    setOpen(false);
-  }, [pathname]);
+    let ticking = false;
+
+    const update = () => {
+      ticking = false;
+      const markerY = window.innerHeight * 0.35;
+      let current = NAV_ITEMS[0].id as string;
+      for (const item of NAV_ITEMS) {
+        const el = document.getElementById(item.id);
+        if (el && el.getBoundingClientRect().top <= markerY) {
+          current = item.id;
+        }
+      }
+      setActiveId(current);
+    };
+
+    const onScroll = () => {
+      if (!ticking) {
+        ticking = true;
+        requestAnimationFrame(update);
+      }
+    };
+
+    update();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-surface/95 backdrop-blur">
       <div className="mx-auto flex max-w-[90rem] items-center justify-between gap-4 px-4 py-3 sm:px-6 lg:px-10">
-        <Link
-          href="/"
+        <ScrollLink
+          id="home"
           className="flex items-center gap-2 text-xl font-bold text-action-primary"
         >
           <Image
@@ -60,24 +93,22 @@ export const SiteHeader = () => {
             priority
           />
           <span>{tc("brandName")}</span>
-        </Link>
+        </ScrollLink>
 
         <nav
           aria-label={tc("brandName")}
           className="hidden items-center gap-6 text-sm font-medium lg:flex"
         >
           {NAV_ITEMS.map((item) => {
-            const isActive =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            const isActive = activeId === item.id;
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive ? "page" : undefined}
+              <ScrollLink
+                key={item.id}
+                id={item.id}
                 className={`${linkClass} ${isActive ? "text-action-accent" : "text-foreground"}`}
               >
                 {t(item.key)}
-              </Link>
+              </ScrollLink>
             );
           })}
         </nav>
@@ -85,7 +116,7 @@ export const SiteHeader = () => {
         <div className="hidden items-center gap-4 lg:flex">
           <LanguageSwitch className={`${linkClass} text-sm font-semibold text-foreground`} />
           <CtaButton
-            href="/admissions"
+            href="#admissions"
             className="bg-action-accent text-action-accent-foreground shadow-glow-gold hover:bg-action-accent-hover"
           >
             {tc("registerNow")}
@@ -131,27 +162,27 @@ export const SiteHeader = () => {
           className="flex flex-col gap-1 border-t border-border bg-surface px-4 py-4 lg:hidden"
         >
           {NAV_ITEMS.map((item) => {
-            const isActive =
-              item.href === "/" ? pathname === "/" : pathname.startsWith(item.href);
+            const isActive = activeId === item.id;
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                aria-current={isActive ? "page" : undefined}
+              <ScrollLink
+                key={item.id}
+                id={item.id}
+                onNavigate={() => setOpen(false)}
                 className={`rounded-control px-3 py-2 text-base font-medium ${isActive ? "bg-surface-muted text-action-accent" : "text-foreground"}`}
               >
                 {t(item.key)}
-              </Link>
+              </ScrollLink>
             );
           })}
           <div className="mt-2 flex items-center justify-between border-t border-border pt-3">
             <LanguageSwitch className="text-sm font-semibold text-foreground" />
-            <Link
-              href="/admissions"
+            <ScrollLink
+              id="admissions"
+              onNavigate={() => setOpen(false)}
               className="rounded-control bg-action-accent px-4 py-2 text-sm font-semibold text-action-accent-foreground"
             >
               {tc("registerNow")}
-            </Link>
+            </ScrollLink>
           </div>
         </Spring>
       )}

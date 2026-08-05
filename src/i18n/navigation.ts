@@ -7,5 +7,5 @@ import { routing } from "@/i18n/routing";
  * (ADR-0005 stands — no custom animated-link layer); the wrapper only adds the
  * locale prefix automatically so links never need it written by hand.
  */
-export const { Link, redirect, usePathname, useRouter, getPathname } =
+export const { Link, redirect, permanentRedirect, usePathname, useRouter, getPathname } =
   createNavigation(routing);

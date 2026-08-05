@@ -1,7 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import TextEngine from "spring-text-engine";
 
-import { Link } from "@/i18n/navigation";
+import { ScrollLink } from "@/components/ui/scroll-link";
 import { Inview } from "@/components/animation/springs/in-view";
 import { ParallaxOrbs } from "@/components/ui/parallax-orbs";
 import { CursorGlow } from "@/components/ui/cursor-glow";
@@ -65,18 +65,18 @@ export const Hero = async () => {
           className="flex flex-col items-center gap-4 sm:flex-row"
         >
           <CtaButton
-            href="/admissions"
+            href="#admissions"
             analyticsEvent="hero_register_cta"
             className="bg-action-accent text-action-accent-foreground shadow-glow-gold hover:bg-action-accent-hover"
           >
             {tc("registerNow")}
           </CtaButton>
-          <Link
-            href="/about"
+          <ScrollLink
+            id="about"
             className="rounded-control border border-white/25 px-7 py-3.5 text-sm font-semibold text-foreground-inverted transition-colors duration-[var(--duration-fast)] ease-entrance hover:border-action-accent hover:text-action-accent"
           >
             {t("ctaSecondary")}
-          </Link>
+          </ScrollLink>
         </Inview>
 
         <Inview

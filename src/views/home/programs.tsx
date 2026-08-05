@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 
-import { Link } from "@/i18n/navigation";
+import { ScrollLink } from "@/components/ui/scroll-link";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Inview } from "@/components/animation/springs/in-view";
@@ -46,12 +46,12 @@ export const Programs = async () => {
         </ul>
 
         <div className="mt-10 text-center">
-          <Link
-            href="/academics"
+          <ScrollLink
+            id="academics"
             className="text-sm font-semibold text-action-primary underline underline-offset-4 transition-colors duration-[var(--duration-fast)] ease-entrance hover:text-action-accent"
           >
             {tc("learnMore")}
-          </Link>
+          </ScrollLink>
         </div>
       </div>
     </section>

@@ -26,7 +26,7 @@ export const RegisterCta = async () => {
         </h2>
         <p className="max-w-xl text-foreground-inverted/80">{t("body")}</p>
         <CtaButton
-          href="/admissions"
+          href="#admissions"
           analyticsEvent="mid_page_register_cta"
           className="bg-action-accent text-action-accent-foreground shadow-glow-gold hover:bg-action-accent-hover"
         >

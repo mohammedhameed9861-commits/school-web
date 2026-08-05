@@ -1,8 +1,7 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Lenis from "lenis";
-import { usePathname } from "next/navigation";
 import { useScroll } from "@/hooks/smooth-scroll/use-scroll";
 import { scrollTo } from "@/utils/scroll-to";
 import { useShallow } from "zustand/react/shallow";
@@ -28,8 +27,6 @@ function ScrollController() {
   const [lenis, setLenis] = useScroll(
     useShallow((state) => [state.lenis, state.setLenis]),
   );
-  const pathname = usePathname();
-  const savedPathname = useRef("");
 
   useEffect(() => {
     if (typeof window === "undefined") return;
@@ -75,17 +72,23 @@ function ScrollController() {
     }
   }, [lenis, hash]);
 
+  // Scroll to a `#chapter` anchor already present in the URL — the initial
+  // load of a deep link, or the client-side landing of the `/gallery` etc.
+  // → `/#gallery` redirects (ADR-0022). `next/navigation`'s `usePathname()`
+  // never includes the hash, so this reads `window.location` directly and
+  // also tracks `hashchange` (e.g. browser back/forward).
   useEffect(() => {
-    if (savedPathname.current !== pathname) {
-      savedPathname.current = pathname;
-      if (pathname.includes("#")) {
-        const hash = pathname.split("#").pop();
-        if (hash) {
-          setHash(hash);
-        }
-      }
-    }
-  }, [pathname, setHash]);
+    if (typeof window === "undefined") return;
+
+    const readHash = () => {
+      const next = window.location.hash.replace("#", "");
+      if (next) setHash(next);
+    };
+
+    readHash();
+    window.addEventListener("hashchange", readHash);
+    return () => window.removeEventListener("hashchange", readHash);
+  }, []);
 
   return null; // This component doesn't render anything visible
 }

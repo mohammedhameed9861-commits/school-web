@@ -1,23 +1,24 @@
 import { getTranslations } from "next-intl/server";
 
-import { PageHero } from "@/components/ui/page-hero";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { Story } from "@/views/about/story";
 import { VisionMission } from "@/views/about/vision-mission";
 import { Values } from "@/views/about/values";
 import { Bilingual } from "@/views/about/bilingual";
-import { RegisterCta } from "@/views/home/register-cta";
 
+/** "About Alsharq" chapter of the single-page site (ADR-0022) — mounted at `#about`. */
 export const AboutView = async () => {
   const t = await getTranslations("about.hero");
 
   return (
-    <main>
-      <PageHero eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+    <>
+      <div className="bg-background px-4 pb-4 pt-20 sm:px-6">
+        <SectionHeading id="about-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+      </div>
       <Story />
       <VisionMission />
       <Values />
       <Bilingual />
-      <RegisterCta />
-    </main>
+    </>
   );
 };

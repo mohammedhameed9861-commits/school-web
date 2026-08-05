@@ -1,33 +1,15 @@
-import type { Metadata } from "next";
-import { getTranslations, setRequestLocale } from "next-intl/server";
+import { permanentRedirect } from "@/i18n/navigation";
 
-import { generateMetadata as buildMetadata } from "@/utils/seo/generate-page-metadata";
-import { getLocaleAlternates, ogLocaleFor } from "@/utils/seo/locale-alternates";
-import { AcademicsView } from "@/views/academics";
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "academics.seo" });
-  const languages = getLocaleAlternates("/academics");
-  return buildMetadata({
-    title: t("title"),
-    description: t("description"),
-    url: languages[locale],
-    languages,
-    ogLocale: ogLocaleFor(locale),
-  });
-}
-
+/**
+ * `/academics` no longer renders its own page — the whole site is one
+ * scroll (ADR-0022). This permanently redirects old links/bookmarks to the
+ * `#academics` chapter on the homepage instead of 404ing.
+ */
 export default async function AcademicsPage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  setRequestLocale(locale);
-  return <AcademicsView />;
+  permanentRedirect({ href: "/#academics", locale });
 }

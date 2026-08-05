@@ -1,12 +1,35 @@
 ---
 tags: [meta, changelog]
-updated: 2026-08-03
+updated: 2026-08-05
 ---
 
 # Changelog
 
 Chronological log of notable changes to the project. Newest first.
 This is a human-curated log — not a mirror of `git log`.
+
+## 2026-08-05 (single-page conversion)
+
+- **The whole site is now one scrolling page** — every former route (About,
+  Academics, Student Life, Admissions, Gallery, News, Contact) is a
+  `#chapter` anchored on the homepage instead of a separate page; the old
+  routes now permanently redirect to `/#chapter`. Header/footer nav
+  smooth-scrolls via a new `ScrollLink` component instead of navigating.
+  Fixed a scroll-spy/IntersectionObserver conflict with the existing
+  Lenis-pause dance, and a latent bug where the app's hash-scroll-on-load
+  feature could never fire (`usePathname()` doesn't include the hash).
+  Full writeup: [[decisions-log]] ADR-0022.
+- **Real school photos inserted** — 12 photos supplied by the school wired
+  into Academics, Student Life, About, Gallery, and News (labs, classrooms,
+  the 2025/2026 graduation class, arts/science clubs, a study-tips article
+  image). `MediaCardGrid` / `CaptionedMediaGrid` / `ArticleCard` gained an
+  optional per-item `image` prop, falling back to the gradient placeholder
+  where a photo isn't supplied yet. Remaining slots (~26) still placeholder.
+- **Real logo added** — replaced every favicon/touch-icon/manifest-icon size
+  and the header/footer letter-badge stand-in with the school's actual logo
+  (cropped to a transparent circle). The Open Graph share image — still a
+  leftover unrelated starter-template photo — was replaced with a proper
+  branded 1200×630 image.
 
 ## 2026-08-03 (bug fixes from live testing)
 

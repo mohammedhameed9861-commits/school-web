@@ -1,8 +1,7 @@
 import { getTranslations } from "next-intl/server";
 
-import { PageHero } from "@/components/ui/page-hero";
+import { SectionHeading } from "@/components/ui/section-heading";
 import { ArticleCard } from "@/components/ui/article-card";
-import { RegisterCta } from "@/views/home/register-cta";
 
 interface Article {
   category: "announcements" | "studyTips" | "examPrep" | "parentGuidance";
@@ -20,6 +19,7 @@ const ARTICLE_IMAGES: (string | undefined)[] = [
   undefined,
 ];
 
+/** "News & Resources" chapter of the single-page site (ADR-0022) — mounted at `#news`. */
 export const NewsView = async () => {
   const heroT = await getTranslations("news.hero");
   const newsT = await getTranslations("news");
@@ -27,13 +27,12 @@ export const NewsView = async () => {
   const articles = newsT.raw("articles") as Article[];
 
   return (
-    <main>
-      <PageHero eyebrow={heroT("eyebrow")} title={heroT("title")} subtitle={heroT("subtitle")} />
+    <>
+      <div className="bg-background px-4 pb-4 pt-20 sm:px-6">
+        <SectionHeading id="news-title" eyebrow={heroT("eyebrow")} title={heroT("title")} subtitle={heroT("subtitle")} />
+      </div>
 
-      <section
-        aria-label={heroT("title")}
-        className="bg-background py-20"
-      >
+      <section aria-label={heroT("title")} className="bg-background py-16">
         <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
           <ul className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {articles.map((article, index) => (
@@ -50,8 +49,6 @@ export const NewsView = async () => {
           </ul>
         </div>
       </section>
-
-      <RegisterCta />
-    </main>
+    </>
   );
 };

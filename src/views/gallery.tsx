@@ -1,10 +1,8 @@
 import { getTranslations } from "next-intl/server";
 
-import { PageHero } from "@/components/ui/page-hero";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { CaptionedMediaGrid } from "@/components/ui/captioned-media-grid";
 import { CategorySection } from "@/views/gallery/category-section";
-import { RegisterCta } from "@/views/home/register-cta";
 
 interface Category {
   title: string;
@@ -21,6 +19,7 @@ const CATEGORY_IMAGES: (string | undefined)[][] = [
   [undefined, undefined, "/assets/photos/graduation-2026.jpg", undefined],
 ];
 
+/** "Gallery" chapter of the single-page site (ADR-0022) — mounted at `#gallery`. */
 export const GalleryView = async () => {
   const t = await getTranslations("gallery");
   const heroT = await getTranslations("gallery.hero");
@@ -29,8 +28,10 @@ export const GalleryView = async () => {
   const videoItems = videoT.raw("items") as string[];
 
   return (
-    <main>
-      <PageHero eyebrow={heroT("eyebrow")} title={heroT("title")} subtitle={heroT("subtitle")} />
+    <>
+      <div className="bg-background px-4 pb-4 pt-20 sm:px-6">
+        <SectionHeading id="gallery-title" eyebrow={heroT("eyebrow")} title={heroT("title")} subtitle={heroT("subtitle")} />
+      </div>
 
       {categories.map((category, index) => (
         <CategorySection
@@ -58,8 +59,6 @@ export const GalleryView = async () => {
           </div>
         </div>
       </section>
-
-      <RegisterCta />
-    </main>
+    </>
   );
 };

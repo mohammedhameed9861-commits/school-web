@@ -14,7 +14,8 @@ export const Sports = async () => {
         <div className="mt-12">
           <MediaCardGrid
             items={items}
-            images={[undefined, undefined, undefined, "/assets/photos/table-tennis.jpg"]}
+            images={["/assets/photos/table-tennis.jpg"]}
+            columns={2}
           />
         </div>
       </div>

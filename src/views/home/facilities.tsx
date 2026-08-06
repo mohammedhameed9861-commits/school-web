@@ -11,13 +11,12 @@ interface Facility {
 }
 
 // Real photo per facility, indexed to match `messages/*.json` →
-// home.facilities.items order: labs, classrooms, sports fields, theatre, cafeteria.
+// home.facilities.items order: classrooms, sports fields. (Items without a
+// matching real photo — labs, theatre, cafeteria — were dropped rather than
+// left as placeholders; see ADR-0022 follow-up.)
 const FACILITY_IMAGES: (string | undefined)[] = [
-  "/assets/photos/physics-lab.jpg",
   "/assets/photos/classroom-intermediate.jpg",
   "/assets/photos/campus-courtyard.jpg",
-  undefined,
-  undefined,
 ];
 
 export const Facilities = async () => {
@@ -34,7 +33,7 @@ export const Facilities = async () => {
           subtitle={t("subtitle")}
         />
 
-        <ul className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+        <ul className="mt-12 grid gap-6 sm:grid-cols-2">
           {items.map((item, index) => {
             const image = FACILITY_IMAGES[index];
             return (

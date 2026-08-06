@@ -153,11 +153,8 @@
       "title": "An inspiring campus",
       "subtitle": "A modern campus designed to bring learning, activity, and comfort together.",
       "items": [
-        { "title": "Modern science labs", "description": "Physics, chemistry, biology and computer labs equipped with the latest tools." },
         { "title": "Smart classrooms", "description": "Classrooms fitted with interactive teaching aids and modern technology." },
-        { "title": "Sports facilities & fields", "description": "Multi-purpose fields for football, basketball, and other sports." },
-        { "title": "Theatre & events hall", "description": "A dedicated space for arts, drama, and school-wide events." },
-        { "title": "Healthy cafeteria", "description": "A school cafeteria serving healthy, balanced meals throughout the school day." }
+        { "title": "Sports facilities & fields", "description": "Multi-purpose fields for football, basketball, and other sports." }
       ]
     },
     "achievements": {
@@ -258,7 +255,6 @@
       "subtitle": "We build on the official Iraqi curriculum, enriched with international resources and standards in science, languages, and critical thinking.",
       "items": [
         { "title": "Science subjects", "description": "Math, physics, chemistry and biology with enhanced content and hands-on application." },
-        { "title": "Languages", "description": "Strong classical Arabic, and intensive academic English from Grade 1." },
         { "title": "Humanities", "description": "History, geography, and Islamic/national education that build awareness and belonging." },
         { "title": "Digital skills", "description": "Computing, AI, and entrepreneurship built into the core study plan." }
       ]
@@ -333,9 +329,7 @@
       "subtitle": "Fully equipped labs turn theoretical concepts into tangible, hands-on experience.",
       "items": [
         { "title": "Physics lab", "description": "Hands-on experiments in mechanics, electricity, and light." },
-        { "title": "Chemistry lab", "description": "Safe, supervised experiments to understand chemical reactions." },
-        { "title": "Biology lab", "description": "Studying living organisms with modern tools and experiments." },
-        { "title": "Computer & AI lab", "description": "Modern equipment for learning programming and technology applications." }
+        { "title": "Chemistry lab", "description": "Safe, supervised experiments to understand chemical reactions." }
       ]
     },
     "sports": {
@@ -343,9 +337,6 @@
       "title": "A healthy body, an active mind",
       "subtitle": "A complete sports program that builds fitness, teamwork, and a spirit of fair competition.",
       "items": [
-        { "title": "Football", "description": "Competitive school teams with regular weekly training." },
-        { "title": "Basketball", "description": "A dedicated court and training program for every age group." },
-        { "title": "Athletics", "description": "Comprehensive fitness exercises that build strength and endurance." },
         { "title": "Inter-school tournaments", "description": "Regular leagues and tournaments that build school spirit." }
       ]
     },

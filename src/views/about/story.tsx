@@ -15,7 +15,7 @@ export const Story = async () => {
     >
       <div className="mx-auto grid max-w-[70rem] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
-          <Image src="/assets/photos/campus-courtyard.jpg" alt={t("title")} fill className="object-cover" />
+          <Image src="/assets/photos/graduation-2026.jpg" alt={t("title")} fill className="object-cover" />
         </div>
         <div>
           <SectionHeading

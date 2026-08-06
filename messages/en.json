@@ -32,8 +32,6 @@
     "academics": "Academics",
     "studentLife": "Student Life",
     "admissions": "Admissions",
-    "gallery": "Gallery",
-    "news": "News & Resources",
     "contact": "Contact",
     "toggleMenu": "Open menu",
     "closeMenu": "Close menu",
@@ -438,94 +436,6 @@
         }
       ]
     }
-  },
-  "gallery": {
-    "seo": {
-      "title": "Gallery | Alsharq School",
-      "description": "A photo tour of Alsharq's facilities, classrooms, activities, events, and video clips."
-    },
-    "hero": {
-      "eyebrow": "Gallery",
-      "title": "A glimpse into life at Alsharq",
-      "subtitle": "Photos and videos from inside the campus and its activities and events throughout the school year."
-    },
-    "categories": [
-      {
-        "title": "School facilities",
-        "subtitle": "A modern campus designed to serve the learning experience.",
-        "items": ["Main entrance", "Outdoor courtyard", "Events hall"]
-      },
-      {
-        "title": "Classrooms",
-        "subtitle": "Classrooms equipped with the latest interactive tools.",
-        "items": ["Intermediate stage classroom", "Preparatory stage classroom", "Computer lab", "Reading corner"]
-      },
-      {
-        "title": "Student activities",
-        "subtitle": "Moments from clubs and extracurricular activities.",
-        "items": ["Science club", "Robotics club", "Arts club", "Entrepreneurship club"]
-      },
-      {
-        "title": "School events",
-        "subtitle": "Occasions and celebrations throughout the school year.",
-        "items": ["Sports day", "Project fair", "Graduation ceremony", "Culture week"]
-      }
-    ],
-    "videos": {
-      "eyebrow": "Videos",
-      "title": "See Alsharq up close",
-      "subtitle": "Video clips introducing you to daily life inside the school.",
-      "items": ["A tour inside the campus", "A day in a student's life", "Parents speak"]
-    }
-  },
-  "news": {
-    "seo": {
-      "title": "News & Resources | Alsharq School",
-      "description": "The latest school announcements, study tips, exam preparation guidance, and resources for parents."
-    },
-    "hero": {
-      "eyebrow": "News & Resources",
-      "title": "What's new at Alsharq",
-      "subtitle": "School announcements and educational tips for students and parents."
-    },
-    "categories": {
-      "announcements": "School announcements",
-      "studyTips": "Study tips",
-      "examPrep": "Exam preparation",
-      "parentGuidance": "Parent guidance"
-    },
-    "articles": [
-      {
-        "category": "announcements",
-        "title": "Registration is open for the new academic year",
-        "excerpt": "Alsharq has opened registration for the coming academic year for all grades from 7 through 12."
-      },
-      {
-        "category": "studyTips",
-        "title": "Five habits for better study-time management",
-        "excerpt": "Practical tips to help your son organize his time and get the best results without burning out."
-      },
-      {
-        "category": "examPrep",
-        "title": "How should your son prepare for final exams?",
-        "excerpt": "A simple, effective revision plan that eases exam stress and builds student confidence."
-      },
-      {
-        "category": "parentGuidance",
-        "title": "How to support your son academically at home",
-        "excerpt": "Practical ideas for parents to create a home environment that supports academic achievement."
-      },
-      {
-        "category": "announcements",
-        "title": "Launching the AI & Entrepreneurship program",
-        "excerpt": "The school has announced the launch of its new AI & Entrepreneurship program for preparatory-stage students."
-      },
-      {
-        "category": "studyTips",
-        "title": "Why free reading matters for language development",
-        "excerpt": "How daily free reading helps develop a student's Arabic and English language skills."
-      }
-    ]
   },
   "contact": {
     "seo": {

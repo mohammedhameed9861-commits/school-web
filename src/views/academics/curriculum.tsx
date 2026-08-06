@@ -17,7 +17,7 @@ export const Curriculum = async () => {
         <div className="mt-12">
           <MediaCardGrid
             items={items}
-            images={["/assets/photos/physics-lab.jpg", "/assets/photos/language-class.jpg", "/assets/photos/humanities-class.jpg", undefined]}
+            images={["/assets/photos/physics-lab.jpg", undefined, "/assets/photos/humanities-class.jpg", undefined]}
           />
         </div>
       </div>

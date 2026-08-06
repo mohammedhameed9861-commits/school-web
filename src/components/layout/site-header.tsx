@@ -18,8 +18,6 @@ const NAV_ITEMS = [
   { id: "academics", key: "academics" },
   { id: "student-life", key: "studentLife" },
   { id: "admissions", key: "admissions" },
-  { id: "gallery", key: "gallery" },
-  { id: "news", key: "news" },
   { id: "contact", key: "contact" },
 ] as const;
 

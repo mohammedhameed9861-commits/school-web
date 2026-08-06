@@ -9,8 +9,6 @@ import { AboutView } from "@/views/about";
 import { AcademicsView } from "@/views/academics";
 import { StudentLifeView } from "@/views/student-life";
 import { AdmissionsView } from "@/views/admissions";
-import { GalleryView } from "@/views/gallery";
-import { NewsView } from "@/views/news";
 import { ContactView } from "@/views/contact";
 
 /**
@@ -45,12 +43,6 @@ export const HomeView = () => {
       </div>
       <div id="admissions" className="scroll-mt-20">
         <AdmissionsView />
-      </div>
-      <div id="gallery" className="scroll-mt-20">
-        <GalleryView />
-      </div>
-      <div id="news" className="scroll-mt-20">
-        <NewsView />
       </div>
       <div id="contact" className="scroll-mt-20">
         <ContactView />

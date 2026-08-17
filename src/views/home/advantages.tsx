@@ -17,7 +17,6 @@ export const Advantages = async () => {
           id="advantages-title"
           eyebrow={t("eyebrow")}
           title={t("title")}
-          subtitle={t("subtitle")}
         />
 
         <div className="mt-12">

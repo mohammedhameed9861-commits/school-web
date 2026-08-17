@@ -21,7 +21,7 @@ export const Advantages = async () => {
         />
 
         <div className="mt-12">
-          <NumberedCardGrid items={items} />
+          <NumberedCardGrid items={items} numbered={false} />
         </div>
       </div>
     </section>

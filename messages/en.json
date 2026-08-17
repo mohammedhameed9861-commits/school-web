@@ -1,7 +1,7 @@
 {
   "seo": {
-    "title": "Alsharq Bilingual Private School for Boys | Baghdad",
-    "description": "A stronger education. A more confident future. Alsharq Bilingual Private School for Boys prepares students academically, personally and professionally for the future."
+    "title": "Alsharq Bilingual Private Secondary School for Boys | Baghdad",
+    "description": "A stronger education. A more confident future. Alsharq Bilingual Private Secondary School for Boys prepares students academically, personally and professionally for the future."
   },
   "notFound": {
     "message": "Sorry, this page could not be found.",
@@ -9,7 +9,7 @@
   },
   "common": {
     "brandName": "Alsharq",
-    "brandNameFull": "Alsharq Bilingual Private School for Boys",
+    "brandNameFull": "Alsharq Bilingual Private Secondary School for Boys",
     "address": "Al-Mansour, near the Al-Sa'a Restaurant branch by the railway, Baghdad, Iraq",
     "registerNow": "Register Your Son Now",
     "applyNow": "Apply for Admission",
@@ -50,7 +50,7 @@
   },
   "whatsapp": {
     "label": "Chat with us on WhatsApp",
-    "defaultMessage": "Hello, I'd like to ask about admission at Alsharq School."
+    "defaultMessage": "Hello, I'd like to ask about admission at Alsharq Secondary School."
   },
   "grades": {
     "g7": "Grade 7",
@@ -80,10 +80,10 @@
   },
   "home": {
     "hero": {
-      "eyebrow": "Alsharq Bilingual Private School for Boys — Baghdad",
+      "eyebrow": "Alsharq Bilingual Private Secondary School for Boys — Baghdad",
       "title": "A stronger education. A more confident future.",
-      "subtitle": "At Alsharq Bilingual Private School for Boys, we prepare students academically, personally and professionally for the future, in an outstanding environment that brings Arabic and English together.",
-      "ctaSecondary": "Discover the school",
+      "subtitle": "At Alsharq Bilingual Private Secondary School for Boys, we prepare students academically, personally and professionally for the future, in an outstanding environment that brings Arabic and English together.",
+      "ctaSecondary": "Discover the secondary school",
       "stats": [
         { "value": "15+", "label": "years of educational excellence" },
         { "value": "2", "label": "languages of instruction" },
@@ -184,7 +184,7 @@
           "role": "Parent of a Grade 7 student"
         },
         {
-          "quote": "The AI & entrepreneurship program gave my son skills he simply wouldn't have picked up at a traditional school.",
+          "quote": "The AI & entrepreneurship program gave my son skills he simply wouldn't have picked up at a traditional secondary school.",
           "name": "Mr. Ahmed Al-Kinani",
           "role": "Parent of a Grade 11 student"
         }
@@ -194,25 +194,25 @@
   "about": {
     "seo": {
       "title": "About Alsharq | Our Story, Vision & Values",
-      "description": "Learn about Alsharq Bilingual Private School's story, vision, mission, educational values, and why bilingual education matters."
+      "description": "Learn about Alsharq Bilingual Private Secondary School's story, vision, mission, educational values, and why bilingual education matters."
     },
     "hero": {
       "eyebrow": "About Alsharq",
-      "title": "The story of a school that builds generations",
+      "title": "The story of a secondary school that builds generations",
       "subtitle": "Since its founding, Alsharq has aimed to be a second home that combines Arabic authenticity with openness to the world."
     },
     "story": {
       "eyebrow": "Our story",
       "title": "A journey from passion to excellence",
       "paragraphs": [
-        "Alsharq Bilingual Private School for Boys was founded on a firm belief: real education starts with a safe environment that respects a student's identity while opening the world to them at the same time.",
+        "Alsharq Bilingual Private Secondary School for Boys was founded on a firm belief: real education starts with a safe environment that respects a student's identity while opening the world to them at the same time.",
         "Over more than fifteen years, we've built a complete educational system that combines the rigor of the Iraqi curriculum with the openness of international educational standards, graduating generations confident in their identity and ready for their future.",
         "Today, Alsharq continues to develop its academic and technology programs to stay at the forefront of private schools in Baghdad, trusted by hundreds of families who chose us as a partner in their sons' educational journey."
       ]
     },
     "visionMission": {
       "visionTitle": "Our Vision",
-      "visionBody": "To be Baghdad's leading private school in preparing a bilingual generation — academically and digitally capable, and able to compete locally and globally.",
+      "visionBody": "To be Baghdad's leading private secondary school in preparing a bilingual generation — academically and digitally capable, and able to compete locally and globally.",
       "missionTitle": "Our Mission",
       "missionBody": "We deliver a balanced education that combines Arabic and English, builds 21st-century skills, within a safe environment that embraces every student and believes in their unique abilities."
     },
@@ -225,7 +225,7 @@
         { "title": "Academic excellence", "description": "We commit to the highest quality standards in every subject taught." },
         { "title": "Discipline & respect", "description": "An organized school environment built on mutual respect and responsibility." },
         { "title": "Innovation & critical thinking", "description": "We encourage students to question, explore, and solve problems independently." },
-        { "title": "Partnership with families", "description": "We believe a student's success is the result of real cooperation between school and home." }
+        { "title": "Partnership with families", "description": "We believe a student's success is the result of real cooperation between the secondary school and home." }
       ]
     },
     "bilingual": {
@@ -307,7 +307,7 @@
     },
     "hero": {
       "eyebrow": "Student Life",
-      "title": "More than just a school",
+      "title": "More than just a secondary school",
       "subtitle": "A school life rich with activities and events that shape character and build lifelong skills."
     },
     "activities": {
@@ -337,7 +337,7 @@
       "title": "A healthy body, an active mind",
       "subtitle": "A complete sports program that builds fitness, teamwork, and a spirit of fair competition.",
       "items": [
-        { "title": "Inter-school tournaments", "description": "Regular leagues and tournaments that build school spirit." }
+        { "title": "Inter-school tournaments", "description": "Regular leagues and tournaments that build secondary school spirit." }
       ]
     },
     "events": {
@@ -364,13 +364,13 @@
   },
   "admissions": {
     "seo": {
-      "title": "Admissions | Alsharq School",
+      "title": "Admissions | Alsharq Secondary School",
       "description": "Registration requirements and steps, tuition fees, the online application form, and frequently asked questions about admission at Alsharq."
     },
     "hero": {
       "eyebrow": "Admissions",
       "title": "Your first step toward Alsharq",
-      "subtitle": "Everything you need to know about registration requirements, steps, and fees at Alsharq Bilingual Private School for Boys."
+      "subtitle": "Everything you need to know about registration requirements, steps, and fees at Alsharq Bilingual Private Secondary School for Boys."
     },
     "requirements": {
       "eyebrow": "Registration requirements",
@@ -410,7 +410,7 @@
           "answer": "Alsharq accepts students from Grade 7 through Grade 12, matched to the appropriate age for each grade."
         },
         {
-          "question": "Can a student transferring from another school be admitted?",
+          "question": "Can a student transferring from another secondary school be admitted?",
           "answer": "Yes, we accept transfer students at every grade level, after reviewing their previous academic record."
         },
         {
@@ -419,19 +419,19 @@
         },
         {
           "question": "Is school transport available?",
-          "answer": "Yes, the school offers a transport service covering most areas of Baghdad for an additional fee."
+          "answer": "Yes, the secondary school offers a transport service covering most areas of Baghdad for an additional fee."
         },
         {
           "question": "Are there sibling discounts?",
-          "answer": "Yes, the school offers a special discount when registering more than one son from the same family. Contact us for details."
+          "answer": "Yes, the secondary school offers a special discount when registering more than one son from the same family. Contact us for details."
         }
       ]
     }
   },
   "contact": {
     "seo": {
-      "title": "Contact Us | Alsharq School",
-      "description": "Reach Alsharq School by phone, WhatsApp, or the contact form, or visit our campus in Baghdad."
+      "title": "Contact Us | Alsharq Secondary School",
+      "description": "Reach Alsharq Secondary School by phone, WhatsApp, or the contact form, or visit our campus in Baghdad."
     },
     "hero": {
       "eyebrow": "Contact",

@@ -20,6 +20,7 @@ import { SiteHeader } from "@/components/layout/site-header";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { WhatsAppButton } from "@/components/layout/whatsapp-button";
 import { AnalyticsScripts } from "@/components/common/analytics/analytics-scripts";
+import { ThemeProvider } from "@/providers/theme-provider";
 
 import "@/app/globals.css";
 
@@ -67,8 +68,16 @@ export default async function LocaleLayout({
 
   const dir = locale === "ar" ? "rtl" : "ltr";
 
+  // Inline script: runs before first paint to apply saved theme class,
+  // preventing flash of wrong theme (FOWT).
+  const noFlashScript = `(function(){try{var t=localStorage.getItem('theme')||( window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`;
+
   return (
     <html lang={locale} dir={dir}>
+      {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />
+      </head>
       <body className={`${cairo.variable} font-sans antialiased`}>
         <script
           type="application/ld+json"
@@ -77,15 +86,17 @@ export default async function LocaleLayout({
           }}
         />
         <NextIntlClientProvider>
-          <ScrollLayout>
-            <AdaptiveGrid />
-            <ReducedMotion />
-            <SiteHeader />
-            {children}
-            <SiteFooter />
-            <WhatsAppButton />
-            <LazyCookie />
-          </ScrollLayout>
+          <ThemeProvider>
+            <ScrollLayout>
+              <AdaptiveGrid />
+              <ReducedMotion />
+              <SiteHeader />
+              {children}
+              <SiteFooter />
+              <WhatsAppButton />
+              <LazyCookie />
+            </ScrollLayout>
+          </ThemeProvider>
         </NextIntlClientProvider>
         <AnalyticsScripts />
       </body>

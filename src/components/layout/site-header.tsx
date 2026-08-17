@@ -9,6 +9,7 @@ import { Spring } from "@/components/animation/springs/spring";
 import { LanguageSwitch } from "@/components/layout/language-switch";
 import { CtaButton } from "@/components/ui/cta-button";
 import { ScrollLink } from "@/components/ui/scroll-link";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 // Single-page site (ADR-0022) — every former route is now a `#chapter`
 // anchored on the homepage; the nav smooth-scrolls instead of navigating.
@@ -40,13 +41,6 @@ export const SiteHeader = () => {
     return () => start();
   }, [open, start, stop]);
 
-  // Scroll-spy: highlight whichever chapter is currently near the top of
-  // the viewport as the user scrolls through the single long page. Driven
-  // directly off the native `scroll` event (which Lenis still dispatches as
-  // it moves `window.scrollY`) rather than IntersectionObserver — the
-  // in-page nav clicks briefly pause/resume Lenis around a programmatic
-  // scroll (see `scrollTo`), and that pause/resume window was swallowing
-  // IntersectionObserver's threshold callbacks.
   useEffect(() => {
     let ticking = false;
 
@@ -111,7 +105,8 @@ export const SiteHeader = () => {
           })}
         </nav>
 
-        <div className="hidden items-center gap-4 lg:flex">
+        <div className="hidden items-center gap-3 lg:flex">
+          <ThemeToggle className="text-foreground" />
           <LanguageSwitch className={`${linkClass} text-sm font-semibold text-foreground`} />
           <CtaButton
             href="#admissions"
@@ -121,32 +116,36 @@ export const SiteHeader = () => {
           </CtaButton>
         </div>
 
-        <button
-          type="button"
-          aria-expanded={open}
-          aria-controls="mobile-nav"
-          aria-label={open ? t("closeMenu") : t("toggleMenu")}
-          onClick={() => setOpen((o) => !o)}
-          className="flex h-10 w-10 items-center justify-center rounded-control text-action-primary lg:hidden"
-        >
-          <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
-            {open ? (
-              <path
-                d="M6 6l12 12M18 6L6 18"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            ) : (
-              <path
-                d="M4 7h16M4 12h16M4 17h16"
-                stroke="currentColor"
-                strokeWidth="2"
-                strokeLinecap="round"
-              />
-            )}
-          </svg>
-        </button>
+        {/* Mobile: show ThemeToggle alongside the hamburger */}
+        <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle className="text-foreground" />
+          <button
+            type="button"
+            aria-expanded={open}
+            aria-controls="mobile-nav"
+            aria-label={open ? t("closeMenu") : t("toggleMenu")}
+            onClick={() => setOpen((o) => !o)}
+            className="flex h-10 w-10 items-center justify-center rounded-control text-action-primary"
+          >
+            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" aria-hidden>
+              {open ? (
+                <path
+                  d="M6 6l12 12M18 6L6 18"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              ) : (
+                <path
+                  d="M4 7h16M4 12h16M4 17h16"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                />
+              )}
+            </svg>
+          </button>
+        </div>
       </div>
 
       {open && (

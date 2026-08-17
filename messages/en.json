@@ -140,10 +140,6 @@
       "subtitle": "",
       "items": [
         {
-          "title": "Blended national & international curriculum",
-          "description": "Combines Iraqi curriculum requirements with recognized international educational standards."
-        },
-        {
           "title": "Intensive English",
           "description": "Daily intensive lessons to build confident speaking, writing, and listening skills."
         },
@@ -570,6 +566,10 @@
         {
           "question": "Are there sibling discounts?",
           "answer": "Yes, the secondary school offers a special discount when registering more than one son from the same family. Contact us for details."
+        },
+        {
+          "question": "My son is in Grade 8 at a regular (non-bilingual) school — can he be admitted to your advanced classes?",
+          "answer": "The decision is made following a student interview."
         }
       ]
     }

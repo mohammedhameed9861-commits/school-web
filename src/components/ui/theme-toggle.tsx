@@ -3,7 +3,7 @@
 import { useTheme } from "@/providers/theme-provider";
 
 const SunIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden>
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden>
     <circle cx="12" cy="12" r="5" stroke="currentColor" strokeWidth="2" />
     <path
       stroke="currentColor"
@@ -15,7 +15,7 @@ const SunIcon = () => (
 );
 
 const MoonIcon = () => (
-  <svg viewBox="0 0 24 24" width="18" height="18" fill="none" aria-hidden>
+  <svg viewBox="0 0 24 24" width="20" height="20" fill="none" aria-hidden>
     <path
       stroke="currentColor"
       strokeWidth="2"
@@ -32,15 +32,17 @@ interface ThemeToggleProps {
 
 export const ThemeToggle = ({ className = "" }: ThemeToggleProps) => {
   const { theme, toggle } = useTheme();
+  const isDark = theme === "dark";
 
   return (
     <button
       type="button"
       onClick={toggle}
-      aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-      className={`flex h-9 w-9 items-center justify-center rounded-control transition-colors duration-[var(--duration-fast)] ease-entrance hover:bg-surface-muted hover:text-action-accent ${className}`}
+      aria-label={isDark ? "الوضع النهاري" : "الوضع الليلي"}
+      title={isDark ? "الوضع النهاري" : "الوضع الليلي"}
+      className={`flex h-9 w-9 items-center justify-center rounded-control border border-border bg-surface-muted text-foreground shadow-sm transition-colors duration-[var(--duration-fast)] ease-entrance hover:border-action-accent hover:text-action-accent ${className}`}
     >
-      {theme === "dark" ? <SunIcon /> : <MoonIcon />}
+      {isDark ? <SunIcon /> : <MoonIcon />}
     </button>
   );
 };

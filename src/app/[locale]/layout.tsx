@@ -73,7 +73,7 @@ export default async function LocaleLayout({
   const noFlashScript = `(function(){try{var t=localStorage.getItem('theme')||( window.matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');if(t==='dark')document.documentElement.classList.add('dark');}catch(e){}})();`;
 
   return (
-    <html lang={locale} dir={dir}>
+    <html lang={locale} dir={dir} suppressHydrationWarning>
       {/* eslint-disable-next-line @next/next/no-sync-scripts */}
       <head>
         <script dangerouslySetInnerHTML={{ __html: noFlashScript }} />

@@ -85,9 +85,18 @@
       "subtitle": "At Alsharq Bilingual Private Secondary School for Boys, we prepare students academically, personally and professionally for the future, in an outstanding environment that brings Arabic and English together.",
       "ctaSecondary": "Discover the secondary school",
       "stats": [
-        { "value": "15+", "label": "years of educational excellence" },
-        { "value": "2", "label": "languages of instruction" },
-        { "value": "95%", "label": "annual pass rate" }
+        {
+          "value": "15+",
+          "label": "years of educational excellence"
+        },
+        {
+          "value": "2",
+          "label": "languages of instruction"
+        },
+        {
+          "value": "95%",
+          "label": "annual pass rate"
+        }
       ]
     },
     "registerCta": {
@@ -153,8 +162,14 @@
       "title": "An inspiring campus",
       "subtitle": "A modern campus designed to bring learning, activity, and comfort together.",
       "items": [
-        { "title": "Smart classrooms", "description": "Classrooms fitted with interactive teaching aids and modern technology." },
-        { "title": "Sports facilities & fields", "description": "Multi-purpose fields for football, basketball, and other sports." }
+        {
+          "title": "Smart classrooms",
+          "description": "Classrooms fitted with interactive teaching aids and modern technology."
+        },
+        {
+          "title": "Sports facilities & fields",
+          "description": "Multi-purpose fields for football, basketball, and other sports."
+        }
       ]
     },
     "achievements": {
@@ -162,10 +177,22 @@
       "title": "Our teachers — the foundation of your son's success",
       "subtitle": "An elite team of educators leading our students toward academic and intellectual excellence across Baghdad.",
       "stats": [
-        { "value": "500+", "label": "high-achieving students" },
-        { "value": "30+", "label": "specialist teachers" },
-        { "value": "20+", "label": "academic awards & achievements" },
-        { "value": "98%", "label": "parent satisfaction" }
+        {
+          "value": "500+",
+          "label": "high-achieving students"
+        },
+        {
+          "value": "30+",
+          "label": "specialist teachers"
+        },
+        {
+          "value": "20+",
+          "label": "academic awards & achievements"
+        },
+        {
+          "value": "98%",
+          "label": "parent satisfaction"
+        }
       ]
     },
     "testimonials": {
@@ -221,11 +248,26 @@
       "title": "What guides every decision we make",
       "subtitle": "Firm values that shape a student's character, in the classroom and beyond.",
       "items": [
-        { "title": "Authenticity & belonging", "description": "We instill pride in Arabic language and Arab-Islamic identity in every student." },
-        { "title": "Academic excellence", "description": "We commit to the highest quality standards in every subject taught." },
-        { "title": "Discipline & respect", "description": "An organized school environment built on mutual respect and responsibility." },
-        { "title": "Innovation & critical thinking", "description": "We encourage students to question, explore, and solve problems independently." },
-        { "title": "Partnership with families", "description": "We believe a student's success is the result of real cooperation between the secondary school and home." }
+        {
+          "title": "Authenticity & belonging",
+          "description": "We instill pride in Arabic language and Arab-Islamic identity in every student."
+        },
+        {
+          "title": "Academic excellence",
+          "description": "We commit to the highest quality standards in every subject taught."
+        },
+        {
+          "title": "Discipline & respect",
+          "description": "An organized school environment built on mutual respect and responsibility."
+        },
+        {
+          "title": "Innovation & critical thinking",
+          "description": "We encourage students to question, explore, and solve problems independently."
+        },
+        {
+          "title": "Partnership with families",
+          "description": "We believe a student's success is the result of real cooperation between the secondary school and home."
+        }
       ]
     },
     "bilingual": {
@@ -233,9 +275,18 @@
       "title": "Two languages, double the opportunity",
       "subtitle": "Mastering both Arabic and English is no longer a luxury — it's a necessity for our sons' future.",
       "points": [
-        { "title": "Broader cognitive ability", "description": "Learning two languages from an early age builds mental flexibility and problem-solving skills." },
-        { "title": "University & global readiness", "description": "Mastering academic English opens the door to the best universities, locally and abroad." },
-        { "title": "A rooted, open identity", "description": "Mastering Arabic first preserves identity, while English opens windows to the world." }
+        {
+          "title": "Broader cognitive ability",
+          "description": "Learning two languages from an early age builds mental flexibility and problem-solving skills."
+        },
+        {
+          "title": "University & global readiness",
+          "description": "Mastering academic English opens the door to the best universities, locally and abroad."
+        },
+        {
+          "title": "A rooted, open identity",
+          "description": "Mastering Arabic first preserves identity, while English opens windows to the world."
+        }
       ]
     }
   },
@@ -254,9 +305,18 @@
       "title": "A national curriculum, global standards",
       "subtitle": "We build on the official Iraqi curriculum, enriched with international resources and standards in science, languages, and critical thinking.",
       "items": [
-        { "title": "Science subjects", "description": "Math, physics, chemistry and biology with enhanced content and hands-on application." },
-        { "title": "Humanities", "description": "History, geography, and Islamic/national education that build awareness and belonging." },
-        { "title": "Digital skills", "description": "Computing, AI, and entrepreneurship built into the core study plan." }
+        {
+          "title": "Science subjects",
+          "description": "Math, physics, chemistry and biology with enhanced content and hands-on application."
+        },
+        {
+          "title": "Humanities",
+          "description": "History, geography, and Islamic/national education that build awareness and belonging."
+        },
+        {
+          "title": "Digital skills",
+          "description": "Computing, AI, and entrepreneurship built into the core study plan."
+        }
       ]
     },
     "languages": {
@@ -267,24 +327,27 @@
       "englishTitle": "English",
       "englishBody": "An intensive English program built on international resources, preparing students to communicate academically and professionally with confidence."
     },
-    "gradeLevels": {
-      "eyebrow": "Grade levels",
-      "title": "A progressive academic path",
-      "subtitle": "Grade levels designed to match each student's academic and developmental stage.",
-      "stages": [
-        { "title": "Intermediate stage", "range": "Grades 7–9", "description": "Building the academic and language foundation and developing independent learning skills." },
-        { "title": "Preparatory stage", "range": "Grades 10–12", "description": "Deepening academic specialization and serious preparation for university and the job market." }
-      ]
-    },
     "teachingApproach": {
       "eyebrow": "Our teaching approach",
       "title": "Learning built on understanding, not memorization",
       "subtitle": "We use modern teaching methods that put the student at the center of the learning process.",
       "items": [
-        { "title": "Project-based learning", "description": "Connecting subject matter to real, hands-on applications and activities." },
-        { "title": "Continuous assessment", "description": "Regular tracking of student performance instead of relying solely on final exams." },
-        { "title": "Interactive classrooms", "description": "Discussion, critical thinking, and group work in every lesson." },
-        { "title": "Individual support", "description": "Additional support plans for students who need deeper academic follow-up." }
+        {
+          "title": "Project-based learning",
+          "description": "Connecting subject matter to real, hands-on applications and activities."
+        },
+        {
+          "title": "Continuous assessment",
+          "description": "Regular tracking of student performance instead of relying solely on final exams."
+        },
+        {
+          "title": "Interactive classrooms",
+          "description": "Discussion, critical thinking, and group work in every lesson."
+        },
+        {
+          "title": "Individual support",
+          "description": "Additional support plans for students who need deeper academic follow-up."
+        }
       ]
     },
     "aiProgram": {
@@ -293,10 +356,22 @@
       "subtitle": "A unique foundational program preparing Alsharq students with future-ready skills, rarely found in other private schools.",
       "body": "Students learn programming fundamentals and computational thinking alongside AI applications, plus entrepreneurship skills from idea to pitch, through hands-on experiences and interactive workshops.",
       "points": [
-        { "title": "Programming fundamentals", "description": "A hands-on introduction to programming and computational problem-solving." },
-        { "title": "AI applications", "description": "Understanding AI tools and using them responsibly and creatively." },
-        { "title": "Entrepreneurial thinking", "description": "From idea to prototype, through real student-led projects." },
-        { "title": "Presentation skills", "description": "Building confidence presenting ideas to a real audience." }
+        {
+          "title": "Programming fundamentals",
+          "description": "A hands-on introduction to programming and computational problem-solving."
+        },
+        {
+          "title": "AI applications",
+          "description": "Understanding AI tools and using them responsibly and creatively."
+        },
+        {
+          "title": "Entrepreneurial thinking",
+          "description": "From idea to prototype, through real student-led projects."
+        },
+        {
+          "title": "Presentation skills",
+          "description": "Building confidence presenting ideas to a real audience."
+        }
       ]
     }
   },
@@ -315,12 +390,30 @@
       "title": "Spaces to discover a passion",
       "subtitle": "A variety of clubs let students explore their interests beyond the curriculum.",
       "items": [
-        { "title": "Reading & debate club", "description": "Building dialogue, critical thinking, and expression skills." },
-        { "title": "Science club", "description": "Hands-on scientific exploration beyond the curriculum." },
-        { "title": "Robotics & coding club", "description": "Building and programming robots through competitive projects." },
-        { "title": "Arts & drama club", "description": "Drawing, music, and theatre to nurture creative talent." },
-        { "title": "Entrepreneurship club", "description": "Developing real student projects from idea to execution." },
-        { "title": "Scouting & trips", "description": "Field and leadership activities that build independence and discipline." }
+        {
+          "title": "Reading & debate club",
+          "description": "Building dialogue, critical thinking, and expression skills."
+        },
+        {
+          "title": "Science club",
+          "description": "Hands-on scientific exploration beyond the curriculum."
+        },
+        {
+          "title": "Robotics & coding club",
+          "description": "Building and programming robots through competitive projects."
+        },
+        {
+          "title": "Arts & drama club",
+          "description": "Drawing, music, and theatre to nurture creative talent."
+        },
+        {
+          "title": "Entrepreneurship club",
+          "description": "Developing real student projects from idea to execution."
+        },
+        {
+          "title": "Scouting & trips",
+          "description": "Field and leadership activities that build independence and discipline."
+        }
       ]
     },
     "labs": {
@@ -328,8 +421,14 @@
       "title": "Learning by doing",
       "subtitle": "Fully equipped labs turn theoretical concepts into tangible, hands-on experience.",
       "items": [
-        { "title": "Physics lab", "description": "Hands-on experiments in mechanics, electricity, and light." },
-        { "title": "Chemistry lab", "description": "Safe, supervised experiments to understand chemical reactions." }
+        {
+          "title": "Physics lab",
+          "description": "Hands-on experiments in mechanics, electricity, and light."
+        },
+        {
+          "title": "Chemistry lab",
+          "description": "Safe, supervised experiments to understand chemical reactions."
+        }
       ]
     },
     "sports": {
@@ -337,7 +436,10 @@
       "title": "A healthy body, an active mind",
       "subtitle": "A complete sports program that builds fitness, teamwork, and a spirit of fair competition.",
       "items": [
-        { "title": "Inter-school tournaments", "description": "Regular leagues and tournaments that build secondary school spirit." }
+        {
+          "title": "Inter-school tournaments",
+          "description": "Regular leagues and tournaments that build secondary school spirit."
+        }
       ]
     },
     "events": {
@@ -345,10 +447,22 @@
       "title": "Occasions that make memories",
       "subtitle": "Annual events bringing students, families, and teachers together in a meaningful, festive atmosphere.",
       "items": [
-        { "title": "Annual sports day", "description": "A day full of sports competitions with every grade taking part." },
-        { "title": "Science project fair", "description": "Students showcase their scientific and tech projects to families." },
-        { "title": "Graduation ceremony", "description": "An annual celebration honoring the graduating class and their achievements." },
-        { "title": "Culture week", "description": "Events celebrating Arab heritage and openness to world cultures." }
+        {
+          "title": "Annual sports day",
+          "description": "A day full of sports competitions with every grade taking part."
+        },
+        {
+          "title": "Science project fair",
+          "description": "Students showcase their scientific and tech projects to families."
+        },
+        {
+          "title": "Graduation ceremony",
+          "description": "An annual celebration honoring the graduating class and their achievements."
+        },
+        {
+          "title": "Culture week",
+          "description": "Events celebrating Arab heritage and openness to world cultures."
+        }
       ]
     },
     "projects": {
@@ -356,9 +470,18 @@
       "title": "Our students' ideas become reality",
       "subtitle": "Real, student-led projects from planning through to final presentation.",
       "items": [
-        { "title": "AI projects", "description": "Simple applications designed by students within the AI program." },
-        { "title": "Entrepreneurial projects", "description": "Business project ideas developed by students and pitched to a judging panel." },
-        { "title": "Scientific research projects", "description": "Field and experimental research prepared by students under teacher supervision." }
+        {
+          "title": "AI projects",
+          "description": "Simple applications designed by students within the AI program."
+        },
+        {
+          "title": "Entrepreneurial projects",
+          "description": "Business project ideas developed by students and pitched to a judging panel."
+        },
+        {
+          "title": "Scientific research projects",
+          "description": "Field and experimental research prepared by students under teacher supervision."
+        }
       ]
     }
   },
@@ -377,11 +500,26 @@
       "title": "Required documents",
       "subtitle": "Please have the following documents ready when submitting your application.",
       "items": [
-        { "title": "Registration application form", "description": "Complete the online or paper registration form in full." },
-        { "title": "Birth certificate copy", "description": "A clear, certified copy of the student's birth certificate." },
-        { "title": "Previous school record", "description": "Transcript or report card from the previous academic year." },
-        { "title": "Personal photos", "description": "Four recent passport-style photos of the student." },
-        { "title": "Parent ID copy", "description": "A copy of the parent's national ID or passport." }
+        {
+          "title": "Registration application form",
+          "description": "Complete the online or paper registration form in full."
+        },
+        {
+          "title": "Birth certificate copy",
+          "description": "A clear, certified copy of the student's birth certificate."
+        },
+        {
+          "title": "Previous school record",
+          "description": "Transcript or report card from the previous academic year."
+        },
+        {
+          "title": "Personal photos",
+          "description": "Four recent passport-style photos of the student."
+        },
+        {
+          "title": "Parent ID copy",
+          "description": "A copy of the parent's national ID or passport."
+        }
       ]
     },
     "steps": {
@@ -389,10 +527,22 @@
       "title": "From application to enrollment",
       "subtitle": "A clear, straightforward registration process in four steps.",
       "items": [
-        { "title": "Submit the online application", "description": "Fill in the registration form on the site; our admissions team will reach out within 24 hours." },
-        { "title": "Document review", "description": "The admissions team reviews the submitted documents and confirms eligibility." },
-        { "title": "Introductory meeting & assessment", "description": "A short meeting with student and parent to understand the student's academic level." },
-        { "title": "Confirm registration", "description": "Complete payment procedures and confirm the student's seat for the academic year." }
+        {
+          "title": "Submit the online application",
+          "description": "Fill in the registration form on the site; our admissions team will reach out within 24 hours."
+        },
+        {
+          "title": "Document review",
+          "description": "The admissions team reviews the submitted documents and confirms eligibility."
+        },
+        {
+          "title": "Introductory meeting & assessment",
+          "description": "A short meeting with student and parent to understand the student's academic level."
+        },
+        {
+          "title": "Confirm registration",
+          "description": "Complete payment procedures and confirm the student's seat for the academic year."
+        }
       ]
     },
     "fees": {

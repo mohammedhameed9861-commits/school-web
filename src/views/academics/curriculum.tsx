@@ -13,7 +13,7 @@ export const Curriculum = async () => {
       className="bg-background py-20"
     >
       <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
-        <SectionHeading id="curriculum-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeading id="curriculum-title" eyebrow={t("eyebrow")} subtitle={t("subtitle")} subtitleBold />
         <div className="mt-12">
           <MediaCardGrid
             items={items}

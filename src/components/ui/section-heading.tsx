@@ -3,8 +3,9 @@ import TextEngine from "spring-text-engine";
 
 export interface SectionHeadingProps {
   eyebrow?: string;
-  title: string;
+  title?: string;
   subtitle?: string;
+  subtitleBold?: boolean;
   align?: "center" | "start";
   invert?: boolean;
   id?: string;
@@ -14,6 +15,7 @@ export const SectionHeading = ({
   eyebrow,
   title,
   subtitle,
+  subtitleBold = false,
   align = "center",
   invert = false,
   id,
@@ -35,19 +37,21 @@ export const SectionHeading = ({
           {eyebrow}
         </Inview>
       )}
-      <TextEngine
-        tag="h2"
-        id={id}
-        mode="once"
-        className={`leading-display mt-3 text-3xl font-bold sm:text-4xl ${alignClass}`}
-        wordIn={{ y: "0%", opacity: 1, scale: 1 }}
-        wordOut={{ y: "50%", opacity: 0, scale: 0.9 }}
-        wordStagger={45}
-        wordConfig={{ tension: 190, friction: 22 }}
-        overflow
-      >
-        {title}
-      </TextEngine>
+      {title && (
+        <TextEngine
+          tag="h2"
+          id={id}
+          mode="once"
+          className={`leading-display mt-3 text-3xl font-bold sm:text-4xl ${alignClass}`}
+          wordIn={{ y: "0%", opacity: 1, scale: 1 }}
+          wordOut={{ y: "50%", opacity: 0, scale: 0.9 }}
+          wordStagger={45}
+          wordConfig={{ tension: 190, friction: 22 }}
+          overflow
+        >
+          {title}
+        </TextEngine>
+      )}
       {subtitle && (
         <Inview
           tag="p"
@@ -55,7 +59,7 @@ export const SectionHeading = ({
           delayIn={200}
           from={{ opacity: 0, y: 12 }}
           to={{ opacity: 1, y: 0 }}
-          className={`mt-4 text-base ${subtitleColor}`}
+          className={`mt-4 text-base ${subtitleColor}${subtitleBold ? " font-bold" : ""}`}
         >
           {subtitle}
         </Inview>

@@ -3,7 +3,6 @@ import { getTranslations } from "next-intl/server";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Curriculum } from "@/views/academics/curriculum";
 import { Languages } from "@/views/academics/languages";
-import { GradeLevels } from "@/views/academics/grade-levels";
 import { TeachingApproach } from "@/views/academics/teaching-approach";
 import { AiProgram } from "@/views/academics/ai-program";
 
@@ -18,7 +17,6 @@ export const AcademicsView = async () => {
       </div>
       <Curriculum />
       <Languages />
-      <GradeLevels />
       <TeachingApproach />
       <AiProgram />
     </>

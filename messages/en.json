@@ -501,24 +501,20 @@
       "subtitle": "Please have the following documents ready when submitting your application.",
       "items": [
         {
-          "title": "Registration application form",
-          "description": "Complete the online or paper registration form in full."
+          "title": "Unified ID card (parent & student)",
+          "description": "A copy of the national unified ID card for both the parent and the student."
         },
         {
-          "title": "Birth certificate copy",
+          "title": "Residence card",
+          "description": "A copy of the family's current residence card."
+        },
+        {
+          "title": "Birth certificate",
           "description": "A clear, certified copy of the student's birth certificate."
         },
         {
           "title": "Previous school record",
-          "description": "Transcript or report card from the previous academic year."
-        },
-        {
-          "title": "Personal photos",
-          "description": "Four recent passport-style photos of the student."
-        },
-        {
-          "title": "Parent ID copy",
-          "description": "A copy of the parent's national ID or passport."
+          "description": "Grade transcripts or the school report for the previous academic year."
         }
       ]
     },

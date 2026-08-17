@@ -155,8 +155,8 @@
     },
     "facilities": {
       "eyebrow": "Facilities & school life",
-      "title": "An inspiring campus",
-      "subtitle": "A modern campus designed to bring learning, activity, and comfort together.",
+      "title": "A modern campus designed to bring learning, activity, and comfort together.",
+      "subtitle": "",
       "items": [
         {
           "title": "Smart classrooms",
@@ -193,8 +193,8 @@
     },
     "testimonials": {
       "eyebrow": "What parents say",
-      "title": "The trust of families — our greatest achievement",
-      "subtitle": "We're proud of the trust families have placed in us throughout their sons' educational journey.",
+      "title": "We're proud of the trust families have placed in us throughout their sons' educational journey.",
+      "subtitle": "",
       "items": [
         {
           "quote": "Since my son joined Alsharq, we've seen a real change in his self-confidence and in his level in both Arabic and English.",
@@ -268,8 +268,8 @@
     },
     "bilingual": {
       "eyebrow": "Why bilingual education matters",
-      "title": "Two languages, double the opportunity",
-      "subtitle": "Mastering both Arabic and English is no longer a luxury — it's a necessity for our sons' future.",
+      "title": "Mastering both Arabic and English is no longer a luxury — it's a necessity for our sons' future.",
+      "subtitle": "",
       "points": [
         {
           "title": "Broader cognitive ability",
@@ -293,8 +293,8 @@
     },
     "hero": {
       "eyebrow": "Academics",
-      "title": "A curriculum balancing tradition and the future",
-      "subtitle": "Academic programs designed to prepare students scientifically, linguistically, and technologically at once."
+      "title": "Academic programs designed to prepare students scientifically, linguistically, and technologically at once.",
+      "subtitle": ""
     },
     "curriculum": {
       "eyebrow": "The curriculum",
@@ -325,8 +325,8 @@
     },
     "teachingApproach": {
       "eyebrow": "Our teaching approach",
-      "title": "Learning built on understanding, not memorization",
-      "subtitle": "We use modern teaching methods that put the student at the center of the learning process.",
+      "title": "We use modern teaching methods that put the student at the center of the learning process.",
+      "subtitle": "",
       "items": [
         {
           "title": "Project-based learning",

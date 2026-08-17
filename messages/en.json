@@ -136,8 +136,8 @@
     },
     "programs": {
       "eyebrow": "Our academic programs",
-      "title": "A curriculum built for the future",
-      "subtitle": "Complete academic programs that combine national curriculum requirements with the skills of today.",
+      "title": "Complete academic programs that combine national curriculum requirements with the skills of today.",
+      "subtitle": "",
       "items": [
         {
           "title": "Blended national & international curriculum",

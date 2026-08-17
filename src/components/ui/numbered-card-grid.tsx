@@ -8,11 +8,11 @@ export interface NumberedItem {
 export interface NumberedCardGridProps {
   items: NumberedItem[];
   columns?: 2 | 3;
-  /** Set false to drop the 01/02/… badge and render plain cards. Defaults to true. */
+  /** Set true to show the 01/02/… badge. Defaults to false (plain cards). */
   numbered?: boolean;
 }
 
-export const NumberedCardGrid = ({ items, columns = 3, numbered = true }: NumberedCardGridProps) => {
+export const NumberedCardGrid = ({ items, columns = 3, numbered = false }: NumberedCardGridProps) => {
   const colClass = columns === 2 ? "sm:grid-cols-2" : "sm:grid-cols-2 lg:grid-cols-3";
 
   return (

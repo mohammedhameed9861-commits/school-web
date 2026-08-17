@@ -35,7 +35,7 @@ export const Hero = async () => {
           tag="h1"
           id="hero-title"
           mode="once"
-          className="leading-display max-w-3xl text-center justify-center text-4xl font-bold sm:text-6xl"
+          className="leading-display text-center justify-center text-4xl font-bold sm:text-5xl sm:whitespace-nowrap"
           wordIn={{ y: "0%", opacity: 1, scale: 1 }}
           wordOut={{ y: "60%", opacity: 0, scale: 0.85 }}
           wordStagger={80}

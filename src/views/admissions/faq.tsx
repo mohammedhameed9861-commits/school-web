@@ -1,7 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Inview } from "@/components/animation/springs/in-view";
+import { getPageSection } from "@/sanity/queries";
 
 interface FaqItem {
   question: string;
@@ -10,12 +11,21 @@ interface FaqItem {
 
 export const Faq = async () => {
   const t = await getTranslations("admissions.faq");
-  const items = t.raw("items") as FaqItem[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const cms = await getPageSection("admissions.faq", locale);
+  const items: FaqItem[] =
+    cms?.items?.map((i) => ({ question: i.title, answer: i.description })) ||
+    (t.raw("items") as FaqItem[]);
 
   return (
     <section aria-labelledby="faq-title" className="bg-surface-muted py-20">
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
-        <SectionHeading id="faq-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeading
+          id="faq-title"
+          eyebrow={cms?.eyebrow || t("eyebrow")}
+          title={cms?.title || t("title")}
+          subtitle={cms?.subtitle || t("subtitle")}
+        />
         <div className="mt-10 flex flex-col gap-3">
           {items.map((item, index) => (
             <Inview

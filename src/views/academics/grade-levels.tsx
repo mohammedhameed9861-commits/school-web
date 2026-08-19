@@ -1,7 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Inview } from "@/components/animation/springs/in-view";
+import { getPageSection } from "@/sanity/queries";
 
 interface Stage {
   title: string;
@@ -11,12 +12,21 @@ interface Stage {
 
 export const GradeLevels = async () => {
   const t = await getTranslations("academics.gradeLevels");
-  const stages = t.raw("stages") as Stage[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const cms = await getPageSection("academics.gradeLevels", locale);
+  const stages: Stage[] =
+    cms?.items?.map((i) => ({ title: i.title, range: i.meta || "", description: i.description })) ||
+    (t.raw("stages") as Stage[]);
 
   return (
     <section aria-labelledby="grade-levels-title" className="bg-background py-20">
       <div className="mx-auto max-w-[70rem] px-4 sm:px-6">
-        <SectionHeading id="grade-levels-title" eyebrow={t("eyebrow")} title={t("title")} subtitle={t("subtitle")} />
+        <SectionHeading
+          id="grade-levels-title"
+          eyebrow={cms?.eyebrow || t("eyebrow")}
+          title={cms?.title || t("title")}
+          subtitle={cms?.subtitle || t("subtitle")}
+        />
         <div className="mt-12 grid gap-6 lg:grid-cols-2">
           {stages.map((stage, index) => (
             <Inview

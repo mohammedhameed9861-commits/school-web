@@ -11,6 +11,8 @@ import {
 } from "@/utils/seo/generate-page-metadata";
 import { getSiteStructuredData } from "@/utils/seo/structured-data";
 import { getLocaleAlternates, ogLocaleFor } from "@/utils/seo/locale-alternates";
+import { getSiteSettings } from "@/sanity/queries";
+import { siteConfig } from "@/lib/site";
 
 import { LazyCookie } from "@/components/common/Cookie";
 import { AdaptiveGrid } from "@/components/common/grid";
@@ -66,6 +68,9 @@ export default async function LocaleLayout({
   }
   setRequestLocale(locale);
 
+  const settings = await getSiteSettings();
+  const whatsapp = settings?.whatsapp || siteConfig.whatsapp;
+
   const dir = locale === "ar" ? "rtl" : "ltr";
 
   // Inline script: runs before first paint to apply saved theme class,
@@ -93,7 +98,7 @@ export default async function LocaleLayout({
               <SiteHeader />
               {children}
               <SiteFooter />
-              <WhatsAppButton />
+              <WhatsAppButton whatsapp={whatsapp} />
               <LazyCookie />
             </ScrollLayout>
           </ThemeProvider>

@@ -5,14 +5,14 @@ import { routing } from "@/i18n/routing";
 const intlMiddleware = createMiddleware(routing);
 
 export default function middleware(request: NextRequest) {
-  // Let /admin routes bypass locale handling entirely.
-  if (request.nextUrl.pathname.startsWith("/admin")) {
+  const { pathname } = request.nextUrl;
+  // Let /admin and /studio bypass locale handling entirely.
+  if (pathname.startsWith("/admin") || pathname.startsWith("/studio")) {
     return NextResponse.next();
   }
   return intlMiddleware(request);
 }
 
 export const config = {
-  // Apply to everything except API routes, Next.js internals, and static assets.
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };

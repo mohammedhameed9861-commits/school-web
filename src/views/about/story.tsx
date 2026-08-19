@@ -12,6 +12,7 @@ export const Story = async () => {
   const eyebrow = cms?.eyebrow || t("eyebrow");
   const title = cms?.title || t("title");
   const paragraphs = cms?.paragraphs || (t.raw("paragraphs") as string[]);
+  const image = cms?.imageUrl || "/assets/photos/graduation-2026.jpg";
 
   return (
     <section
@@ -20,7 +21,7 @@ export const Story = async () => {
     >
       <div className="mx-auto grid max-w-[70rem] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
-          <Image src="/assets/photos/graduation-2026.jpg" alt={title} fill className="object-cover" />
+          <Image src={image} alt={title} fill className="object-cover" />
         </div>
         <div>
           <SectionHeading

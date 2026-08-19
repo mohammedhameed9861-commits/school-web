@@ -1,9 +1,10 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { ParallaxOrbs } from "@/components/ui/parallax-orbs";
 import { Inview } from "@/components/animation/springs/in-view";
+import { getAchievements } from "@/sanity/queries";
 
 interface Stat {
   value: string;
@@ -12,7 +13,8 @@ interface Stat {
 
 export const Achievements = async () => {
   const t = await getTranslations("home.achievements");
-  const stats = t.raw("stats") as Stat[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const stats = (await getAchievements(locale)) || (t.raw("stats") as Stat[]);
 
   return (
     <section

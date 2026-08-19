@@ -1,7 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Inview } from "@/components/animation/springs/in-view";
+import { getPageSection } from "@/sanity/queries";
 
 interface Point {
   title: string;
@@ -10,16 +11,18 @@ interface Point {
 
 export const AiProgram = async () => {
   const t = await getTranslations("academics.aiProgram");
-  const points = t.raw("points") as Point[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const cms = await getPageSection("academics.aiProgram", locale);
+  const points = cms?.items || (t.raw("points") as Point[]);
 
   return (
     <section aria-labelledby="ai-program-title" className="bg-surface-inverted py-20 text-foreground-inverted">
       <div className="mx-auto max-w-[70rem] px-4 sm:px-6">
         <SectionHeading
           id="ai-program-title"
-          eyebrow={t("eyebrow")}
-          title={t("title")}
-          subtitle={t("subtitle")}
+          eyebrow={cms?.eyebrow || t("eyebrow")}
+          title={cms?.title || t("title")}
+          subtitle={cms?.subtitle || t("subtitle")}
           invert
         />
         <Inview
@@ -30,7 +33,7 @@ export const AiProgram = async () => {
           to={{ opacity: 1, y: 0 }}
           className="mx-auto mt-8 max-w-2xl text-center text-sm leading-relaxed text-foreground-inverted/80"
         >
-          {t("body")}
+          {cms?.body || t("body")}
         </Inview>
         <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
           {points.map((point, index) => (

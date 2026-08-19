@@ -1,3 +1,4 @@
+import { unstable_noStore as noStore } from "next/cache";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Inview } from "@/components/animation/springs/in-view";
 import { getSupabase } from "@/lib/supabase";
@@ -10,6 +11,8 @@ interface Post {
 }
 
 async function getPublishedPosts(): Promise<Post[]> {
+  // Opt out of static caching so newly published posts appear immediately.
+  noStore();
   try {
     const { data } = await getSupabase()
       .from("posts")

@@ -1,12 +1,17 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Inview } from "@/components/animation/springs/in-view";
+import { getPageSection } from "@/sanity/queries";
 
 export const Story = async () => {
   const t = await getTranslations("about.story");
-  const paragraphs = t.raw("paragraphs") as string[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const cms = await getPageSection("about.story", locale);
+  const eyebrow = cms?.eyebrow || t("eyebrow");
+  const title = cms?.title || t("title");
+  const paragraphs = cms?.paragraphs || (t.raw("paragraphs") as string[]);
 
   return (
     <section
@@ -15,14 +20,14 @@ export const Story = async () => {
     >
       <div className="mx-auto grid max-w-[70rem] gap-10 px-4 sm:px-6 lg:grid-cols-2 lg:items-center">
         <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card">
-          <Image src="/assets/photos/graduation-2026.jpg" alt={t("title")} fill className="object-cover" />
+          <Image src="/assets/photos/graduation-2026.jpg" alt={title} fill className="object-cover" />
         </div>
         <div>
           <SectionHeading
             id="story-title"
             align="start"
-            eyebrow={t("eyebrow")}
-            title={t("title")}
+            eyebrow={eyebrow}
+            title={title}
           />
           <Inview
             tag="div"

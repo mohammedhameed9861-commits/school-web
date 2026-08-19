@@ -9,6 +9,10 @@ export const Sports = async () => {
   const locale = (await getLocale()) as "ar" | "en";
   const cms = await getPageSection("studentLife.sports", locale);
   const items = cms?.items || (t.raw("items") as MediaItem[]);
+  const fallbackImages = ["/assets/photos/table-tennis.jpg"];
+  const images = items.map(
+    (item, index) => (item as { imageUrl?: string | null }).imageUrl || fallbackImages[index],
+  );
 
   return (
     <section aria-labelledby="sports-title" className="bg-background py-20">
@@ -20,11 +24,7 @@ export const Sports = async () => {
           subtitle={cms?.subtitle || t("subtitle")}
         />
         <div className="mt-12">
-          <MediaCardGrid
-            items={items}
-            images={["/assets/photos/table-tennis.jpg"]}
-            columns={2}
-          />
+          <MediaCardGrid items={items} images={images} columns={2} />
         </div>
       </div>
     </section>

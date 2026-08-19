@@ -180,13 +180,19 @@ export async function getTestimonials(locale: Locale): Promise<TestimonialItem[]
   }
 }
 
-export type PageSectionItem = { title: string; description: string; meta?: string };
+export type PageSectionItem = {
+  title: string;
+  description: string;
+  meta?: string;
+  imageUrl?: string | null;
+};
 
 export type PageSectionData = {
   eyebrow?: string;
   title?: string;
   subtitle?: string;
   body?: string;
+  imageUrl?: string | null;
   paragraphs?: string[];
   pairLeft?: { title: string; body: string };
   pairRight?: { title: string; body: string };
@@ -202,6 +208,7 @@ type RawPageSectionDoc = {
   subtitleEn?: string;
   bodyAr?: string;
   bodyEn?: string;
+  image?: SanityImageRef;
   paragraphs?: { textAr?: string; textEn?: string }[];
   pairLeftTitleAr?: string;
   pairLeftTitleEn?: string;
@@ -218,6 +225,7 @@ type RawPageSectionDoc = {
     descriptionEn?: string;
     metaAr?: string;
     metaEn?: string;
+    image?: SanityImageRef;
   }[];
 };
 
@@ -247,6 +255,7 @@ export async function getPageSection(key: string, locale: Locale): Promise<PageS
         title: pick(i.titleAr, i.titleEn) || "",
         description: pick(i.descriptionAr, i.descriptionEn) || "",
         meta: pick(i.metaAr, i.metaEn),
+        imageUrl: urlFor(i.image),
       }))
       .filter((i) => i.title || i.description);
 
@@ -260,6 +269,7 @@ export async function getPageSection(key: string, locale: Locale): Promise<PageS
       title: pick(doc.titleAr, doc.titleEn),
       subtitle: pick(doc.subtitleAr, doc.subtitleEn),
       body: pick(doc.bodyAr, doc.bodyEn),
+      imageUrl: urlFor(doc.image),
       paragraphs: paragraphs && paragraphs.length > 0 ? paragraphs : undefined,
       pairLeft:
         pairLeftTitle || pairLeftBody

@@ -42,6 +42,8 @@ export default defineConfig({
             S.documentTypeListItem("program").title("البرامج الدراسية"),
             S.documentTypeListItem("achievement").title("الإنجازات"),
             S.documentTypeListItem("testimonial").title("آراء الطلاب"),
+            S.divider(),
+            S.documentTypeListItem("pageSection").title("محتوى الصفحات الداخلية"),
           ]),
     }),
   ],

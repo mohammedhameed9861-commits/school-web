@@ -5,6 +5,7 @@ import { Programs } from "@/views/home/programs";
 import { Facilities } from "@/views/home/facilities";
 import { Achievements } from "@/views/home/achievements";
 import { Testimonials } from "@/views/home/testimonials";
+import { NewsSection } from "@/views/home/news";
 import { AboutView } from "@/views/about";
 import { AcademicsView } from "@/views/academics";
 import { StudentLifeView } from "@/views/student-life";
@@ -31,6 +32,7 @@ export const HomeView = () => {
       <RegisterCta />
       <Achievements />
       <Testimonials />
+      <NewsSection />
 
       <div id="about" className="scroll-mt-20">
         <AboutView />

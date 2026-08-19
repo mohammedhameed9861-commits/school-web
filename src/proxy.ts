@@ -5,6 +5,6 @@ import { routing } from "@/i18n/routing";
 export default createMiddleware(routing);
 
 export const config = {
-  // Skip API routes, Next internals, and files with an extension (assets).
-  matcher: ["/((?!api|_next|.*\\..*).*)"],
+  // Skip API routes, admin panel, Next internals, and files with an extension (assets).
+  matcher: ["/((?!api|admin|_next|.*\\..*).*)"],
 };

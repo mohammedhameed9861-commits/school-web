@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { requireAdmin } from "@/lib/session";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 // GET — list all posts (admin)
 export async function GET() {
@@ -10,7 +10,7 @@ export async function GET() {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("posts")
     .select("*")
     .order("created_at", { ascending: false });
@@ -34,7 +34,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "العنوان والمحتوى مطلوبان" }, { status: 400 });
   }
 
-  const { data, error } = await supabase
+  const { data, error } = await getSupabase()
     .from("posts")
     .insert({ title, body: content, is_published })
     .select()

@@ -1,6 +1,6 @@
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Inview } from "@/components/animation/springs/in-view";
-import { supabase } from "@/lib/supabase";
+import { getSupabase } from "@/lib/supabase";
 
 interface Post {
   id: string;
@@ -11,7 +11,7 @@ interface Post {
 
 async function getPublishedPosts(): Promise<Post[]> {
   try {
-    const { data } = await supabase
+    const { data } = await getSupabase()
       .from("posts")
       .select("id, title, body, created_at")
       .eq("is_published", true)

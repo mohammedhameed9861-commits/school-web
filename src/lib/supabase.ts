@@ -1,8 +1,17 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, SupabaseClient } from "@supabase/supabase-js";
 
-const url = process.env.SUPABASE_URL!;
-const key = process.env.SUPABASE_SERVICE_ROLE_KEY!;
+// Lazily instantiated so the module can be imported at build time
+// without requiring env vars to be present until the function is called.
+let _client: SupabaseClient | null = null;
 
-// Service-role client — only used in server-side code (API routes, Server Actions).
-// Never exposed to the browser.
-export const supabase = createClient(url, key);
+export function getSupabase(): SupabaseClient {
+  if (!_client) {
+    const url = process.env.SUPABASE_URL;
+    const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+    if (!url || !key) {
+      throw new Error("SUPABASE_URL and SUPABASE_SERVICE_ROLE_KEY must be set");
+    }
+    _client = createClient(url, key);
+  }
+  return _client;
+}

@@ -24,6 +24,8 @@ const nextConfig: NextConfig = {
     // `imageSizes` covers smaller, fixed-width images and icons.
     deviceSizes: [360, 640, 768, 1024, 1280, 1440, 1920, 2560],
     imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    // Sanity's asset CDN, for images/avatars uploaded via the CMS.
+    remotePatterns: [{ protocol: "https", hostname: "cdn.sanity.io" }],
   },
 
   // React Compiler (automatic memoisation) is an opt-in performance win.

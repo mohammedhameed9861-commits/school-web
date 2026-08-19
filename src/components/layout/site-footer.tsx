@@ -1,7 +1,8 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { siteConfig } from "@/lib/site";
+import { getSiteSettings } from "@/sanity/queries";
 import { ScrollLink } from "@/components/ui/scroll-link";
 
 // Single-page site (ADR-0022) — every former route is now a `#chapter`
@@ -21,7 +22,16 @@ export const SiteFooter = async () => {
   const t = await getTranslations("footer");
   const tc = await getTranslations("common");
   const tn = await getTranslations("nav");
+  const locale = await getLocale();
+  const settings = await getSiteSettings();
   const year = new Date().getFullYear();
+
+  const phone = settings?.phone || siteConfig.phone;
+  const email = settings?.email || siteConfig.email;
+  const facebook = settings?.facebookUrl || siteConfig.social.facebook;
+  const instagram = settings?.instagramUrl || siteConfig.social.instagram;
+  const address =
+    (locale === "ar" ? settings?.addressAr : settings?.addressEn) || tc("address");
 
   return (
     <footer className="bg-surface-inverted text-foreground-inverted">
@@ -40,7 +50,7 @@ export const SiteFooter = async () => {
           <p className="mt-3 text-sm text-foreground-inverted/80">{t("tagline")}</p>
           <div className="mt-5 flex gap-3">
             <a
-              href={siteConfig.social.facebook}
+              href={facebook}
               target="_blank"
               rel="noopener"
               aria-label="Facebook"
@@ -51,7 +61,7 @@ export const SiteFooter = async () => {
               </svg>
             </a>
             <a
-              href={siteConfig.social.instagram}
+              href={instagram}
               target="_blank"
               rel="noopener"
               aria-label="Instagram"
@@ -84,12 +94,12 @@ export const SiteFooter = async () => {
             {t("contactInfo")}
           </h2>
           <address className="mt-4 flex flex-col gap-2 text-sm not-italic text-foreground-inverted/80">
-            <span>{tc("address")}</span>
-            <a href={`tel:${siteConfig.phone}`} className={linkClass}>
-              {siteConfig.phone}
+            <span>{address}</span>
+            <a href={`tel:${phone}`} className={linkClass}>
+              {phone}
             </a>
-            <a href={`mailto:${siteConfig.email}`} className={linkClass}>
-              {siteConfig.email}
+            <a href={`mailto:${email}`} className={linkClass}>
+              {email}
             </a>
           </address>
         </div>

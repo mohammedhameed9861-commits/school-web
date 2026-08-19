@@ -52,6 +52,12 @@ export const pageSection = defineType({
     }),
     defineField({ name: "bodyEn", title: "Body (English)", type: "text", rows: 4 }),
     defineField({
+      name: "image",
+      title: "الصورة الرئيسية (تُستخدم في: قصتنا)",
+      type: "image",
+      options: { hotspot: true },
+    }),
+    defineField({
       name: "paragraphs",
       title: "فقرات (تُستخدم في: قصتنا)",
       type: "array",
@@ -105,8 +111,14 @@ export const pageSection = defineType({
               type: "string",
             }),
             defineField({ name: "metaEn", title: "Extra label (English)", type: "string" }),
+            defineField({
+              name: "image",
+              title: "صورة (تُستخدم في: المنهج الدراسي، المختبرات، الرياضة)",
+              type: "image",
+              options: { hotspot: true },
+            }),
           ],
-          preview: { select: { title: "titleAr", subtitle: "descriptionAr" } },
+          preview: { select: { title: "titleAr", subtitle: "descriptionAr", media: "image" } },
         },
       ],
     }),

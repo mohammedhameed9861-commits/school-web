@@ -1,17 +1,21 @@
-import { getTranslations } from "next-intl/server";
+import Image from "next/image";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { InteractiveCard } from "@/components/ui/interactive-card";
+import { getTestimonials } from "@/sanity/queries";
 
 interface Testimonial {
   quote: string;
   name: string;
   role: string;
+  avatarUrl?: string | null;
 }
 
 export const Testimonials = async () => {
   const t = await getTranslations("home.testimonials");
-  const items = t.raw("items") as Testimonial[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const items = (await getTestimonials(locale)) || (t.raw("items") as Testimonial[]);
 
   return (
     <section aria-labelledby="testimonials-title" className="bg-surface-muted py-20">
@@ -37,9 +41,20 @@ export const Testimonials = async () => {
                 <blockquote className="text-sm leading-relaxed text-foreground">
                   <p>{item.quote}</p>
                 </blockquote>
-                <figcaption className="mt-4 border-t border-border pt-4">
-                  <cite className="block text-sm font-semibold not-italic">{item.name}</cite>
-                  <span className="text-xs text-foreground-muted">{item.role}</span>
+                <figcaption className="mt-4 flex items-center gap-3 border-t border-border pt-4">
+                  {item.avatarUrl && (
+                    <Image
+                      src={item.avatarUrl}
+                      alt={item.name}
+                      width={40}
+                      height={40}
+                      className="h-10 w-10 shrink-0 rounded-pill object-cover"
+                    />
+                  )}
+                  <div>
+                    <cite className="block text-sm font-semibold not-italic">{item.name}</cite>
+                    <span className="text-xs text-foreground-muted">{item.role}</span>
+                  </div>
                 </figcaption>
               </figure>
             </InteractiveCard>

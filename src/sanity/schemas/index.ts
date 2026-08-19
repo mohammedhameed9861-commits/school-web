@@ -5,6 +5,7 @@ import { advantage } from "./advantage";
 import { program } from "./program";
 import { achievement } from "./achievement";
 import { testimonial } from "./testimonial";
+import { pageSection } from "./pageSection";
 
 export const schemaTypes = [
   siteSettings,
@@ -14,4 +15,5 @@ export const schemaTypes = [
   program,
   achievement,
   testimonial,
+  pageSection,
 ];

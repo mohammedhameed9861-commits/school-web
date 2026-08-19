@@ -179,3 +179,99 @@ export async function getTestimonials(locale: Locale): Promise<TestimonialItem[]
     return null;
   }
 }
+
+export type PageSectionItem = { title: string; description: string; meta?: string };
+
+export type PageSectionData = {
+  eyebrow?: string;
+  title?: string;
+  subtitle?: string;
+  body?: string;
+  paragraphs?: string[];
+  pairLeft?: { title: string; body: string };
+  pairRight?: { title: string; body: string };
+  items?: PageSectionItem[];
+};
+
+type RawPageSectionDoc = {
+  eyebrowAr?: string;
+  eyebrowEn?: string;
+  titleAr?: string;
+  titleEn?: string;
+  subtitleAr?: string;
+  subtitleEn?: string;
+  bodyAr?: string;
+  bodyEn?: string;
+  paragraphs?: { textAr?: string; textEn?: string }[];
+  pairLeftTitleAr?: string;
+  pairLeftTitleEn?: string;
+  pairLeftBodyAr?: string;
+  pairLeftBodyEn?: string;
+  pairRightTitleAr?: string;
+  pairRightTitleEn?: string;
+  pairRightBodyAr?: string;
+  pairRightBodyEn?: string;
+  items?: {
+    titleAr?: string;
+    titleEn?: string;
+    descriptionAr?: string;
+    descriptionEn?: string;
+    metaAr?: string;
+    metaEn?: string;
+  }[];
+};
+
+/**
+ * Fetches one editable block from the `pageSection` catalog (About /
+ * Academics / Student Life / Admissions content) by its fixed key. Returns
+ * `null` if that key hasn't been published yet, so callers fall back to
+ * the translation-file copy. Individual fields inside the result may also
+ * be empty/undefined — not every key uses every field.
+ */
+export async function getPageSection(key: string, locale: Locale): Promise<PageSectionData | null> {
+  try {
+    const doc = await sanityClient.fetch<RawPageSectionDoc | null>(
+      `*[_type == "pageSection" && key == $key][0]`,
+      { key },
+    );
+    if (!doc) return null;
+
+    const pick = (ar?: string, en?: string) => (locale === "ar" ? ar : en) || undefined;
+
+    const paragraphs = doc.paragraphs
+      ?.map((p) => pick(p.textAr, p.textEn))
+      .filter((p): p is string => Boolean(p));
+
+    const items = doc.items
+      ?.map((i) => ({
+        title: pick(i.titleAr, i.titleEn) || "",
+        description: pick(i.descriptionAr, i.descriptionEn) || "",
+        meta: pick(i.metaAr, i.metaEn),
+      }))
+      .filter((i) => i.title || i.description);
+
+    const pairLeftTitle = pick(doc.pairLeftTitleAr, doc.pairLeftTitleEn);
+    const pairLeftBody = pick(doc.pairLeftBodyAr, doc.pairLeftBodyEn);
+    const pairRightTitle = pick(doc.pairRightTitleAr, doc.pairRightTitleEn);
+    const pairRightBody = pick(doc.pairRightBodyAr, doc.pairRightBodyEn);
+
+    return {
+      eyebrow: pick(doc.eyebrowAr, doc.eyebrowEn),
+      title: pick(doc.titleAr, doc.titleEn),
+      subtitle: pick(doc.subtitleAr, doc.subtitleEn),
+      body: pick(doc.bodyAr, doc.bodyEn),
+      paragraphs: paragraphs && paragraphs.length > 0 ? paragraphs : undefined,
+      pairLeft:
+        pairLeftTitle || pairLeftBody
+          ? { title: pairLeftTitle || "", body: pairLeftBody || "" }
+          : undefined,
+      pairRight:
+        pairRightTitle || pairRightBody
+          ? { title: pairRightTitle || "", body: pairRightBody || "" }
+          : undefined,
+      items: items && items.length > 0 ? items : undefined,
+    };
+  } catch {
+    return null;
+  }
+}

@@ -1,4 +1,4 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import TextEngine from "spring-text-engine";
 
 import { ScrollLink } from "@/components/ui/scroll-link";
@@ -7,11 +7,21 @@ import { ParallaxOrbs } from "@/components/ui/parallax-orbs";
 import { CursorGlow } from "@/components/ui/cursor-glow";
 import { AnimatedCounter } from "@/components/ui/animated-counter";
 import { CtaButton } from "@/components/ui/cta-button";
+import { getHeroContent, getHeroStats } from "@/sanity/queries";
 
 export const Hero = async () => {
   const t = await getTranslations("home.hero");
   const tc = await getTranslations("common");
-  const stats = t.raw("stats") as { value: string; label: string }[];
+  const locale = (await getLocale()) as "ar" | "en";
+
+  const cms = await getHeroContent(locale);
+  const eyebrow = cms?.eyebrow || t("eyebrow");
+  const title = cms?.title || t("title");
+  const subtitle = cms?.subtitle || t("subtitle");
+  const ctaSecondary = cms?.secondaryBtn || t("ctaSecondary");
+  const registerNow = cms?.primaryBtn || tc("registerNow");
+
+  const stats = (await getHeroStats(locale)) || (t.raw("stats") as { value: string; label: string }[]);
 
   return (
     <section
@@ -28,7 +38,7 @@ export const Hero = async () => {
           to={{ opacity: 1, y: 0 }}
           className="rounded-pill border border-white/15 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-action-accent"
         >
-          {t("eyebrow")}
+          {eyebrow}
         </Inview>
 
         <TextEngine
@@ -42,7 +52,7 @@ export const Hero = async () => {
           wordConfig={{ tension: 170, friction: 22 }}
           overflow
         >
-          {t("title")}
+          {title}
         </TextEngine>
 
         <Inview
@@ -53,7 +63,7 @@ export const Hero = async () => {
           to={{ opacity: 1, y: 0 }}
           className="max-w-2xl text-lg text-foreground-inverted/85"
         >
-          {t("subtitle")}
+          {subtitle}
         </Inview>
 
         <Inview
@@ -69,13 +79,13 @@ export const Hero = async () => {
             analyticsEvent="hero_register_cta"
             className="bg-action-accent text-action-accent-foreground shadow-glow-gold hover:bg-action-accent-hover"
           >
-            {tc("registerNow")}
+            {registerNow}
           </CtaButton>
           <ScrollLink
             id="about"
             className="rounded-control border border-white/25 px-7 py-3.5 text-sm font-semibold text-foreground-inverted transition-colors duration-[var(--duration-fast)] ease-entrance hover:border-action-accent hover:text-action-accent"
           >
-            {t("ctaSecondary")}
+            {ctaSecondary}
           </ScrollLink>
         </Inview>
 

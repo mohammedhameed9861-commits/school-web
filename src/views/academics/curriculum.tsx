@@ -9,6 +9,14 @@ export const Curriculum = async () => {
   const locale = (await getLocale()) as "ar" | "en";
   const cms = await getPageSection("academics.curriculum", locale);
   const items = cms?.items || (t.raw("items") as MediaItem[]);
+  const fallbackImages = [
+    "/assets/photos/science-club-telescope.jpg",
+    "/assets/photos/humanities-class.jpg",
+    "/assets/photos/classroom-preparatory.jpg",
+  ];
+  const images = items.map(
+    (item, index) => (item as { imageUrl?: string | null }).imageUrl || fallbackImages[index],
+  );
 
   return (
     <section
@@ -23,10 +31,7 @@ export const Curriculum = async () => {
           subtitleBold
         />
         <div className="mt-12">
-          <MediaCardGrid
-            items={items}
-            images={["/assets/photos/science-club-telescope.jpg", "/assets/photos/humanities-class.jpg", "/assets/photos/classroom-preparatory.jpg"]}
-          />
+          <MediaCardGrid items={items} images={images} />
         </div>
       </div>
     </section>

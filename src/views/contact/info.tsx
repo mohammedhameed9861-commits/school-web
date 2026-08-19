@@ -1,11 +1,23 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { siteConfig } from "@/lib/site";
+import { getSiteSettings } from "@/sanity/queries";
 import { Inview } from "@/components/animation/springs/in-view";
 
 export const Info = async () => {
   const t = await getTranslations("contact.info");
   const tc = await getTranslations("common");
+  const locale = await getLocale();
+  const settings = await getSiteSettings();
+
+  const phone = settings?.phone || siteConfig.phone;
+  const whatsapp = settings?.whatsapp || siteConfig.whatsapp;
+  const email = settings?.email || siteConfig.email;
+  const facebook = settings?.facebookUrl || siteConfig.social.facebook;
+  const instagram = settings?.instagramUrl || siteConfig.social.instagram;
+  const mapsEmbedUrl = settings?.googleMapsEmbedUrl || siteConfig.mapsEmbedUrl;
+  const address =
+    (locale === "ar" ? settings?.addressAr : settings?.addressEn) || tc("address");
 
   return (
     <section
@@ -21,7 +33,7 @@ export const Info = async () => {
           className="overflow-hidden rounded-card border border-border"
         >
           <iframe
-            src={siteConfig.mapsEmbedUrl}
+            src={mapsEmbedUrl}
             title={t("mapTitle")}
             loading="lazy"
             className="h-80 w-full lg:h-full"
@@ -43,15 +55,15 @@ export const Info = async () => {
                 <dt className="text-xs font-semibold uppercase tracking-wide text-foreground-muted">
                   {t("addressTitle")}
                 </dt>
-                <dd className="mt-1 text-base">{tc("address")}</dd>
+                <dd className="mt-1 text-base">{address}</dd>
               </div>
               <div>
                 <dt className="text-xs font-semibold uppercase tracking-wide text-foreground-muted">
                   {t("phoneTitle")}
                 </dt>
                 <dd className="mt-1">
-                  <a href={`tel:${siteConfig.phone}`} className="text-base text-action-primary underline underline-offset-4">
-                    {siteConfig.phone}
+                  <a href={`tel:${phone}`} className="text-base text-action-primary underline underline-offset-4">
+                    {phone}
                   </a>
                 </dd>
               </div>
@@ -61,12 +73,12 @@ export const Info = async () => {
                 </dt>
                 <dd className="mt-1">
                   <a
-                    href={`https://wa.me/${siteConfig.whatsapp}`}
+                    href={`https://wa.me/${whatsapp}`}
                     target="_blank"
                     rel="noopener"
                     className="text-base text-action-primary underline underline-offset-4"
                   >
-                    +{siteConfig.whatsapp}
+                    +{whatsapp}
                   </a>
                 </dd>
               </div>
@@ -75,8 +87,8 @@ export const Info = async () => {
                   {t("emailTitle")}
                 </dt>
                 <dd className="mt-1">
-                  <a href={`mailto:${siteConfig.email}`} className="text-base text-action-primary underline underline-offset-4">
-                    {siteConfig.email}
+                  <a href={`mailto:${email}`} className="text-base text-action-primary underline underline-offset-4">
+                    {email}
                   </a>
                 </dd>
               </div>
@@ -89,7 +101,7 @@ export const Info = async () => {
             </p>
             <div className="mt-2 flex gap-3">
               <a
-                href={siteConfig.social.facebook}
+                href={facebook}
                 target="_blank"
                 rel="noopener"
                 aria-label="Facebook"
@@ -100,7 +112,7 @@ export const Info = async () => {
                 </svg>
               </a>
               <a
-                href={siteConfig.social.instagram}
+                href={instagram}
                 target="_blank"
                 rel="noopener"
                 aria-label="Instagram"

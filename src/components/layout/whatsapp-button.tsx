@@ -6,10 +6,15 @@ import { useTranslations } from "next-intl";
 import { siteConfig } from "@/lib/site";
 import { Hover } from "@/components/animation/springs/hover";
 
-export const WhatsAppButton = () => {
+type WhatsAppButtonProps = {
+  /** Number in international format, no `+` (e.g. "9647xxxxxxxxx"). */
+  whatsapp?: string;
+};
+
+export const WhatsAppButton = ({ whatsapp = siteConfig.whatsapp }: WhatsAppButtonProps) => {
   const t = useTranslations("whatsapp");
   const triggerRef = useRef<HTMLAnchorElement>(null);
-  const href = `https://wa.me/${siteConfig.whatsapp}?text=${encodeURIComponent(t("defaultMessage"))}`;
+  const href = `https://wa.me/${whatsapp}?text=${encodeURIComponent(t("defaultMessage"))}`;
 
   return (
     <a

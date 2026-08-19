@@ -1,19 +1,23 @@
-import { getTranslations } from "next-intl/server";
+import Image from "next/image";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { ScrollLink } from "@/components/ui/scroll-link";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Inview } from "@/components/animation/springs/in-view";
+import { getPrograms } from "@/sanity/queries";
 
 interface Program {
   title: string;
   description: string;
+  imageUrl?: string | null;
 }
 
 export const Programs = async () => {
   const t = await getTranslations("home.programs");
   const tc = await getTranslations("common");
-  const items = t.raw("items") as Program[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const items = (await getPrograms(locale)) || (t.raw("items") as Program[]);
 
   return (
     <section aria-labelledby="programs-title" className="bg-surface-muted py-20">
@@ -36,7 +40,17 @@ export const Programs = async () => {
               to={{ opacity: 1, y: 0 }}
               className="flex gap-5 rounded-card bg-surface p-6"
             >
-              <MediaPlaceholder className="h-16 w-16 shrink-0" />
+              {item.imageUrl ? (
+                <Image
+                  src={item.imageUrl}
+                  alt={item.title}
+                  width={64}
+                  height={64}
+                  className="h-16 w-16 shrink-0 rounded-card object-cover"
+                />
+              ) : (
+                <MediaPlaceholder className="h-16 w-16 shrink-0" />
+              )}
               <div>
                 <h3 className="text-lg font-semibold">{item.title}</h3>
                 <p className="mt-2 text-sm text-foreground-muted">{item.description}</p>

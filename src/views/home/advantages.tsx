@@ -1,11 +1,13 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { NumberedCardGrid, type NumberedItem } from "@/components/ui/numbered-card-grid";
+import { getAdvantages } from "@/sanity/queries";
 
 export const Advantages = async () => {
   const t = await getTranslations("home.advantages");
-  const items = t.raw("items") as NumberedItem[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const items = (await getAdvantages(locale)) || (t.raw("items") as NumberedItem[]);
 
   return (
     <section

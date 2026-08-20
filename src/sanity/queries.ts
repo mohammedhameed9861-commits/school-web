@@ -1,4 +1,4 @@
-import { sanityClient } from "./client";
+import { getSanityClient } from "./client";
 import { urlFor, type SanityImageRef } from "./image";
 
 export type SanitySiteSettings = {
@@ -22,7 +22,8 @@ export type SanitySiteSettings = {
  */
 export async function getSiteSettings(): Promise<SanitySiteSettings | null> {
   try {
-    return await sanityClient.fetch<SanitySiteSettings | null>(
+    const client = await getSanityClient();
+    return await client.fetch<SanitySiteSettings | null>(
       `*[_type == "siteSettings"][0]`,
     );
   } catch {
@@ -47,7 +48,8 @@ export type HeroContentData = {
  */
 export async function getHeroContent(locale: Locale): Promise<HeroContentData | null> {
   try {
-    const doc = await sanityClient.fetch<Record<string, string> | null>(
+    const client = await getSanityClient();
+    const doc = await client.fetch<Record<string, string> | null>(
       `*[_type == "heroContent"][0]`,
     );
     if (!doc) return null;
@@ -70,7 +72,8 @@ export type StatItem = { value: string; label: string };
 /** Fetches the hero's small stat row (`statsSection` singleton). */
 export async function getHeroStats(locale: Locale): Promise<StatItem[] | null> {
   try {
-    const doc = await sanityClient.fetch<{
+    const client = await getSanityClient();
+    const doc = await client.fetch<{
       stats?: { value?: string; labelAr?: string; labelEn?: string }[];
     } | null>(`*[_type == "statsSection"][0]`);
     const stats = doc?.stats;
@@ -87,7 +90,8 @@ export async function getHeroStats(locale: Locale): Promise<StatItem[] | null> {
 /** Fetches the `achievement` documents (the bigger stat grid further down the page). */
 export async function getAchievements(locale: Locale): Promise<StatItem[] | null> {
   try {
-    const docs = await sanityClient.fetch<
+    const client = await getSanityClient();
+    const docs = await client.fetch<
       { valueAr?: string; valueEn?: string; labelAr?: string; labelEn?: string }[]
     >(`*[_type == "achievement"] | order(order asc)`);
     if (!docs || docs.length === 0) return null;
@@ -104,7 +108,8 @@ export type AdvantageItem = { title: string; description: string; icon?: string 
 
 export async function getAdvantages(locale: Locale): Promise<AdvantageItem[] | null> {
   try {
-    const docs = await sanityClient.fetch<
+    const client = await getSanityClient();
+    const docs = await client.fetch<
       {
         titleAr?: string;
         titleEn?: string;
@@ -128,7 +133,8 @@ export type ProgramItem = { title: string; description: string; imageUrl: string
 
 export async function getPrograms(locale: Locale): Promise<ProgramItem[] | null> {
   try {
-    const docs = await sanityClient.fetch<
+    const client = await getSanityClient();
+    const docs = await client.fetch<
       {
         titleAr?: string;
         titleEn?: string;
@@ -157,7 +163,8 @@ export type TestimonialItem = {
 
 export async function getTestimonials(locale: Locale): Promise<TestimonialItem[] | null> {
   try {
-    const docs = await sanityClient.fetch<
+    const client = await getSanityClient();
+    const docs = await client.fetch<
       {
         nameAr?: string;
         nameEn?: string;
@@ -238,7 +245,8 @@ type RawPageSectionDoc = {
  */
 export async function getPageSection(key: string, locale: Locale): Promise<PageSectionData | null> {
   try {
-    const doc = await sanityClient.fetch<RawPageSectionDoc | null>(
+    const client = await getSanityClient();
+    const doc = await client.fetch<RawPageSectionDoc | null>(
       `*[_type == "pageSection" && key == $key][0]`,
       { key },
     );

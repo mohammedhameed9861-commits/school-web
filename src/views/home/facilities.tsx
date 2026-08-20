@@ -1,41 +1,44 @@
-import { getTranslations } from "next-intl/server";
+import { getLocale, getTranslations } from "next-intl/server";
 import Image from "next/image";
 
 import { SectionHeading } from "@/components/ui/section-heading";
 import { MediaPlaceholder } from "@/components/ui/media-placeholder";
 import { Inview } from "@/components/animation/springs/in-view";
+import { getPageSection } from "@/sanity/queries";
 
 interface Facility {
   title: string;
   description: string;
+  imageUrl?: string | null;
 }
 
-// Real photo per facility, indexed to match `messages/*.json` →
-// home.facilities.items order: classrooms, sports fields. (Items without a
-// matching real photo — labs, theatre, cafeteria — were dropped rather than
-// left as placeholders; see ADR-0022 follow-up.)
-const FACILITY_IMAGES: (string | undefined)[] = [
+// Fallback photo per facility (used until real photos are uploaded via
+// Sanity), indexed to match `messages/*.json` → home.facilities.items
+// order: classrooms, sports fields.
+const FALLBACK_IMAGES: (string | undefined)[] = [
   "/assets/photos/classroom-intermediate.jpg",
   "/assets/photos/campus-courtyard.jpg",
 ];
 
 export const Facilities = async () => {
   const t = await getTranslations("home.facilities");
-  const items = t.raw("items") as Facility[];
+  const locale = (await getLocale()) as "ar" | "en";
+  const cms = await getPageSection("home.facilities", locale);
+  const items = cms?.items || (t.raw("items") as Facility[]);
 
   return (
     <section aria-labelledby="facilities-title" className="bg-background py-20">
       <div className="mx-auto max-w-[80rem] px-4 sm:px-6">
         <SectionHeading
           id="facilities-title"
-          eyebrow={t("eyebrow")}
-          title={t("title")}
-          subtitle={t("subtitle")}
+          eyebrow={cms?.eyebrow || t("eyebrow")}
+          title={cms?.title || t("title")}
+          subtitle={cms?.subtitle || t("subtitle")}
         />
 
         <ul className="mt-12 grid gap-6 sm:grid-cols-2">
           {items.map((item, index) => {
-            const image = FACILITY_IMAGES[index];
+            const image = item.imageUrl || FALLBACK_IMAGES[index];
             return (
               <Inview
                 key={item.title}

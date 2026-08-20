@@ -6,6 +6,7 @@ import { defineField, defineType } from "sanity";
 // ~18 bespoke ones — not every field applies to every section; each
 // component only reads the fields its layout actually uses.
 const SECTION_KEYS = [
+  { title: "الرئيسية — المرافق والحياة المدرسية", value: "home.facilities" },
   { title: "من نحن — قصتنا", value: "about.story" },
   { title: "من نحن — رؤيتنا ورسالتنا", value: "about.visionMission" },
   { title: "من نحن — قيمنا", value: "about.values" },
@@ -113,7 +114,7 @@ export const pageSection = defineType({
             defineField({ name: "metaEn", title: "Extra label (English)", type: "string" }),
             defineField({
               name: "image",
-              title: "صورة (تُستخدم في: المنهج الدراسي، المختبرات، الرياضة)",
+              title: "صورة (تُستخدم في: المرافق والحياة المدرسية، المنهج الدراسي، المختبرات، الرياضة)",
               type: "image",
               options: { hotspot: true },
             }),

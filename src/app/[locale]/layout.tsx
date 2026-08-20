@@ -3,6 +3,8 @@ import { Cairo } from "next/font/google";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { draftMode } from "next/headers";
+import { VisualEditing } from "next-sanity/visual-editing";
 
 import { routing } from "@/i18n/routing";
 import {
@@ -70,6 +72,7 @@ export default async function LocaleLayout({
 
   const settings = await getSiteSettings();
   const whatsapp = settings?.whatsapp || siteConfig.whatsapp;
+  const { isEnabled: isDraftMode } = await draftMode();
 
   const dir = locale === "ar" ? "rtl" : "ltr";
 
@@ -104,6 +107,7 @@ export default async function LocaleLayout({
           </ThemeProvider>
         </NextIntlClientProvider>
         <AnalyticsScripts />
+        {isDraftMode && <VisualEditing />}
       </body>
     </html>
   );

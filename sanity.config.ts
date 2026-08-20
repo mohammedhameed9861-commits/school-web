@@ -1,5 +1,6 @@
 import { defineConfig } from "sanity";
 import { structureTool } from "sanity/structure";
+import { presentationTool } from "sanity/presentation";
 import { schemaTypes } from "./src/sanity/schemas";
 
 export default defineConfig({
@@ -8,6 +9,15 @@ export default defineConfig({
   projectId: "tumwflm5",
   dataset: "production",
   plugins: [
+    presentationTool({
+      title: "تعديل مباشر (شوف الموقع وعدّله)",
+      previewUrl: {
+        previewMode: {
+          enable: "/api/draft-mode/enable",
+          disable: "/api/draft-mode/disable",
+        },
+      },
+    }),
     structureTool({
       structure: (S) =>
         S.list()

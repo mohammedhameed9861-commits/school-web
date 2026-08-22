@@ -1,6 +1,7 @@
 import { unstable_noStore as noStore } from "next/cache";
 import { SectionHeading } from "@/components/ui/section-heading";
 import { Inview } from "@/components/animation/springs/in-view";
+import { Link } from "@/i18n/navigation";
 import { getSupabase } from "@/lib/supabase";
 
 interface Post {
@@ -65,6 +66,12 @@ export const NewsSection = async () => {
               <p className="text-sm text-foreground-muted line-clamp-4 whitespace-pre-wrap">
                 {post.body}
               </p>
+              <Link
+                href={`/news/${post.id}`}
+                className="mt-1 text-sm font-semibold text-action-primary underline underline-offset-4 hover:text-action-accent"
+              >
+                اقرأ المزيد
+              </Link>
             </Inview>
           ))}
         </div>
